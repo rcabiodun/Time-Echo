@@ -10,6 +10,8 @@ var playback_frames: Array = []
 # Which frame we are currently replaying
 var playback_index: int = 0
 
+var echo_id: int = -1
+
 
 # ===============================
 # 📦 CARRY SYSTEM (same as player)
@@ -101,3 +103,7 @@ func update_carried_box_position():
 	if carried_box:
 		var target_pos: Vector2 = global_position + Vector2(facing_direction * carry_distance, -12)
 		carried_box.follow_target(target_pos)
+		
+
+func set_echo_id(id: int):
+	echo_id = id

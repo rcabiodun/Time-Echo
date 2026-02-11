@@ -32,7 +32,7 @@ var facing_direction: float = 1.0
 # ===============================
 # ⏺ RECORDING STATE
 # ===============================
-var is_recording: bool = false
+#var Global.is_recording: bool = false
 var record_timer: float = 0.0
 var recorded_frames: Array = []
 
@@ -136,13 +136,13 @@ func update_carried_box_position():
 # ⏺ RECORDING SYSTEM
 # ===============================
 func handle_recording(delta):
-	if Input.is_action_just_pressed("start_recording") and not is_recording:
+	if Input.is_action_just_pressed("start_recording") and not Global.is_recording:
 		start_recording()
 
-	if Input.is_action_just_pressed("stop_recording") and is_recording:
+	if Input.is_action_just_pressed("stop_recording") and Global.is_recording:
 		stop_recording()
 
-	if is_recording:
+	if Global.is_recording:
 		record_timer += delta
 
 		recorded_frames.append({
@@ -158,14 +158,14 @@ func handle_recording(delta):
 func start_recording():
 	recorded_frames.clear()
 	record_timer = 0
-	is_recording = true
+	Global.is_recording = true
 	print("Recording started")
 
 func stop_recording():
-	if not is_recording:
+	if not Global.is_recording:
 		return
 
-	is_recording = false
+	Global.is_recording = false
 	record_timer = 0
 	print("Recording stopped")
 	create_echo.emit(recorded_frames.duplicate(true))

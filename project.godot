@@ -15,6 +15,10 @@ run/main_scene="uid://dd2afi3sapie8"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://scripts/global.gd"
+
 [global_group]
 
 buttons=""
@@ -22,6 +26,7 @@ doors=""
 echo=""
 resettable="This are object that are  going to be glitches/resetted back to their original position  if moved or intereacted with oustide recording"
 carryable="These are objects that are meant to be carried by the player"
+player=""
 
 [input]
 

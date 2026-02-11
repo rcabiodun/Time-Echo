@@ -20,6 +20,16 @@ position = Vector2(196.99997, 190)
 rotation = -0.0021253228
 scale = Vector2(0.99999994, 0.99999994)
 
+[node name="Box2" parent="." instance=ExtResource("2_ppgk2")]
+position = Vector2(287, 175.00002)
+rotation = -0.02646662
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Box3" parent="." instance=ExtResource("2_ppgk2")]
+position = Vector2(288, 196)
+rotation = -0.02646662
+scale = Vector2(0.99999994, 0.99999994)
+
 [node name="Area2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
