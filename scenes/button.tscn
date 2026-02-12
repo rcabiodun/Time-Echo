@@ -7,7 +7,7 @@
 size = Vector2(20, 16)
 
 [node name="Botton" type="Area2D" groups=["buttons"]]
-collision_mask = 5
+collision_mask = 7
 script = ExtResource("1_rhj8v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

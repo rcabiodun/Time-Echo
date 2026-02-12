@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://djfqj2hshogsi"]
+
+[ext_resource type="Script" uid="uid://du1ayy2h1g64" path="res://scripts/rune.gd" id="1_gird2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txpw5"]
+size = Vector2(38, 57)
+
+[node name="Rune" type="Area2D" groups=["runes"]]
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("1_gird2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_txpw5")
+debug_color = Color(0.73103726, 0.4731201, 3.85046e-07, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

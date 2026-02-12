@@ -27,6 +27,7 @@ echo=""
 resettable="This are object that are  going to be glitches/resetted back to their original position  if moved or intereacted with oustide recording"
 carryable="These are objects that are meant to be carried by the player"
 player=""
+runes=""
 
 [input]
 
@@ -56,6 +57,7 @@ interact={
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
 2d_physics/layer_3="echo"
+2d_physics/layer_4="rune"
 
 [rendering]
 

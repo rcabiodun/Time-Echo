@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dd2afi3sapie8"]
+[gd_scene load_steps=9 format=3 uid="uid://dd2afi3sapie8"]
 
 [ext_resource type="PackedScene" uid="uid://qwl6amp077tv" path="res://scenes/player.tscn" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://e8fe7rqmbdh0" path="res://scripts/level.gd" id="1_w7c3h"]
 [ext_resource type="PackedScene" uid="uid://c3xkdelgrohx2" path="res://scenes/box.tscn" id="2_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://hfvk0mwy7guf" path="res://scenes/button.tscn" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://kkxnbercfl78" path="res://scenes/door.tscn" id="4_ppgk2"]
+[ext_resource type="PackedScene" uid="uid://djfqj2hshogsi" path="res://rune.tscn" id="5_2r41h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
 size = Vector2(431, 57)
@@ -21,7 +22,7 @@ rotation = -0.0021253228
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Box2" parent="." instance=ExtResource("2_ppgk2")]
-position = Vector2(287, 175.00002)
+position = Vector2(284.99994, 175.00002)
 rotation = -0.02646662
 scale = Vector2(0.99999994, 0.99999994)
 
@@ -61,11 +62,24 @@ position = Vector2(244, 167)
 position = Vector2(162, 197)
 
 [node name="Botton2" parent="." instance=ExtResource("3_mx8sn")]
-position = Vector2(97, 193)
+visible = false
+position = Vector2(96, 193)
+door_id = "Aa"
+allowed_activator = 0
+
+[node name="Rune" parent="." instance=ExtResource("5_2r41h")]
+position = Vector2(43.00001, 176.00002)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Rune2" parent="." instance=ExtResource("5_2r41h")]
+position = Vector2(334.99997, 103.00001)
+scale = Vector2(0.99999994, 0.99999994)
+rune_id = "R2"
 
 [node name="Door" parent="." instance=ExtResource("4_ppgk2")]
-position = Vector2(334.99997, 168.99998)
-rotation = 0.41488567
-required_buttons = 2
+position = Vector2(337, 167)
+door_id = "A"
+required_buttons = 1
+required_runes = Array[String](["R1  ", "R2"])
 
 [connection signal="create_echo" from="Player" to="." method="_on_player_create_echo"]

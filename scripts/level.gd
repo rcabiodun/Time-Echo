@@ -24,6 +24,8 @@ func _on_player_create_echo(frames: Array) -> void:
 	
 	for obj in get_tree().get_nodes_in_group("resettable"):
 		obj.reset_if_needed(active_echo_ids)
+	for rune in get_tree().get_nodes_in_group("runes"):
+		rune.reset_rune_if_needed(active_echo_ids)
 
 	var echo = preload("res://scenes/echo.tscn").instantiate()
 	$Echoes.add_child(echo)

@@ -105,7 +105,7 @@ func follow_target(target_pos: Vector2):
 # 🔄 WORLD RESET LOGIC
 # ===============================
 func reset_if_needed(existing_echo_ids: Array):
-	print("Bitch leave me alonie")
+	#print("Bitch leave me alonie")
 	if being_carried:
 		return
 

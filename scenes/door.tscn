@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://kkxnbercfl78"]
+[gd_scene load_steps=5 format=3 uid="uid://kkxnbercfl78"]
 
 [ext_resource type="Texture2D" uid="uid://ddy2jpw3fga1u" path="res://icon.svg" id="1_hpvv5"]
 [ext_resource type="Script" uid="uid://bskqqeh1k6v0q" path="res://scripts/door.gd" id="1_uvdjg"]
+[ext_resource type="Script" uid="uid://b08k142rgyc7g" path="res://scripts/rune_requirement.gd" id="3_83dcw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5f452"]
 size = Vector2(24, 71)
@@ -10,6 +11,9 @@ size = Vector2(24, 71)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_uvdjg")
+door_id = null
+required_buttons = null
+required_runes = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5f452")
@@ -19,3 +23,6 @@ position = Vector2(0, 1.9073486e-06)
 rotation = -0.009478389
 scale = Vector2(0.22264214, 0.5868447)
 texture = ExtResource("1_hpvv5")
+
+[node name="RuneRequirement" type="Node" parent="."]
+script = ExtResource("3_83dcw")
