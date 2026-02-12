@@ -68,6 +68,13 @@ func register_button_event(id: String, pressed: bool):
 		open()
 	else:
 		close()
+		
+func _check_runes_now():
+	if pressed_count >= required_buttons and rune_requirement.are_required_runes_active():
+		open()
+	else:
+		close()
+
 func open():
 	print("opening door")
 
