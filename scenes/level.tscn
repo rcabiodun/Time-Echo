@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c3xkdelgrohx2" path="res://scenes/box.tscn" id="2_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://hfvk0mwy7guf" path="res://scenes/button.tscn" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://kkxnbercfl78" path="res://scenes/door.tscn" id="4_ppgk2"]
-[ext_resource type="PackedScene" uid="uid://djfqj2hshogsi" path="res://rune.tscn" id="5_2r41h"]
+[ext_resource type="PackedScene" uid="uid://djfqj2hshogsi" path="res://scenes/rune.tscn" id="5_2r41h"]
 [ext_resource type="PackedScene" uid="uid://c0rpw3boc2l4x" path="res://scenes/platform.tscn" id="7_klq6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
@@ -73,7 +73,7 @@ position = Vector2(43.00001, 176.00002)
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Rune2" parent="." instance=ExtResource("5_2r41h")]
-position = Vector2(334.99997, 103.00001)
+position = Vector2(336, 99)
 scale = Vector2(0.99999994, 0.99999994)
 rune_id = "R2"
 

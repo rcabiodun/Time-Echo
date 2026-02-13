@@ -2,19 +2,28 @@ extends Area2D
 
 # Unique ID for this rune in the level
 @export var rune_id: String = "R1"
+@onready var sfx_rune_hit: AudioStreamPlayer2D = $SfxRuneHit
+@onready var rune_hit_light: PointLight2D = $RuneHitLight
 
 # Which echoes have activated this rune
 var activated_by_echo_ids: Array[int] = []
 
 func _on_body_entered(body: Node2D) -> void:
+
 	if body.is_in_group("echo"):
 		var id = body.echo_id
 		if id not in activated_by_echo_ids:
 			activated_by_echo_ids.append(id)
 			print("Rune ", rune_id, " activated by echo ", id)
+			sfx_rune_hit.pitch_scale=randf_range(0.2, 1.0)
+			sfx_rune_hit.play()
+			rune_hit_light.enabled=true
 			# Notify doors to re-check rune status
 			#for door in get_tree().get_nodes_in_group("doors"):
 				#door._check_runes_now(id)
+	elif body.is_in_group("player") and Global.is_recording:
+		sfx_rune_hit.play()
+		
 
 
 # Called by level reset system

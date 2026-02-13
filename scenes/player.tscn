@@ -83,7 +83,7 @@ radius = 32.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-collision_mask = 25
+collision_mask = 9
 script = ExtResource("1_g2els")
 metadata/_edit_lock_ = true
 
@@ -124,3 +124,14 @@ texture = SubResource("GradientTexture2D_qhqgy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_qhqgy")
 debug_color = Color(0.94776565, 1.732707e-06, 0.58386886, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "th is s"

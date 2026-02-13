@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://djfqj2hshogsi"]
+
+[ext_resource type="Script" uid="uid://du1ayy2h1g64" path="res://scripts/rune.gd" id="1_gird2"]
+[ext_resource type="AudioStream" uid="uid://l1rbgey1ojqw" path="res://assets/audio/62989__radian__chime-0014.wav" id="2_ou4tv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txpw5"]
+size = Vector2(38, 57)
+
+[sub_resource type="Gradient" id="Gradient_ou4tv"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ti5gc"]
+gradient = SubResource("Gradient_ou4tv")
+fill = 1
+fill_from = Vector2(0.54273504, 0.53418803)
+
+[node name="Rune" type="Area2D" groups=["runes"]]
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("1_gird2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_txpw5")
+debug_color = Color(0.73103726, 0.4731201, 3.85046e-07, 0.41960785)
+
+[node name="SfxRuneHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ou4tv")
+volume_db = -12.0
+pitch_scale = 0.41
+
+[node name="RuneHitLight" type="PointLight2D" parent="."]
+enabled = false
+color = Color(0.79324156, 0.4935435, 0.1816839, 1)
+energy = 16.0
+texture = SubResource("GradientTexture2D_ti5gc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

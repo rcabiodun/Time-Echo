@@ -42,6 +42,7 @@ signal create_echo(frames)
 # 🔄 MAIN PHYSICS LOOP
 # ===============================
 func _physics_process(delta: float) -> void:
+	update_recording_label() 
 	apply_gravity(delta)
 	update_timers(delta)
 	handle_jump()
@@ -52,6 +53,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	update_carried_box_position()
+
+
+func update_recording_label():
+	#func _process(delta):
+	var new_text = "Recording!" if Global.is_recording else ""
+	if $CanvasLayer/Label.text != new_text:
+		$CanvasLayer/Label.text = new_text
+
+
 
 # ===============================
 # 🌍 GRAVITY

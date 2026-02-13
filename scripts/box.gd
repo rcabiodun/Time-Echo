@@ -130,4 +130,5 @@ func reset_if_needed(existing_echo_ids: Array):
 func _on_reset_timer_timeout() -> void:
 	print("restting")
 	global_position.x = timeline_position.x
+	global_position.y=timeline_position.y
 	#pass # Replace with function body.
