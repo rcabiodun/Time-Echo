@@ -10,9 +10,9 @@ func _ready():
 		button.connect("button_state_changed", _on_button_state_changed)
 
 # When ANY button changes, notify all doors
-func _on_button_state_changed(door_id: String, pressed: bool):
+func _on_button_state_changed(door_id: String, pressed: bool,echo_id:int=0):
 	for door in get_tree().get_nodes_in_group("doors"):
-		door.register_button_event(door_id, pressed)
+		door.register_button_event(door_id, pressed,echo_id)
 
 # Called when player finishes recording
 

@@ -13,8 +13,8 @@ func _on_body_entered(body: Node2D) -> void:
 			activated_by_echo_ids.append(id)
 			print("Rune ", rune_id, " activated by echo ", id)
 			# Notify doors to re-check rune status
-			for door in get_tree().get_nodes_in_group("doors"):
-				door._check_runes_now()
+			#for door in get_tree().get_nodes_in_group("doors"):
+				#door._check_runes_now(id)
 
 
 # Called by level reset system

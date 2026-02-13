@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://hfvk0mwy7guf"]
+[gd_scene load_steps=5 format=3 uid="uid://hfvk0mwy7guf"]
 
 [ext_resource type="Texture2D" uid="uid://ddy2jpw3fga1u" path="res://icon.svg" id="1_mi6dp"]
 [ext_resource type="Script" uid="uid://dowmeojpq3fv6" path="res://scripts/button.gd" id="1_rhj8v"]
+[ext_resource type="Script" uid="uid://b08k142rgyc7g" path="res://scripts/rune_requirement.gd" id="3_3q610"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhj8v"]
 size = Vector2(20, 16)
@@ -18,6 +19,9 @@ shape = SubResource("RectangleShape2D_rhj8v")
 position = Vector2(0, 1.9999962)
 scale = Vector2(0.1640625, 0.1171875)
 texture = ExtResource("1_mi6dp")
+
+[node name="RuneRequirement" type="Node" parent="."]
+script = ExtResource("3_3q610")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

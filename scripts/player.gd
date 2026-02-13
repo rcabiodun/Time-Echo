@@ -15,7 +15,7 @@ const MAX_RECORD_TIME := 15.0
 # ✨ JUMP FEEL SETTINGS
 # ===============================
 @export var COYOTE_TIME := 0.12
-@export var JUMP_BUFFER_TIME := 0.12
+@export var JUMP_BUFFER_TIME := 1
 
 var coyote_timer := 0.0
 var jump_buffer_timer := 0.0
