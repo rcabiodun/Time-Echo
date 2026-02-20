@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://by45pwnouna7a"]
+
+[ext_resource type="Texture2D" uid="uid://b2qyuktejg4ys" path="res://assets/inputs/left.png" id="1_tjkpe"]
+
+[node name="Touch Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Controls" type="CanvasLayer" parent="."]
+
+[node name="left" type="TouchScreenButton" parent="Controls"]
+
+[node name="right" type="TouchScreenButton" parent="Controls"]
+
+[node name="jump" type="TouchScreenButton" parent="Controls"]
+
+[node name="record" type="TouchScreenButton" parent="Controls"]
+
+[node name="interact" type="TouchScreenButton" parent="Controls"]
+texture_normal = ExtResource("1_tjkpe")

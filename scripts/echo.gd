@@ -39,6 +39,13 @@ var facing_direction: float = 1.0
 func _ready():
 	death_timer.timeout.connect(_on_death_timer_timeout)
 
+	# Start fully transparent
+	modulate.a = 0.0
+
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "modulate:a", 1.0, 0.4)
 
 # ===============================
 # 🚀 CALLED BY LEVEL TO START PLAYBACK
@@ -85,7 +92,7 @@ func _physics_process(delta):
 	var frame = playback_frames[playback_index]
 
 	# Apply recorded movement exactly
-	global_position = frame["position"]
+	#global_position = frame["position"]
 	velocity = frame["velocity"]
 
 	# Remember last movement direction for carrying boxes

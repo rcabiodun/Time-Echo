@@ -42,7 +42,7 @@ func _on_body_entered(body: Node2D) -> void:
 	#print("Body entered is; "+ body.name)
 	if allowed_activator ==ALLOWEDACTIVATORS.ECHO:
 		if body.is_in_group("echo") and not is_pressed and rune_requirement.are_required_runes_active_for_echo(body.echo_id):
-			#print("Body entered; "+ body.name)
+			print("Body entered; "+ body.name)
 			is_pressed = true
 			button_state_changed.emit( door_id, is_pressed,body.echo_id)
 	elif allowed_activator ==ALLOWEDACTIVATORS.PLAYER :

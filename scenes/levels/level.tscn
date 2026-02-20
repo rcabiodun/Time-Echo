@@ -1,0 +1,173 @@
+[gd_scene load_steps=11 format=3 uid="uid://dd2afi3sapie8"]
+
+[ext_resource type="PackedScene" uid="uid://cergo2cw5e24d" path="res://scenes/characters/player.tscn" id="1_2q6dc"]
+[ext_resource type="Script" uid="uid://e8fe7rqmbdh0" path="res://scripts/level.gd" id="1_w7c3h"]
+[ext_resource type="PackedScene" uid="uid://6hr307sdcihn" path="res://ParallaxBG.tscn" id="2_b121j"]
+[ext_resource type="PackedScene" uid="uid://c3xkdelgrohx2" path="res://scenes/items/box.tscn" id="2_ppgk2"]
+[ext_resource type="PackedScene" uid="uid://hfvk0mwy7guf" path="res://scenes/items/button.tscn" id="3_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://kkxnbercfl78" path="res://scenes/items/door.tscn" id="4_ppgk2"]
+[ext_resource type="PackedScene" uid="uid://djfqj2hshogsi" path="res://scenes/items/rune.tscn" id="5_2r41h"]
+[ext_resource type="PackedScene" uid="uid://badp2gqp4ua80" path="res://scenes/items/platform.tscn" id="7_klq6b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
+size = Vector2(431, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8frs"]
+size = Vector2(640, 68)
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_w7c3h")
+
+[node name="ParallaxBG" parent="." instance=ExtResource("2_b121j")]
+
+[node name="Box" parent="." instance=ExtResource("2_ppgk2")]
+position = Vector2(196.99997, 190)
+rotation = -0.0021253228
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Box2" parent="." instance=ExtResource("2_ppgk2")]
+position = Vector2(284.99994, 175.00002)
+rotation = -0.02646662
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Box3" parent="." instance=ExtResource("2_ppgk2")]
+position = Vector2(288, 196)
+rotation = -0.02646662
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(258, 532)
+shape = SubResource("RectangleShape2D_w7c3h")
+
+[node name="Panel" type="Panel" parent="Area2D/CollisionShape2D"]
+offset_left = -219.0
+offset_top = -31.0
+offset_right = 211.0
+offset_bottom = 97.0
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(691, 487)
+shape = SubResource("RectangleShape2D_w7c3h")
+
+[node name="Panel" type="Panel" parent="Area2D/CollisionShape2D3"]
+offset_left = -214.0
+offset_top = -29.0
+offset_right = 216.0
+offset_bottom = 99.0
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1123, 430)
+shape = SubResource("RectangleShape2D_w7c3h")
+
+[node name="Panel" type="Panel" parent="Area2D/CollisionShape2D4"]
+offset_left = -214.0
+offset_top = -29.0
+offset_right = 216.0
+offset_bottom = 99.0
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1554, 364)
+shape = SubResource("RectangleShape2D_w7c3h")
+
+[node name="Panel" type="Panel" parent="Area2D/CollisionShape2D5"]
+offset_left = -214.0
+offset_top = -29.0
+offset_right = 216.0
+offset_bottom = 99.0
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1989, 370)
+shape = SubResource("RectangleShape2D_w7c3h")
+
+[node name="Panel" type="Panel" parent="Area2D/CollisionShape2D6"]
+offset_left = -214.0
+offset_top = -29.0
+offset_right = 216.0
+offset_bottom = 99.0
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2990, 118)
+shape = SubResource("RectangleShape2D_w7c3h")
+
+[node name="Panel" type="Panel" parent="Area2D/CollisionShape2D7"]
+offset_left = -214.0
+offset_top = -29.0
+offset_right = 216.0
+offset_bottom = 99.0
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3415, 174)
+shape = SubResource("RectangleShape2D_w7c3h")
+
+[node name="Panel" type="Panel" parent="Area2D/CollisionShape2D8"]
+offset_left = -214.0
+offset_top = -29.0
+offset_right = 216.0
+offset_bottom = 99.0
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3845, 229)
+shape = SubResource("RectangleShape2D_w7c3h")
+
+[node name="Panel" type="Panel" parent="Area2D/CollisionShape2D9"]
+offset_left = -214.0
+offset_top = -29.0
+offset_right = 216.0
+offset_bottom = 99.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(748, 174)
+shape = SubResource("RectangleShape2D_w8frs")
+
+[node name="Panel2" type="Panel" parent="Area2D/CollisionShape2D2"]
+offset_left = -319.0
+offset_top = -35.0
+offset_right = 319.0
+offset_bottom = 33.0
+
+[node name="Panel3" type="Panel" parent="Area2D/CollisionShape2D2"]
+offset_left = 316.0
+offset_top = 29.0
+offset_right = 954.0
+offset_bottom = 97.0
+
+[node name="Player" parent="." instance=ExtResource("1_2q6dc")]
+position = Vector2(441, 38)
+
+[node name="Echoes" type="Node2D" parent="."]
+
+[node name="Botton" parent="." instance=ExtResource("3_mx8sn")]
+position = Vector2(161, 197)
+door_id = "Aa"
+allowed_activator = 0
+
+[node name="Botton2" parent="." instance=ExtResource("3_mx8sn")]
+position = Vector2(96, 193)
+required_runes = Array[String](["R1", "R2"])
+
+[node name="Rune" parent="." instance=ExtResource("5_2r41h")]
+position = Vector2(43.00001, 176.00002)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Rune2" parent="." instance=ExtResource("5_2r41h")]
+position = Vector2(336, 100)
+scale = Vector2(0.99999994, 0.99999994)
+rune_id = "R2"
+
+[node name="Door" parent="." instance=ExtResource("4_ppgk2")]
+position = Vector2(337, 167)
+door_id = "A"
+required_buttons = 1
+
+[node name="Door2" parent="." instance=ExtResource("4_ppgk2")]
+position = Vector2(231, 175)
+door_id = "Aa"
+required_buttons = 1
+
+[node name="Platform" parent="." instance=ExtResource("7_klq6b")]
+position = Vector2(539, 87)
+collision_mask = 0
+
+[connection signal="create_echo" from="Player" to="." method="_on_player_create_echo"]
