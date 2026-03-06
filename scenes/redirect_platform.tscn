@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://jasgysmgxumm"]
+
+[ext_resource type="Texture2D" uid="uid://tk2cvl54wx13" path="res://assets/interactables/4.png" id="1_smr21"]
+[ext_resource type="Script" uid="uid://cvm3kt7k4o00t" path="res://scripts/redirect_platform.gd" id="1_tfwdq"]
+[ext_resource type="Texture2D" uid="uid://h7o6xsoehrnt" path="res://assets/interactables/Magic Mirror.png" id="3_jk47r"]
+[ext_resource type="PackedScene" uid="uid://didbleyx3hmlk" path="res://scenes/items/timeline_component.tscn" id="4_xntp7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfwdq"]
+size = Vector2(18.984709, 80.910995)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jk47r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xntp7"]
+atlas = ExtResource("3_jk47r")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arrm7"]
+atlas = ExtResource("3_jk47r")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smc1p"]
+atlas = ExtResource("3_jk47r")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk4fu"]
+atlas = ExtResource("3_jk47r")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01tru"]
+atlas = ExtResource("3_jk47r")
+region = Rect2(0, 512, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tfwdq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xntp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arrm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smc1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk4fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01tru")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="RedirectPlatform" type="StaticBody2D" groups=["redirect_platform", "resettable"]]
+collision_layer = 64
+collision_mask = 230
+script = ExtResource("1_tfwdq")
+metadata/_edit_horizontal_guides_ = [-16.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.022591392, 0.037292644)
+texture = ExtResource("1_smr21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.66790456, 0.27190372)
+shape = SubResource("RectangleShape2D_tfwdq")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+visible = false
+scale = Vector2(6.913793, -8)
+shape = SubResource("RectangleShape2D_jk47r")
+debug_color = Color(0.99706763, 0, 0.18337938, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 3.1415927
+scale = Vector2(0.3839749, 0.21870412)
+sprite_frames = SubResource("SpriteFrames_tfwdq")
+
+[node name="TimelineComponent" parent="." instance=ExtResource("4_xntp7")]
+
+[node name="SpawnPoint" type="Marker2D" parent="."]

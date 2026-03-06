@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://tmbhhtpywnsg"]
+
+[ext_resource type="Script" uid="uid://dldf1l5ce17tk" path="res://scripts/projectile_reciever.gd" id="1_hsdfx"]
+[ext_resource type="Texture2D" uid="uid://c3735fwwc8o8x" path="res://assets/interactables/bigtorchOFF.png" id="2_srh11"]
+[ext_resource type="Texture2D" uid="uid://dd61heapl5fk0" path="res://assets/interactables/bigtorchlit1.png" id="3_tmbun"]
+[ext_resource type="Texture2D" uid="uid://bxa3n4n4v1ptt" path="res://assets/interactables/bigtorchlit2.png" id="4_1cspg"]
+[ext_resource type="Texture2D" uid="uid://dpqc7flshona3" path="res://assets/interactables/bigtorchlit3.png" id="5_b636b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ldye"]
+size = Vector2(15.471124, 16.798779)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u3po"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qg0lo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_srh11")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tmbun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1cspg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b636b")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[node name="ProjectileReciever" type="StaticBody2D" groups=["projectile_receiver"]]
+collision_layer = 33
+collision_mask = 166
+script = ExtResource("1_hsdfx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.82594347, 1.1848615)
+shape = SubResource("RectangleShape2D_2ldye")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 129
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.633556, 1.5538723)
+shape = SubResource("RectangleShape2D_8u3po")
+debug_color = Color(0.9353062, 0.19618037, 0.42042437, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.20756899, 0.15912907)
+sprite_frames = SubResource("SpriteFrames_qg0lo")
+animation = &"off"
+
+[node name="ResetTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

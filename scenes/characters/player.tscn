@@ -1,17 +1,16 @@
-[gd_scene load_steps=82 format=3 uid="uid://cergo2cw5e24d"]
+[gd_scene load_steps=72 format=3 uid="uid://cergo2cw5e24d"]
 
 [ext_resource type="Script" uid="uid://dyauhhw5vh3ba" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://63ukwiruuvgu" path="res://assets/googly-a.png" id="2_g2els"]
-[ext_resource type="PackedScene" uid="uid://dalfuc5ctspfa" path="res://scenes/ui/touch_controls.tscn" id="3_qhqgy"]
 [ext_resource type="Shader" uid="uid://t0vs7r50lcu2" path="res://shaders/player.gdshader" id="4_qgnko"]
-[ext_resource type="Texture2D" uid="uid://cmmfhnicb5cn5" path="res://assets/characters/shockwave VFX 137x39.png" id="4_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://mr61883gvt31" path="res://assets/audio/record2.wav" id="5_6eyoc"]
 [ext_resource type="AudioStream" uid="uid://bi7wtq73a8prq" path="res://assets/audio/jump.wav" id="5_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://b7xrde7k5cnja" path="res://assets/characters/sage 52x21.png" id="5_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://cvhefebogweiu" path="res://scenes/ui/touch_controls_v2.tscn" id="7_6eyoc"]
 [ext_resource type="AudioStream" uid="uid://cs0022lggtams" path="res://assets/audio/is_recording.ogg" id="7_eojnx"]
+[ext_resource type="PackedScene" uid="uid://bpxu366p1s7gs" path="res://scenes/items/glow.tscn" id="8_eojnx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(12, 19)
+size = Vector2(12, 16.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vyk4"]
 shader = ExtResource("4_qgnko")
@@ -523,74 +522,17 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3vyb7"]
-blend_mode = 1
-
-[sub_resource type="Gradient" id="Gradient_g2els"]
-offsets = PackedFloat32Array(0, 0.7659575)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
-gradient = SubResource("Gradient_g2els")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-metadata/_snap_enabled = true
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 32.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
-atlas = ExtResource("4_tuyoq")
-region = Rect2(0, 0, 137, 78)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
-atlas = ExtResource("4_tuyoq")
-region = Rect2(137, 0, 137, 78)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
-atlas = ExtResource("4_tuyoq")
-region = Rect2(274, 0, 137, 78)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
-atlas = ExtResource("4_tuyoq")
-region = Rect2(411, 0, 137, 78)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_d2wvv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fjrip")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_smehm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ur7pv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y4r1p")
-}],
-"loop": true,
-"name": &"shockwave",
-"speed": 5.0
-}]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgnko"]
-shader = ExtResource("4_qgnko")
-shader_parameter/glow_color = Color(0.34351876, 0.28524366, 0.2644615, 1)
-shader_parameter/glow_size = 4.0
-shader_parameter/glow_strength = 1000.0
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-collision_mask = 9
+collision_mask = 41
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(1, 3.5)
+position = Vector2(1, 2.75)
 shape = SubResource("RectangleShape2D_dqkch")
-metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.1, 3.1)
@@ -604,37 +546,12 @@ scale = Vector2(0.6305189, 1)
 sprite_frames = SubResource("SpriteFrames_ua5cf")
 animation = &"idle"
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-material = SubResource("CanvasItemMaterial_3vyb7")
-position = Vector2(-2.3841858e-07, 4)
-scale = Vector2(0.36000186, 0.35999894)
-color = Color(0.5778099, 0.44076273, 0.50109434, 1)
-texture = SubResource("GradientTexture2D_qhqgy")
-
 [node name="PickupArea" type="Area2D" parent="."]
-visible = false
+collision_mask = 225
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_qhqgy")
 debug_color = Color(0.94776565, 1.732707e-06, 0.58386886, 0.41960785)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -45.0
-offset_bottom = 23.0
-grow_horizontal = 0
-
-[node name="AnimatedShockWave" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(6, -23)
-sprite_frames = SubResource("SpriteFrames_d2wvv")
-animation = &"shockwave"
-frame = 1
-frame_progress = 0.729564
 
 [node name="Sounds" type="Node2D" parent="."]
 
@@ -654,19 +571,16 @@ volume_db = -10.0
 pitch_scale = 0.8
 parameters/looping = true
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Touch Controls" parent="Control" instance=ExtResource("3_qhqgy")]
+[node name="Touch Control v2" parent="CanvasLayer" instance=ExtResource("7_6eyoc")]
+offset_left = -2.0
+offset_right = 2.0
 
-[node name="GooglyA" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_qgnko")
-position = Vector2(-31, 6.000004)
-scale = Vector2(0.77300614, 0.26060608)
-texture = ExtResource("2_g2els")
+[node name="Glow" parent="." instance=ExtResource("8_eojnx")]
+glow_color = Color(0.91182065, 0.8630958, 0.8738659, 1)
+max_energy = 1.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
+[connection signal="body_exited" from="PickupArea" to="." method="_on_pickup_area_body_exited"]

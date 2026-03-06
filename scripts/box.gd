@@ -1,151 +1,15 @@
-#extends CharacterBody2D
-#
-## ===============================
-## 🧠 TIME STATE MEMORY
-## ===============================
-#var start_position: Vector2                 # Original spawn position
-#var timeline_position: Vector2              # Last valid echo-created position
-#var influencing_echo_ids: Array[int] = []   # Echoes that influenced this box
-#
-## When true, box is frozen horizontally at its timeline X
-#var locked_to_timeline := false
-#
-## ===============================
-## 📦 CARRY SYSTEM
-## ===============================
-#var being_carried := false
-#var carrier: Node2D = null
-#
-## ===============================
-## 🌍 GRAVITY
-## ===============================
-#const GRAVITY := 900.0
-#
-#func _ready():
-	#start_position = global_position
-	#timeline_position = global_position
-	#add_to_group("carryable")
-	#add_to_group("resettable")
-#
-## ===============================
-## 🔄 PHYSICS LOOP
-## ===============================
-#var reset_timer_started := false
-#
-#func _physics_process(delta):
-	## Horizontal timeline lock when needed
-	#if locked_to_timeline and not being_carried:
-		#if not reset_timer_started:
-			#$ResetTimer.start()
-			#reset_timer_started = true
-#
-	#else:
-		## Reset the flag when lock is gone
-		#reset_timer_started = false
-#
-	## Normal gravity when not carried
-	#if not being_carried:
-		#if not Global.is_recording:
-			#set_collision_layer_value(1, true)
-		#if not is_on_floor():
-			#velocity.y += GRAVITY * delta
-		#else:
-			#velocity.y = 0
-#
-	#move_and_slide()
- ## Godot 4: no arguments needed
-#
-## ===============================
-## ✋ PICK UP
-## ===============================
-#func pick_up(carrier_node: Node2D):
-	#being_carried = true
-	#carrier = carrier_node
-	#velocity = Vector2.ZERO
-	#set_collision_layer_value(1, false)  # Disable world collision while floating
-	#locked_to_timeline = false           # Unlock when manipulated
-	#set_physics_process(true)            # Ensure physics runs
-#
-## ===============================
-## ✋ DROP
-## ===============================
-#func drop():
-	#being_carried = false
-	#
-#
-	## Dropped by an ECHO → becomes new timeline truth
-	#if carrier and carrier.is_in_group("echo"):
-		#timeline_position = global_position
-		#locked_to_timeline = false
-#
-		#var id = carrier.echo_id
-		#if id not in influencing_echo_ids:
-			#influencing_echo_ids.append(id)
-#
-	## Dropped by PLAYER outside recording → snap X, let gravity handle Y
-	#elif carrier and carrier.is_in_group("player") and !Global.is_recording:
-		#print("Hele b")
-		#locked_to_timeline = true  # Lock horizontal only
-		## Velocity.y remains unchanged so gravity applies
-#
-	## Dropped by PLAYER during recording → normal physics
-	#elif carrier and carrier.is_in_group("player") and Global.is_recording:
-		#print("11le b")
-		#
-		#locked_to_timeline = false
-#
-	#carrier = null
-#
-## ===============================
-## ✨ FOLLOW WHILE CARRIED
-## ===============================
-#func follow_target(target_pos: Vector2):
-	#if being_carried:
-		#global_position = global_position.lerp(target_pos, 0.25)
-#
-## ===============================
-## 🔄 WORLD RESET LOGIC
-## ===============================
-#func reset_if_needed(existing_echo_ids: Array):
-	##print("Bitch leave me alonie")
-	#if being_carried:
-		#return
-#
-	#var still_valid := false
-	#for id in influencing_echo_ids:
-		#if id in existing_echo_ids:
-			#still_valid = true
-			#break
-#
-	#if still_valid:
-		#global_position = timeline_position
-	#else:
-		#global_position = start_position
-		#timeline_position = start_position
-		#influencing_echo_ids.clear()
-#
-	#locked_to_timeline = false
-	#set_physics_process(true)
-	#velocity = Vector2.ZERO
-#
-#
-#func _on_reset_timer_timeout() -> void:
-	#print("restting")
-	#global_position.x = timeline_position.x
-	#global_position.y=timeline_position.y
-	##pass # Replace with function body.
-
 extends CharacterBody2D
 
 # ===============================
 # 🧠 TIME STATE MEMORY
 # ===============================
-var start_position: Vector2                 # Original spawn position
-var timeline_position: Vector2              # Last valid drop position
-var influencing_echo_ids: Array[int] = []   # Echoes that influenced this box
+# timeline_position = the last confirmed valid position set by an echo or player.
+# When the reset timer fires we snap back here.
+var timeline_position: Vector2
 
-# When true, box is frozen horizontally at its timeline X
-var locked_to_timeline := false
+# pre_recording_position = snapshot taken the moment recording starts.
+# When recording stops we revert here so the echo replays from the correct state.
+var pre_recording_position: Vector2
 
 # ===============================
 # 📦 CARRY SYSTEM
@@ -158,29 +22,55 @@ var carrier: Node2D = null
 # ===============================
 const GRAVITY := 900.0
 
+# ===============================
+# 📦 NODE REFERENCES
+# ===============================
+@onready var visual: Sprite2D = $Visual
+@onready var timeline: Node = $TimelineComponent
+
+# ===============================
+# 🟢 READY
+# ===============================
 func _ready():
-	start_position = global_position
 	timeline_position = global_position
+	pre_recording_position = global_position
+
+	timeline.set_visual($Visual)
+	timeline.use_carry_shader_mode = true  # ← this is missing!
+	timeline.shader_strength=1
+	timeline.on_reset.connect(_on_timeline_reset)
+	Global.recording_started.connect(_on_recording_started)
+	Global.recording_stopped.connect(_on_recording_stopped)
 	add_to_group("carryable")
 	add_to_group("resettable")
 
 # ===============================
+# 🎙 RECORDING CALLBACKS
+# ===============================
+func _on_recording_started():
+	# Snapshot the position the moment recording begins so we know
+	# what state to revert to when recording ends
+	pre_recording_position = global_position
+
+func _on_recording_stopped():
+	# Revert to pre-recording position so the echo replays
+	# from the correct state rather than wherever the player
+	# left the box during recording
+	global_position = pre_recording_position
+
+# ===============================
 # 🔄 PHYSICS LOOP
 # ===============================
-var reset_timer_started := false
-
 func _physics_process(delta):
-	# Horizontal timeline lock when needed
-	if locked_to_timeline and not being_carried:
-		if not reset_timer_started:
-			$ResetTimer.start()
-			reset_timer_started = true
-	else:
-		reset_timer_started = false
+	# Hand off shader updates to the timeline component every frame.
+	# We pass being_carried and carrier so it can decide which shader
+	# to apply (player glitch, echo shimmer, or none)
+	timeline.update_carry_state(being_carried, carrier)
 
 	# Normal gravity when not carried
 	if not being_carried:
 		if not Global.is_recording:
+			print("here")
 			set_collision_layer_value(1, true)
 		if not is_on_floor():
 			velocity.y += GRAVITY * delta
@@ -193,36 +83,35 @@ func _physics_process(delta):
 # ✋ PICK UP
 # ===============================
 func pick_up(carrier_node: Node2D):
+	print("picked box")
+	
 	being_carried = true
 	carrier = carrier_node
 	velocity = Vector2.ZERO
 	set_collision_layer_value(1, false)  # Disable world collision while floating
-	locked_to_timeline = false           # Unlock when manipulated
-	set_physics_process(true)            # Ensure physics runs
+
+	# Tell timeline component who picked it up — clears lock state internally
+	timeline.begin_interaction(carrier_node)
 
 # ===============================
 # ✋ DROP
 # ===============================
 func drop():
+	print("Dropped box")
 	being_carried = false
-	
+
 	if not carrier:
 		return
 
-	# Dropped by an ECHO → becomes new timeline truth
+	# Dropped by ECHO → this position is now confirmed timeline truth
 	if carrier.is_in_group("echo"):
 		timeline_position = global_position
-		var id = carrier.echo_id
-		if id not in influencing_echo_ids:
-			influencing_echo_ids.append(id)
-
-	# Dropped by PLAYER outside recording → lock horizontal, keep vertical
-	elif carrier.is_in_group("player") and not Global.is_recording:
-		locked_to_timeline = true
-
-	# Dropped by PLAYER during recording → normal physics
-	elif carrier.is_in_group("player") and Global.is_recording:
-		locked_to_timeline = false
+	#else:
+		
+	# Tell the timeline component the interaction ended.
+	# Internally it decides whether to lock (player outside recording),
+	# stay free (player during recording), or confirm echo influence.
+	timeline.end_interaction()
 
 	carrier = null
 
@@ -234,36 +123,24 @@ func follow_target(target_pos: Vector2):
 		global_position = global_position.lerp(target_pos, 0.25)
 
 # ===============================
-# 🔄 WORLD RESET LOGIC
+# ⏲ TIMELINE RESET CALLBACK
+# ===============================
+func _on_timeline_reset():
+	# Fired by TimelineComponent when the reset timer expires
+	# after a player lock — snap back to last valid timeline position
+	global_position = timeline_position
+
+# ===============================
+# 🔄 WORLD RESET — CALLED BY RESET MANAGER
 # ===============================
 func reset_if_needed(existing_echo_ids: Array):
 	if being_carried:
 		return
 
-	# Remove any echo IDs that no longer exist
-	#influencing_echo_ids = [id for id in influencing_echo_ids if id in existing_echo_ids]
-	var new_ids: Array[int] = []
-	for id in influencing_echo_ids:
-		if id in existing_echo_ids:
-			new_ids.append(id)
-	influencing_echo_ids = new_ids
-	if influencing_echo_ids.size() > 0:
-		# Still has a valid influencing echo → stay at last drop
-		global_position = timeline_position
-	else:
-		# No valid echoes → keep last drop instead of going back to spawn
-		global_position = timeline_position
-		influencing_echo_ids.clear()
+	# Delegate echo ID cleanup and lock clearing to the timeline component
+	timeline.reset_if_needed(existing_echo_ids)
 
-	locked_to_timeline = false
-	set_physics_process(true)
+	# Always snap to last known valid position
+	global_position = timeline_position
 	velocity = Vector2.ZERO
-
-# ===============================
-# ⏲ RESET TIMER CALLBACK
-# ===============================
-func _on_reset_timer_timeout() -> void:
-	print("resetting")
-	# Snap back to timeline horizontal position
-	global_position.x = timeline_position.x
-	global_position.y=timeline_position.y
+	set_physics_process(true)

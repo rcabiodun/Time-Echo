@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://scripts/global.tscn"
+Global="*res://scenes/global.tscn"
 
 [display]
 
@@ -33,6 +33,9 @@ resettable="This are object that are  going to be glitches/resetted back to thei
 carryable="These are objects that are meant to be carried by the player"
 player=""
 runes=""
+redirect_platform=""
+projectile=""
+projectile_receiver=""
 
 [input]
 
@@ -85,6 +88,8 @@ pointing/emulate_mouse_from_touch=false
 2d_physics/layer_4="rune"
 2d_physics/layer_5="platform"
 2d_physics/layer_6="interactables"
+2d_physics/layer_7="portal"
+2d_physics/layer_8="projectile"
 
 [rendering]
 

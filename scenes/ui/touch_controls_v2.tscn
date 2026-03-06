@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvhefebogweiu"]
+
+[ext_resource type="Texture2D" uid="uid://b2qyuktejg4ys" path="res://assets/inputs/left.png" id="1_bchhi"]
+[ext_resource type="Script" uid="uid://ctcv68d6qf7sv" path="res://scripts/touch_control_v2.gd" id="1_s8me4"]
+[ext_resource type="Texture2D" uid="uid://em40gfkdhlds" path="res://assets/inputs/right.png" id="2_p3k0e"]
+[ext_resource type="Texture2D" uid="uid://cslbaufs4ml18" path="res://assets/inputs/jump.png" id="3_bwyrb"]
+[ext_resource type="Texture2D" uid="uid://csxj8kielxn5y" path="res://assets/inputs/record.png" id="4_s8me4"]
+[ext_resource type="Texture2D" uid="uid://cajlk1axs24yn" path="res://assets/inputs/stop.png" id="5_u2p1m"]
+[ext_resource type="Texture2D" uid="uid://clh7ixjj30k31" path="res://assets/inputs/interact.png" id="6_qyg13"]
+
+[node name="Touch Control v2" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s8me4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.27490094, 6.334007e-05, 0.9868743, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.5531579, 0, 0.13910279, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(350, 150)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+grow_vertical = 0
+
+[node name="Control2" type="Control" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="left" type="TouchScreenButton" parent="Control/HBoxContainer/Control2"]
+position = Vector2(4, 0)
+scale = Vector2(6.5, 6.5)
+texture_normal = ExtResource("1_bchhi")
+action = "left"
+
+[node name="Control" type="Control" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="right" type="TouchScreenButton" parent="Control/HBoxContainer/Control"]
+scale = Vector2(6.5, 6.5)
+texture_normal = ExtResource("2_p3k0e")
+action = "right"
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2"]
+custom_minimum_size = Vector2(350, 150)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -150.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Control2" type="Control" parent="Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="jump" type="TouchScreenButton" parent="Control2/HBoxContainer/Control2"]
+scale = Vector2(6.5, 6.5)
+texture_normal = ExtResource("3_bwyrb")
+action = "jump"
+
+[node name="Control" type="Control" parent="Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="record" type="TouchScreenButton" parent="Control2/HBoxContainer/Control"]
+scale = Vector2(6.5, 6.5)
+texture_normal = ExtResource("4_s8me4")
+action = "start_recording"
+
+[node name="stop" type="TouchScreenButton" parent="Control2/HBoxContainer/Control"]
+visible = false
+scale = Vector2(6.5, 6.5)
+texture_normal = ExtResource("5_u2p1m")
+action = "stop_recording"
+
+[node name="interact" type="TouchScreenButton" parent="Control2/HBoxContainer/Control"]
+position = Vector2(0, -110)
+scale = Vector2(6.5, 6.5)
+texture_normal = ExtResource("6_qyg13")
+action = "interact"
+
+[connection signal="pressed" from="Control/HBoxContainer/Control2/left" to="." method="_on_left_pressed"]
+[connection signal="released" from="Control/HBoxContainer/Control2/left" to="." method="_on_left_released"]
+[connection signal="pressed" from="Control/HBoxContainer/Control/right" to="." method="_on_right_pressed"]
+[connection signal="released" from="Control/HBoxContainer/Control/right" to="." method="_on_right_released"]
+[connection signal="pressed" from="Control2/HBoxContainer/Control2/jump" to="." method="_on_jump_pressed"]
+[connection signal="released" from="Control2/HBoxContainer/Control2/jump" to="." method="_on_jump_released"]
+[connection signal="pressed" from="Control2/HBoxContainer/Control/record" to="." method="_on_record_pressed"]
+[connection signal="released" from="Control2/HBoxContainer/Control/record" to="." method="_on_record_released"]
+[connection signal="pressed" from="Control2/HBoxContainer/Control/stop" to="." method="_on_stop_pressed"]
+[connection signal="released" from="Control2/HBoxContainer/Control/stop" to="." method="_on_stop_released"]
+[connection signal="pressed" from="Control2/HBoxContainer/Control/interact" to="." method="_on_interact_pressed"]
+[connection signal="released" from="Control2/HBoxContainer/Control/interact" to="." method="_on_interact_released"]

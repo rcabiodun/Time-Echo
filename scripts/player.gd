@@ -67,7 +67,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#update_glow()
 	play_recording_effects()
-	update_recording_label() 
+	#update_recording_label() 
 	apply_gravity(delta)
 	update_timers(delta)
 	handle_jump()
@@ -165,8 +165,10 @@ func handle_interact():
 		print("Pressing interact button")
 		# Drop if already carrying
 		if carried_box:
+			print("player dropping box")
 			carried_box.drop()
 			carried_box = null
+			
 			return
 
 		# Try picking up nearby carryable object
@@ -177,6 +179,15 @@ func handle_interact():
 				carried_box = box
 				box.pick_up(self)
 				break
+			
+			if body and body.is_in_group("redirect_platform"):
+				#body.begin_interaction(self)
+				#body.rotate_platform()
+				#body.end_interaction()
+				print("trying to rotate plaform") 
+				body.interact(self)
+			if body and body.is_in_group("projectile"):
+				body.launch(facing_direction)
 
 
 # Move the carried box every frame
@@ -208,7 +219,8 @@ func handle_recording(delta):
 			"position": global_position,
 			"velocity": velocity,
 			"interact": interacted_this_frame,
-			"carrying": carried_box != null
+			"carrying": carried_box != null,
+			"on_floor": is_on_floor()
 			})
 
 		if record_timer >= MAX_RECORD_TIME:
@@ -473,3 +485,14 @@ func fade_out_recording_sound():
 		# Optional: reset volume so next play starts clean
 		is_recording_sound.volume_db = 0.0
 	)
+
+
+func _on_pickup_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("resettable") or body.is_in_group("projectile_receiver") or body.is_in_group("projectile") or body.is_in_group("redirect_platform"):
+		Global.interactable_count += 1
+		Global.player_around_interactable = Global.interactable_count > 0
+
+func _on_pickup_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("resettable") or body.is_in_group("projectile_receiver") or body.is_in_group("projectile"  )or body.is_in_group("redirect_platform"):
+		Global.interactable_count = max(0, Global.interactable_count - 1)
+		Global.player_around_interactable = Global.interactable_count > 0
