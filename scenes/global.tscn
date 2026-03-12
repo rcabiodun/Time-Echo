@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5epvidlvi3fu"]
+[gd_scene format=3 uid="uid://c5epvidlvi3fu"]
 
-[ext_resource type="Script" uid="uid://bosvhe11tbikm" path="res://scripts/global.gd" id="1_nmxvb"]
+[ext_resource type="Script" uid="uid://bosvhe11tbikm" path="res://scripts/globals/global.gd" id="1_nmxvb"]
 [ext_resource type="AudioStream" uid="uid://deq56qcnf4t0m" path="res://assets/audio/game bg music.mp3" id="2_nmxvb"]
 
 [node name="Global" type="Node2D"]

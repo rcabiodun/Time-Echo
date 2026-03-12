@@ -66,6 +66,7 @@ func _ready() -> void:
 # ===============================
 func _physics_process(delta: float) -> void:
 	#update_glow()
+	
 	play_recording_effects()
 	#update_recording_label() 
 	apply_gravity(delta)
@@ -496,3 +497,15 @@ func _on_pickup_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("resettable") or body.is_in_group("projectile_receiver") or body.is_in_group("projectile"  )or body.is_in_group("redirect_platform"):
 		Global.interactable_count = max(0, Global.interactable_count - 1)
 		Global.player_around_interactable = Global.interactable_count > 0
+
+func die() -> void:
+	
+	print("Player hit spike → death sequence")
+	CameraShake.shake(0.25)
+
+	# Trigger the whole effect from the global manager
+	DeathManager.trigger_death_freeze_and_fade()
+	
+	# Optional: disable player input/movement immediately
+	set_physics_process(false)
+	set_process_input(false)

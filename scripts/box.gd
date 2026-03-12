@@ -70,7 +70,7 @@ func _physics_process(delta):
 	# Normal gravity when not carried
 	if not being_carried:
 		if not Global.is_recording:
-			print("here")
+			#print("here")
 			set_collision_layer_value(1, true)
 		if not is_on_floor():
 			velocity.y += GRAVITY * delta

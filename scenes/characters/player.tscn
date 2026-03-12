@@ -1,5 +1,6 @@
-[gd_scene load_steps=72 format=3 uid="uid://cergo2cw5e24d"]
+[gd_scene format=3 uid="uid://cergo2cw5e24d"]
 
+[ext_resource type="Shader" uid="uid://bf72hajijp718" path="res://shaders/death_cube_disintegrate.gdshader" id="1_eojnx"]
 [ext_resource type="Script" uid="uid://dyauhhw5vh3ba" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Shader" uid="uid://t0vs7r50lcu2" path="res://shaders/player.gdshader" id="4_qgnko"]
 [ext_resource type="AudioStream" uid="uid://mr61883gvt31" path="res://assets/audio/record2.wav" id="5_6eyoc"]
@@ -7,7 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://b7xrde7k5cnja" path="res://assets/characters/sage 52x21.png" id="5_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://cvhefebogweiu" path="res://scenes/ui/touch_controls_v2.tscn" id="7_6eyoc"]
 [ext_resource type="AudioStream" uid="uid://cs0022lggtams" path="res://assets/audio/is_recording.ogg" id="7_eojnx"]
-[ext_resource type="PackedScene" uid="uid://bpxu366p1s7gs" path="res://scenes/items/glow.tscn" id="8_eojnx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgnko"]
+shader = ExtResource("1_eojnx")
+shader_parameter/progress = 0.0
+shader_parameter/cube_size = 0.03700000140824
+shader_parameter/explosion = 8.5350004054125
+shader_parameter/rotation_amount = 1.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
 size = Vector2(12, 16.5)
@@ -525,61 +532,58 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 32.0
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1774888591 groups=["player"]]
+material = SubResource("ShaderMaterial_qgnko")
 collision_layer = 2
 collision_mask = 41
 script = ExtResource("1_g2els")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1294763197]
 position = Vector2(1, 2.75)
 shape = SubResource("RectangleShape2D_dqkch")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1069729913]
 zoom = Vector2(3.1, 3.1)
 limit_left = 0
 limit_bottom = 620
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1469365574]
 material = SubResource("ShaderMaterial_7vyk4")
 position = Vector2(7.6065087, 3.0000002)
 scale = Vector2(0.6305189, 1)
 sprite_frames = SubResource("SpriteFrames_ua5cf")
 animation = &"idle"
 
-[node name="PickupArea" type="Area2D" parent="."]
+[node name="PickupArea" type="Area2D" parent="." unique_id=1881870195]
 collision_mask = 225
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" unique_id=411301557]
 shape = SubResource("CircleShape2D_qhqgy")
 debug_color = Color(0.94776565, 1.732707e-06, 0.58386886, 0.41960785)
 
-[node name="Sounds" type="Node2D" parent="."]
+[node name="Sounds" type="Node2D" parent="." unique_id=1736108624]
 
-[node name="RecordSound" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="RecordSound" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1418521838]
 stream = ExtResource("5_6eyoc")
 volume_db = 2.846
 pitch_scale = 2.0
 
-[node name="JumpSound" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="Sounds" unique_id=28468165]
 stream = ExtResource("5_qlg0r")
 volume_db = -3.648
 pitch_scale = 2.0
 
-[node name="IsRecordingSound" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="IsRecordingSound" type="AudioStreamPlayer2D" parent="Sounds" unique_id=137957709]
 stream = ExtResource("7_eojnx")
 volume_db = -10.0
 pitch_scale = 0.8
 parameters/looping = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1005359554]
 
-[node name="Touch Control v2" parent="CanvasLayer" instance=ExtResource("7_6eyoc")]
+[node name="Touch Control v2" parent="CanvasLayer" unique_id=1361726586 instance=ExtResource("7_6eyoc")]
 offset_left = -2.0
 offset_right = 2.0
-
-[node name="Glow" parent="." instance=ExtResource("8_eojnx")]
-glow_color = Color(0.91182065, 0.8630958, 0.8738659, 1)
-max_energy = 1.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

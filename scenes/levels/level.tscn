@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dd2afi3sapie8"]
+[gd_scene format=3 uid="uid://dd2afi3sapie8"]
 
 [ext_resource type="PackedScene" uid="uid://cergo2cw5e24d" path="res://scenes/characters/player.tscn" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://e8fe7rqmbdh0" path="res://scripts/level.gd" id="1_w7c3h"]
-[ext_resource type="PackedScene" uid="uid://6hr307sdcihn" path="res://ParallaxBG.tscn" id="2_b121j"]
+[ext_resource type="PackedScene" uid="uid://6hr307sdcihn" path="res://scenes/ParallaxBG.tscn" id="2_b121j"]
 [ext_resource type="PackedScene" uid="uid://c3xkdelgrohx2" path="res://scenes/items/box.tscn" id="2_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://hfvk0mwy7guf" path="res://scenes/items/button.tscn" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://kkxnbercfl78" path="res://scenes/items/door.tscn" id="4_ppgk2"]

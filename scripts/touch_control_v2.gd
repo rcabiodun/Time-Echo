@@ -91,3 +91,8 @@ func _on_interact_pressed() -> void:
 
 func _on_interact_released() -> void:
 	update_interact_button()
+
+
+func _on_touch_screen_button_pressed() -> void:
+	#pass # Replace with function body.
+	DeathManager.trigger_death_freeze_and_fade()

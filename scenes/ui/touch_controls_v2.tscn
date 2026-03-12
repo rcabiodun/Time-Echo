@@ -1,14 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvhefebogweiu"]
+[gd_scene format=3 uid="uid://cvhefebogweiu"]
 
 [ext_resource type="Texture2D" uid="uid://b2qyuktejg4ys" path="res://assets/inputs/left.png" id="1_bchhi"]
 [ext_resource type="Script" uid="uid://ctcv68d6qf7sv" path="res://scripts/touch_control_v2.gd" id="1_s8me4"]
 [ext_resource type="Texture2D" uid="uid://em40gfkdhlds" path="res://assets/inputs/right.png" id="2_p3k0e"]
 [ext_resource type="Texture2D" uid="uid://cslbaufs4ml18" path="res://assets/inputs/jump.png" id="3_bwyrb"]
+[ext_resource type="Texture2D" uid="uid://iqdhnmh45gqs" path="res://assets/inputs/Redo.svg" id="4_np83s"]
 [ext_resource type="Texture2D" uid="uid://csxj8kielxn5y" path="res://assets/inputs/record.png" id="4_s8me4"]
 [ext_resource type="Texture2D" uid="uid://cajlk1axs24yn" path="res://assets/inputs/stop.png" id="5_u2p1m"]
 [ext_resource type="Texture2D" uid="uid://clh7ixjj30k31" path="res://assets/inputs/interact.png" id="6_qyg13"]
 
-[node name="Touch Control v2" type="HBoxContainer"]
+[node name="Touch Control v2" type="HBoxContainer" unique_id=618610481]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,23 +17,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s8me4")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2012900063]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.27490094, 6.334007e-05, 0.9868743, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1318634376]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.5531579, 0, 0.13910279, 1)
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1873460836]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=2088288532]
 custom_minimum_size = Vector2(350, 150)
 layout_mode = 1
 anchors_preset = -1
@@ -41,30 +42,48 @@ anchor_bottom = 1.0
 offset_left = 25.0
 grow_vertical = 0
 
-[node name="Control2" type="Control" parent="Control/HBoxContainer"]
+[node name="Control2" type="Control" parent="Control/HBoxContainer" unique_id=1228108560]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="left" type="TouchScreenButton" parent="Control/HBoxContainer/Control2"]
+[node name="left" type="TouchScreenButton" parent="Control/HBoxContainer/Control2" unique_id=1466745875]
 position = Vector2(4, 0)
 scale = Vector2(6.5, 6.5)
 texture_normal = ExtResource("1_bchhi")
 action = "left"
 
-[node name="Control" type="Control" parent="Control/HBoxContainer"]
+[node name="Control" type="Control" parent="Control/HBoxContainer" unique_id=402150492]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="right" type="TouchScreenButton" parent="Control/HBoxContainer/Control"]
+[node name="right" type="TouchScreenButton" parent="Control/HBoxContainer/Control" unique_id=1805842888]
 scale = Vector2(6.5, 6.5)
 texture_normal = ExtResource("2_p3k0e")
 action = "right"
 
-[node name="Control2" type="Control" parent="."]
+[node name="Control3" type="Control" parent="." unique_id=918540537]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control2"]
+[node name="control" type="Control" parent="Control3" unique_id=1250743013]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Control3/control" unique_id=172973956]
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("4_np83s")
+
+[node name="Control2" type="Control" parent="." unique_id=346296568]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2" unique_id=888855439]
 custom_minimum_size = Vector2(350, 150)
 layout_mode = 1
 anchors_preset = 3
@@ -77,31 +96,31 @@ offset_top = -150.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Control2" type="Control" parent="Control2/HBoxContainer"]
+[node name="Control2" type="Control" parent="Control2/HBoxContainer" unique_id=1120349650]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="jump" type="TouchScreenButton" parent="Control2/HBoxContainer/Control2"]
+[node name="jump" type="TouchScreenButton" parent="Control2/HBoxContainer/Control2" unique_id=1496683258]
 scale = Vector2(6.5, 6.5)
 texture_normal = ExtResource("3_bwyrb")
 action = "jump"
 
-[node name="Control" type="Control" parent="Control2/HBoxContainer"]
+[node name="Control" type="Control" parent="Control2/HBoxContainer" unique_id=4143155]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="record" type="TouchScreenButton" parent="Control2/HBoxContainer/Control"]
+[node name="record" type="TouchScreenButton" parent="Control2/HBoxContainer/Control" unique_id=282477765]
 scale = Vector2(6.5, 6.5)
 texture_normal = ExtResource("4_s8me4")
 action = "start_recording"
 
-[node name="stop" type="TouchScreenButton" parent="Control2/HBoxContainer/Control"]
+[node name="stop" type="TouchScreenButton" parent="Control2/HBoxContainer/Control" unique_id=986885938]
 visible = false
 scale = Vector2(6.5, 6.5)
 texture_normal = ExtResource("5_u2p1m")
 action = "stop_recording"
 
-[node name="interact" type="TouchScreenButton" parent="Control2/HBoxContainer/Control"]
+[node name="interact" type="TouchScreenButton" parent="Control2/HBoxContainer/Control" unique_id=1044195939]
 position = Vector2(0, -110)
 scale = Vector2(6.5, 6.5)
 texture_normal = ExtResource("6_qyg13")
@@ -111,6 +130,7 @@ action = "interact"
 [connection signal="released" from="Control/HBoxContainer/Control2/left" to="." method="_on_left_released"]
 [connection signal="pressed" from="Control/HBoxContainer/Control/right" to="." method="_on_right_pressed"]
 [connection signal="released" from="Control/HBoxContainer/Control/right" to="." method="_on_right_released"]
+[connection signal="pressed" from="Control3/control/TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
 [connection signal="pressed" from="Control2/HBoxContainer/Control2/jump" to="." method="_on_jump_pressed"]
 [connection signal="released" from="Control2/HBoxContainer/Control2/jump" to="." method="_on_jump_released"]
 [connection signal="pressed" from="Control2/HBoxContainer/Control/record" to="." method="_on_record_pressed"]
