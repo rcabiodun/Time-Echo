@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://c5x3mdavhwb8p"]
+
+[ext_resource type="Texture2D" uid="uid://u87rnkb2iset" path="res://assets/interactables/coins-chests-etc-2-0.png" id="1_6xc3f"]
+[ext_resource type="Script" uid="uid://ce21edr4heebc" path="res://scenes/collectibles/time_shards.gd" id="1_jrpty"]
+[ext_resource type="AudioStream" uid="uid://b5q1g4agtwvn4" path="res://assets/audio/shard_pickup.wav" id="3_8b2lf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmqdv"]
+atlas = ExtResource("1_6xc3f")
+region = Rect2(80, 448, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrpty"]
+atlas = ExtResource("1_6xc3f")
+region = Rect2(96, 448, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b2lf"]
+atlas = ExtResource("1_6xc3f")
+region = Rect2(112, 448, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7mtp"]
+atlas = ExtResource("1_6xc3f")
+region = Rect2(128, 448, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10adm"]
+atlas = ExtResource("1_6xc3f")
+region = Rect2(144, 448, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf4r1"]
+atlas = ExtResource("1_6xc3f")
+region = Rect2(160, 448, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gld10"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmqdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrpty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b2lf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7mtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10adm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf4r1")
+}],
+"loop": true,
+"name": &"shimmer",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xic23"]
+radius = 5.3851647
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y7mtp"]
+radius = 8.0
+
+[node name="TimeShards" type="StaticBody2D" unique_id=1659941073]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_jrpty")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1137454966]
+sprite_frames = SubResource("SpriteFrames_gld10")
+animation = &"shimmer"
+autoplay = "shimmer"
+frame_progress = 0.0041340343
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714164645]
+shape = SubResource("CircleShape2D_xic23")
+
+[node name="CollectionArea" type="Area2D" parent="." unique_id=454116382]
+collision_layer = 512
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea" unique_id=1311022326]
+shape = SubResource("CircleShape2D_y7mtp")
+debug_color = Color(0.24069226, 0.63692564, 1.92523e-07, 0.41960785)
+
+[node name="ShardPickup" type="AudioStreamPlayer2D" parent="." unique_id=1804853002]
+stream = ExtResource("3_8b2lf")
+volume_db = -8.667
+pitch_scale = 0.69
+bus = &"SFX"
+
+[connection signal="body_entered" from="CollectionArea" to="." method="_on_collection_area_body_entered"]

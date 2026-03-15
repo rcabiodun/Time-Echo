@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dd81qu2tay7go"]
+
+[ext_resource type="Texture2D" uid="uid://cgqshqq0jdy3a" path="res://assets/interactables/spike.png" id="1_akaju"]
+[ext_resource type="Script" uid="uid://ffhnst3anock" path="res://scripts/enemies/spike.gd" id="1_vqj0v"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_akaju"]
+points = PackedVector2Array(5.2915487, 4.1089034, 0, -2.0544517, -5.2915487, 4.1089034, 0, 3.0816774)
+
+[node name="spike" type="StaticBody2D" unique_id=2085507587]
+script = ExtResource("1_vqj0v")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1717026946]
+scale = Vector2(0.43377894, 0.42403927)
+texture = ExtResource("1_akaju")
+hframes = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=498452584]
+visible = false
+scale = Vector2(0.12441065, 202.57071)
+polygon = PackedVector2Array(12, 0, 0, 0, 0, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1141265450]
+scale = Vector2(0.53540903, 0.7779789)
+shape = SubResource("ConvexPolygonShape2D_akaju")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1787091768]
+collision_layer = 256
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1680033018]
+scale = Vector2(0.8642492, 1.191546)
+shape = SubResource("ConvexPolygonShape2D_akaju")
+debug_color = Color(0.9851293, 0, 0.34140548, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

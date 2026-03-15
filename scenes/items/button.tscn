@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://hfvk0mwy7guf"]
+
+[ext_resource type="Texture2D" uid="uid://ddy2jpw3fga1u" path="res://icon.svg" id="1_mi6dp"]
+[ext_resource type="Script" uid="uid://dowmeojpq3fv6" path="res://scripts/button.gd" id="1_rhj8v"]
+[ext_resource type="Shader" uid="uid://bmwrfvmtgls3s" path="res://shaders/mat_reject.gdshader" id="2_oiyna"]
+[ext_resource type="Shader" uid="uid://b16blldiro4v3" path="res://shaders/mat_success_glow.gdshader" id="3_3jx6b"]
+[ext_resource type="Script" uid="uid://b08k142rgyc7g" path="res://scripts/rune_requirement.gd" id="3_3q610"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbfjh"]
+shader = ExtResource("2_oiyna")
+shader_parameter/intensity = 1.0
+shader_parameter/flash_color = Color(1, 0.9, 0.4, 1)
+shader_parameter/time_scale = 8.0
+shader_parameter/active = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nbolm"]
+shader = ExtResource("3_3jx6b")
+shader_parameter/glow_color = Color(0.16502345, 0.6845937, 0.53384215, 1)
+shader_parameter/glow_intensity = 0.10000000475
+shader_parameter/glow_size = 0.5
+shader_parameter/pulse_speed = 1.2
+shader_parameter/active = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhj8v"]
+size = Vector2(20, 16)
+
+[node name="Botton" type="Area2D" groups=["buttons"]]
+collision_mask = 7
+script = ExtResource("1_rhj8v")
+reject_material = SubResource("ShaderMaterial_kbfjh")
+glow_material = SubResource("ShaderMaterial_nbolm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_rhj8v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1.9999962)
+scale = Vector2(0.1640625, 0.1171875)
+texture = ExtResource("1_mi6dp")
+
+[node name="RuneRequirement" type="Node" parent="."]
+script = ExtResource("3_3q610")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
