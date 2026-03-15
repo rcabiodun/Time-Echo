@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://6hr307sdcihn" path="res://scenes/ParallaxBG.tscn" id="1_paw1w"]
 [ext_resource type="Script" uid="uid://dt3s25xly1g3u" path="res://scripts/test_level.gd" id="1_x4b8f"]
 [ext_resource type="PackedScene" uid="uid://cergo2cw5e24d" path="res://scenes/characters/player.tscn" id="2_j6w7d"]
+[ext_resource type="PackedScene" uid="uid://b0mf5in2wqfyj" path="res://scenes/enemies/fire_trap.tscn" id="4_ptm1q"]
+[ext_resource type="PackedScene" uid="uid://c5x3mdavhwb8p" path="res://scenes/collectibles/time_shards.tscn" id="5_os83q"]
 [ext_resource type="Texture2D" uid="uid://c8w3soq588qq" path="res://assets/tileset/stringstar fields/tileset.png" id="5_tmr53"]
 [ext_resource type="PackedScene" uid="uid://c3xkdelgrohx2" path="res://scenes/items/box.tscn" id="6_6xh4u"]
 [ext_resource type="PackedScene" uid="uid://djfqj2hshogsi" path="res://scenes/items/rune.tscn" id="6_cyt5c"]
@@ -540,6 +542,26 @@ tile_set = SubResource("TileSet_88ety")
 tile_map_data = PackedByteArray("AAAWAB4AAAAAAAkAAAAWAB8AAAAAAAkAAAAVAB8AAAAAAAkAAAAVAB4AAAAAAAkAAAAXAB8AAAAAAAkAAAAXAB4AAAAEAAkAAAAVAB0AAAAEAAYAAAAWAB0AAAAEAAYAAAAXAB0AAAAGAAYAAAA=")
 tile_set = SubResource("TileSet_ahbqi")
 
+[node name="fireTrap" parent="." unique_id=1719191877 instance=ExtResource("4_ptm1q")]
+position = Vector2(372, 479)
+rotation = -1.576521
+
+[node name="fireTrap2" parent="." unique_id=1017830011 instance=ExtResource("4_ptm1q")]
+position = Vector2(728, 551)
+rotation = -1.576521
+
+[node name="fireTrap3" parent="." unique_id=762471713 instance=ExtResource("4_ptm1q")]
+position = Vector2(739.99994, 551)
+rotation = -1.576521
+
+[node name="fireTrap4" parent="." unique_id=1287083036 instance=ExtResource("4_ptm1q")]
+position = Vector2(750, 551)
+rotation = -1.576521
+
+[node name="fireTrap5" parent="." unique_id=1427330728 instance=ExtResource("4_ptm1q")]
+position = Vector2(762.99994, 551)
+rotation = -1.576521
+
 [node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=1740259998]
 tile_map_data = PackedByteArray("AAAXAB8AAAARAAkAAAAVAB8AAAARAAkAAAAVAB4AAAAMAAkAAAAXAB4AAAAMAAkAAAAWAB0AAAAEAAYAAAAXAB0AAAAEAAYAAAAVAB0AAAAFAAYAAAAUAB4AAAAGAAYAAGAUAB8AAAAGAAYAAGAVACAAAAAGAAYAADAWACAAAAAGAAYAADAXACAAAAAGAAYAADAYAB8AAAAGAAYAAFAYAB4AAAAGAAYAAFAWAB4AAAARAAkAAAAWAB8AAAARAAkAAAA=")
 tile_set = SubResource("TileSet_4asn1")
@@ -563,7 +585,7 @@ offset_bottom = 23.0
 script = ExtResource("7_j0qof")
 
 [node name="Player" parent="." unique_id=1088401108 instance=ExtResource("2_j6w7d")]
-position = Vector2(178, 517)
+position = Vector2(145, 529)
 
 [node name="Box" parent="." unique_id=731803620 instance=ExtResource("6_6xh4u")]
 position = Vector2(253, 541)
@@ -586,11 +608,20 @@ position = Vector2(279, 538)
 [node name="spike" parent="." unique_id=2085507587 instance=ExtResource("13_ptm1q")]
 position = Vector2(307, 484)
 
-[node name="spike2" parent="." unique_id=2088021122 instance=ExtResource("13_ptm1q")]
-position = Vector2(1220, 548)
-
 [node name="Rune" parent="." unique_id=989459229 instance=ExtResource("6_cyt5c")]
 visible = false
 position = Vector2(129, 529)
+
+[node name="TimeShards" parent="." unique_id=1659941073 instance=ExtResource("5_os83q")]
+position = Vector2(657, 525)
+rotation = -1.576521
+
+[node name="TimeShards2" parent="." unique_id=1378863490 instance=ExtResource("5_os83q")]
+position = Vector2(510.00006, 428)
+rotation = -1.576521
+
+[node name="TimeShards3" parent="." unique_id=972184350 instance=ExtResource("5_os83q")]
+position = Vector2(1731, 524)
+rotation = -1.576521
 
 [connection signal="create_echo" from="Player" to="." method="_on_player_create_echo"]

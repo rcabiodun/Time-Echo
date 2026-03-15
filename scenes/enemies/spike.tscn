@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dd81qu2tay7go"]
 
 [ext_resource type="Texture2D" uid="uid://cgqshqq0jdy3a" path="res://assets/interactables/spike.png" id="1_akaju"]
-[ext_resource type="Script" uid="uid://ffhnst3anock" path="res://scenes/enemies/spike.gd" id="1_vqj0v"]
+[ext_resource type="Script" uid="uid://ffhnst3anock" path="res://scripts/enemies/spike.gd" id="1_vqj0v"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_akaju"]
 points = PackedVector2Array(5.2915487, 4.1089034, 0, -2.0544517, -5.2915487, 4.1089034, 0, 3.0816774)

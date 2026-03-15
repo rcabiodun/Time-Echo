@@ -535,7 +535,7 @@ radius = 32.0
 [node name="Player" type="CharacterBody2D" unique_id=1774888591 groups=["player"]]
 material = SubResource("ShaderMaterial_qgnko")
 collision_layer = 2
-collision_mask = 41
+collision_mask = 809
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1294763197]

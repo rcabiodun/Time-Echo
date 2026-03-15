@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://b0mf5in2wqfyj"]
+
+[ext_resource type="Texture2D" uid="uid://dm6sxr666qea6" path="res://assets/interactables/fire_trap.png" id="1_2vt3x"]
+[ext_resource type="Script" uid="uid://c16b87jllkvlm" path="res://scripts/enemies/fire_trap.gd" id="1_hrtgk"]
+[ext_resource type="AudioStream" uid="uid://d4ffp7k5387hn" path="res://assets/audio/fire_burst.wav" id="3_j6yma"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrtgk"]
+size = Vector2(17.5, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6yma"]
+atlas = ExtResource("1_2vt3x")
+region = Rect2(0, 64, 112, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtl8v"]
+atlas = ExtResource("1_2vt3x")
+region = Rect2(112, 64, 112, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd4yf"]
+atlas = ExtResource("1_2vt3x")
+region = Rect2(224, 64, 112, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmlgf"]
+atlas = ExtResource("1_2vt3x")
+region = Rect2(336, 64, 112, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjdfu"]
+atlas = ExtResource("1_2vt3x")
+region = Rect2(448, 64, 112, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc5ps"]
+atlas = ExtResource("1_2vt3x")
+region = Rect2(560, 64, 112, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgqjg"]
+atlas = ExtResource("1_2vt3x")
+region = Rect2(672, 64, 112, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56knm"]
+atlas = ExtResource("1_2vt3x")
+region = Rect2(784, 64, 112, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu18v"]
+atlas = ExtResource("1_2vt3x")
+region = Rect2(896, 64, 112, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vv54p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6yma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtl8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cd4yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmlgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjdfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc5ps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgqjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56knm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu18v")
+}],
+"loop": false,
+"name": &"burn",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0li2"]
+size = Vector2(18.863846, 20)
+
+[sub_resource type="Animation" id="Animation_6av2f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hit/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hit/CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3kv6h"]
+resource_name = "activate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1005234, 0.19736911, 0.2991184, 0.4033195, 0.5013911, 0.5982368, 0.7024379, 0.8017354, 0.8973552),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hit/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3015702, 0.8041872),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hit/CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3015702, 0.5013911, 0.7992836),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.75, 1), Vector2(4, 1), Vector2(5, 1), Vector2(0.75, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ytu5"]
+_data = {
+&"RESET": SubResource("Animation_6av2f"),
+&"activate": SubResource("Animation_3kv6h")
+}
+
+[node name="fireTrap" type="StaticBody2D" unique_id=1719191877]
+script = ExtResource("1_hrtgk")
+
+[node name="hit" type="Area2D" parent="." unique_id=919336343]
+collision_layer = 256
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit" unique_id=1699488357]
+scale = Vector2(4, 1)
+shape = SubResource("RectangleShape2D_hrtgk")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1434179158]
+position = Vector2(43, 0)
+scale = Vector2(0.98214287, 1)
+sprite_frames = SubResource("SpriteFrames_vv54p")
+animation = &"burn"
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1357047620]
+position = Vector2(2.5, 0)
+scale = Vector2(0.2650573, 0.63677466)
+shape = SubResource("RectangleShape2D_o0li2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=709527183]
+libraries/ = SubResource("AnimationLibrary_6ytu5")
+
+[node name="ActivationTimer" type="Timer" parent="." unique_id=1014128925]
+
+[node name="FireBurst" type="AudioStreamPlayer2D" parent="." unique_id=2035012383]
+stream = ExtResource("3_j6yma")
+max_distance = 150.0
+bus = &"SFX"
+
+[connection signal="body_entered" from="hit" to="." method="_on_hit_body_entered"]
+[connection signal="timeout" from="ActivationTimer" to="." method="_on_activation_timer_timeout"]
