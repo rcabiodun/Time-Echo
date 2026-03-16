@@ -84,7 +84,7 @@ debug_color = Color(0.24069226, 0.63692564, 1.92523e-07, 0.41960785)
 
 [node name="ShardPickup" type="AudioStreamPlayer2D" parent="." unique_id=1804853002]
 stream = ExtResource("3_8b2lf")
-volume_db = -8.667
+volume_db = -11.0
 pitch_scale = 0.69
 bus = &"SFX"
 

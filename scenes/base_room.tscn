@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://olirgtst8inx"]
+
+[ext_resource type="Script" uid="uid://cgy5b7q6xvk6j" path="res://scripts/rooms/base_room.gd" id="1_7hb5d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ont3e"]
+
+[node name="BaseRoom" type="Node2D" unique_id=117978645]
+script = ExtResource("1_7hb5d")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=259282045]
+
+[node name="GameplayObjects" type="Node2D" parent="." unique_id=1101390512]
+
+[node name="EntryPoint" type="Marker2D" parent="." unique_id=520511750]
+
+[node name="ExitPoint" type="Marker2D" parent="." unique_id=1390435397]
+
+[node name="Area2D" type="Area2D" parent="ExitPoint" unique_id=297041721]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitPoint/Area2D" unique_id=1471478433]
+shape = SubResource("CircleShape2D_ont3e")

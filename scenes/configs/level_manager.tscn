@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b6q72pxbfdwgd"]
+
+[ext_resource type="Script" uid="uid://e3gktc8f1aax" path="res://scripts/globals/levelManager.gd" id="1_mkrsv"]
+
+[node name="LevelManager" type="Node2D" unique_id=1488266637]
+script = ExtResource("1_mkrsv")
+
+[node name="FadeLayer" type="CanvasLayer" parent="." unique_id=274179667]
+layer = 100
+
+[node name="FadeRects" type="ColorRect" parent="FadeLayer" unique_id=1399864321 groups=["fade_rect"]]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
