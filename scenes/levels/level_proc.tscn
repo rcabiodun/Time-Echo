@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://ckb8t0jrcp1q8"]
 
 [ext_resource type="PackedScene" uid="uid://b6q72pxbfdwgd" path="res://scenes/configs/level_manager.tscn" id="1_tjofq"]
-[ext_resource type="PackedScene" uid="uid://cewglp8ef37v" path="res://scenes/items/falling_platform.tscn" id="1_xaonv"]
 [ext_resource type="Shader" uid="uid://c3im1bp17bss2" path="res://shaders/level_distortion.gdshader" id="2_n0gwv"]
 [ext_resource type="Script" uid="uid://dg613eeod160d" path="res://scripts/fps_label.gd" id="3_tjjf8"]
 [ext_resource type="PackedScene" uid="uid://dd81qu2tay7go" path="res://scenes/enemies/spike.tscn" id="4_tjjf8"]
 [ext_resource type="PackedScene" uid="uid://cergo2cw5e24d" path="res://scenes/characters/player.tscn" id="5_p5320"]
-[ext_resource type="PackedScene" uid="uid://c3xkdelgrohx2" path="res://scenes/items/box.tscn" id="6_p5320"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p5320"]
 shader = ExtResource("2_n0gwv")
@@ -18,18 +16,6 @@ shader_parameter/frequency = 10.0
 size = Vector2(1062.5, 84)
 
 [node name="Level_Proc" type="Node2D" unique_id=939019227]
-
-[node name="FallingPlatform" parent="." unique_id=1113148676 instance=ExtResource("1_xaonv")]
-position = Vector2(338, 516)
-
-[node name="FallingPlatform2" parent="." unique_id=1535304916 instance=ExtResource("1_xaonv")]
-position = Vector2(353, 516)
-
-[node name="FallingPlatform3" parent="." unique_id=1464088696 instance=ExtResource("1_xaonv")]
-position = Vector2(367, 516)
-
-[node name="FallingPlatform4" parent="." unique_id=1312280937 instance=ExtResource("1_xaonv")]
-position = Vector2(383, 516)
 
 [node name="LevelManager" parent="." unique_id=1488266637 instance=ExtResource("1_tjofq")]
 
@@ -54,6 +40,7 @@ offset_bottom = 23.0
 script = ExtResource("3_tjjf8")
 
 [node name="World" type="Node2D" parent="." unique_id=279547713]
+visible = false
 
 [node name="spike" parent="World" unique_id=2085507587 instance=ExtResource("4_tjjf8")]
 position = Vector2(417, 556)
@@ -69,11 +56,5 @@ shape = SubResource("RectangleShape2D_xaonv")
 position = Vector2(188, 512)
 
 [node name="Rooms" type="Node2D" parent="." unique_id=1242792844]
-
-[node name="Box" parent="." unique_id=185443949 instance=ExtResource("6_p5320")]
-position = Vector2(547, 555)
-
-[node name="Box2" parent="." unique_id=105937239 instance=ExtResource("6_p5320")]
-position = Vector2(588, 548)
 
 [connection signal="create_echo" from="Player" to="LevelManager" method="_on_player_create_echo"]

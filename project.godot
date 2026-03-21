@@ -46,6 +46,7 @@ projectile=""
 projectile_receiver=""
 fade_rect=""
 death_cube=""
+level_manager=""
 
 [input]
 

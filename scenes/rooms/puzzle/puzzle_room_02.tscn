@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ctcgmicnfut6u"]
+
+[ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_jaocw"]
+
+[node name="PuzzleRoom02" unique_id=117978645 instance=ExtResource("1_jaocw")]
+room_type = 1

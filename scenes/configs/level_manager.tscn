@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://e3gktc8f1aax" path="res://scripts/globals/levelManager.gd" id="1_mkrsv"]
 
-[node name="LevelManager" type="Node2D" unique_id=1488266637]
+[node name="LevelManager" type="Node2D" unique_id=1488266637 groups=["level_manager"]]
 script = ExtResource("1_mkrsv")
 
 [node name="FadeLayer" type="CanvasLayer" parent="." unique_id=274179667]

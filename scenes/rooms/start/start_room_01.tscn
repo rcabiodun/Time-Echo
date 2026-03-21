@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c416bnuttq6r8"]
+
+[ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_va247"]
+
+[node name="startRoom01" unique_id=224052371 instance=ExtResource("1_va247")]
+room_type = null
+entry_direction = null
+exit_direction = null
+
+[node name="EntryPoint" parent="." index="2" unique_id=520511750]
+position = Vector2(35, 490)
+
+[node name="Label" type="Label" parent="." index="4" unique_id=1691945691]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4

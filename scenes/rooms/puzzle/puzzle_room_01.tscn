@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dgy5lobc2olbh"]
+
+[ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_s2ekd"]
+
+[node name="PuzzleRoom01" unique_id=117978645 instance=ExtResource("1_s2ekd")]
+room_type = 1
+exit_direction = 1
+
+[node name="ExitPoint" parent="." index="3" unique_id=1390435397]
+position = Vector2(880, 520)

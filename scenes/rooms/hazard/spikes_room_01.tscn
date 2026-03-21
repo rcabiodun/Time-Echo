@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dbcw8qtwdqy8c"]
+
+[ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_odwyc"]
+
+[node name="spikesRoom01" unique_id=117978645 instance=ExtResource("1_odwyc")]
+room_type = 2
+entry_direction = 0
+
+[node name="EntryPoint" parent="." index="2" unique_id=520511750]
+position = Vector2(115, 11)

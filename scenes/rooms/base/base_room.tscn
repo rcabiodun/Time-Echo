@@ -1,21 +1,40 @@
 [gd_scene format=3 uid="uid://olirgtst8inx"]
 
 [ext_resource type="Script" uid="uid://cgy5b7q6xvk6j" path="res://scripts/rooms/base_room.gd" id="1_7hb5d"]
+[ext_resource type="PackedScene" uid="uid://cjcuhri0os820" path="res://scenes/items/whitebox.tscn" id="2_hsmpw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ont3e"]
 
 [node name="BaseRoom" type="Node2D" unique_id=117978645]
 script = ExtResource("1_7hb5d")
+entry_direction = 2
+exit_direction = 3
+entry_path = NodePath("EntryPoint")
+exit_path = NodePath("ExitPoint")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=259282045]
 
 [node name="GameplayObjects" type="Node2D" parent="." unique_id=1101390512]
 
+[node name="whitebox" parent="GameplayObjects" unique_id=1507116138 instance=ExtResource("2_hsmpw")]
+position = Vector2(576, 583)
+scale = Vector2(8.953125, 1)
+
+[node name="whitebox2" parent="GameplayObjects" unique_id=1438375495 instance=ExtResource("2_hsmpw")]
+position = Vector2(1170, 523)
+rotation = -1.5728428
+scale = Vector2(8.953125, 1)
+
 [node name="EntryPoint" type="Marker2D" parent="." unique_id=520511750]
+position = Vector2(37, 475)
 
 [node name="ExitPoint" type="Marker2D" parent="." unique_id=1390435397]
+position = Vector2(1056, 491)
 
 [node name="Area2D" type="Area2D" parent="ExitPoint" unique_id=297041721]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitPoint/Area2D" unique_id=1471478433]
 shape = SubResource("CircleShape2D_ont3e")
+
+[connection signal="body_entered" from="ExitPoint/Area2D" to="." method="_on_area_2d_body_entered"]
