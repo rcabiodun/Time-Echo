@@ -12,7 +12,7 @@ var was_recording := false
 @onready var EchoScene = preload("res://scenes/characters/echo.tscn")
 var next_echo_id: int = 1
 
-
+var debug_overlay
 var current_room_index := 0
 var generated_rooms : Array[PackedScene] = []
 var current_room_instance : Node = null
@@ -25,22 +25,48 @@ var hazard_rooms : Array[PackedScene] = []
 var transition_rooms : Array[PackedScene] = []
 var final_rooms : Array[PackedScene] = []
 
+var current_difficulty := 1
+var player_echo_capacity := 0
+var rune_count := 0
+var last_room_type = null
+var same_type_count = 0
 
+
+#player_echo_capacity = "what the generator THINKS the player can handle"
 func _ready():
+	#var debug_overlay
+	debug_overlay = get_tree().get_first_node_in_group("debug_overlay")
+	
+	if debug_overlay:
+		print("Debuf overlay found")
+	else:
+		print("Debug overlay not found")
 	# Connect every button in the level to the level manager
-	for button in get_tree().get_nodes_in_group("buttons"):
-		button.connect("button_state_changed", _on_button_state_changed)
+	
 	load_room_pools()
 	generate_level()
 
 	current_room_index = 0
 	load_room(generated_rooms[0])
+	#if debug_overlay:
+#
+		#print(debug_overlay.stats_label.text)
+		#print(debug_overlay.rooms_label.text)
+		#print(debug_overlay.log_label.text)
 
 # When ANY button changes, notify all doors
-func _on_button_state_changed(door_id: String, pressed: bool, echo_id: int = 0):
+func _on_button_state_changed(attached_items_ids: Dictionary, pressed: bool, echo_id: int = 0):
 	for door in get_tree().get_nodes_in_group("doors"):
-		door.register_button_event(door_id, pressed, echo_id)
+		door.register_button_event(attached_items_ids["door_id"], pressed, echo_id)
+	
+	for invisible_floor in get_tree().get_nodes_in_group("invisible_floor"):
+		invisible_floor.register_button_event(attached_items_ids["invisible_floor_id"], pressed, echo_id) 
 
+# When ANY button changes, notify all doors
+func _on_projectile_receiver_activation(elevator_id: String):
+	print("receibed elevator project signal by level manager")
+	for elevator in get_tree().get_nodes_in_group("elevators"):
+		elevator.register_receiver_activation_event(elevator_id)
 
 # Called every frame
 func _process(delta):
@@ -58,6 +84,8 @@ func _process(delta):
 		darken_scene()
 	else:
 		restore_scene()
+
+
 
 
 # =========================
@@ -186,7 +214,18 @@ func load_room(room_scene: PackedScene):
 	$"../Player".global_position = entry_pos
 
 	# (Optional) Camera limits can be set here per room
-
+	for button in get_tree().get_nodes_in_group("buttons"):
+		button.connect("button_state_changed", _on_button_state_changed)
+		#button.connect("button_state_changed", _on_button_state_changed)
+		#button.connect("button")
+	
+	for project_receiver in get_tree().get_nodes_in_group("projectile_receiver"):
+		print("found 123")
+		project_receiver.connect("projectile_receiver_activated", _on_projectile_receiver_activation)
+	
+	
+	
+	
 
 func load_room_pools():
 
@@ -240,7 +279,14 @@ func generate_level():
 
 	# 3️⃣ Add a final room at the end
 	var final = final_rooms.pick_random()
+	
 	generated_rooms.append(final)
+	
+	if debug_overlay:
+		var names = []
+		for room in generated_rooms:
+			names.append(room.resource_path.get_file())
+		debug_overlay.update_rooms(names)
 	
 
 func get_room_exit_direction(room_scene: PackedScene):
@@ -265,25 +311,140 @@ func get_opposite(dir):
 		BaseRoom.Direction.DOWN: return BaseRoom.Direction.UP
 
 
+#func get_valid_room(required_entry_direction):
+#
+	## Combine all possible non-start/non-final rooms
+	#var all_rooms = puzzle_rooms + hazard_rooms + transition_rooms
+#
+	## Shuffle to ensure randomness
+	#all_rooms.shuffle()
+#
+	## Find a room whose entry matches the required direction
+	#for room_scene in all_rooms:
+#
+		#var temp = room_scene.instantiate()
+#
+		## Check if this room can connect properly
+		#if temp.entry_direction == get_opposite(required_entry_direction):
+			#temp.queue_free()
+			#return room_scene
+#
+		#temp.queue_free()
+#
+	## If no valid room is found, return null (should be handled safely)
+	#return null
+
 func get_valid_room(required_entry_direction):
 
-	# Combine all possible non-start/non-final rooms
+	# Combine all candidate room pools
 	var all_rooms = puzzle_rooms + hazard_rooms + transition_rooms
 
-	# Shuffle to ensure randomness
+	# Shuffle for randomness so we don’t always pick the same rooms
 	all_rooms.shuffle()
 
-	# Find a room whose entry matches the required direction
 	for room_scene in all_rooms:
 
+		# Instantiate temporarily to inspect its properties
 		var temp = room_scene.instantiate()
 
-		# Check if this room can connect properly
-		if temp.entry_direction == get_opposite(required_entry_direction):
+		# =========================
+		# 1️⃣ Direction Check
+		# Ensure the room connects properly with the previous room
+		# =========================
+		if temp.entry_direction != get_opposite(required_entry_direction):
+			if debug_overlay:
+				debug_overlay.add_log("❌ Reject: Direction mismatch → " + temp.name)
+
 			temp.queue_free()
-			return room_scene
+			continue
+
+		# =========================
+		# 2️⃣ Difficulty Check
+		# Prevent sudden spikes in difficulty
+		# Allow only gradual increase (+1 at most)
+		# =========================
+		if temp.difficulty > current_difficulty + 1:
+			if debug_overlay:
+				#debug_overlay.add_log("❌ Reject: room difficulty us greater that current difficulty + 1 → " + temp.name)
+				debug_overlay.add_log(
+				    "❌ Reject: room difficulty,{room_difficulty}, is greater than current difficulty,{current_difficulty}, + 1 → {room}"
+					.format({"room": temp.name,"room_difficulty":temp.difficulty,"current_difficulty":current_difficulty})
+				)
+			temp.queue_free()
+			continue
+
+		# =========================
+		# 3️⃣ Echo Requirement Check
+		# Ensure the player has enough echoes to solve the room
+		# =========================
+		if temp.requires_echoes > player_echo_capacity:
+			if debug_overlay:
+				debug_overlay.add_log("❌ Reject: Needs more echoes → " + temp.name)
+			temp.queue_free()
+			continue
+
+		## =========================
+		## 4️⃣ Rune Progression Check
+		## Prevent too many rooms with no progression (dead rooms)
+		## =========================
+		#if not temp.provides_rune and rune_count == 0:
+			#temp.queue_free()
+			#continue
+
+		# =========================
+		# 5️⃣ Variety Check (Room Repetition Control)
+		# Prevent too many rooms of the same type in a row
+		# =========================
+		if temp.room_type == last_room_type:
+			same_type_count += 1
+		else:
+			same_type_count = 0
+
+		# If we already used this type too many times, skip it
+		if same_type_count >= 2:
+			if debug_overlay:
+				#debug_overlay.add_log("❌ Reject: Needs more echoes → " + temp.name)
+				debug_overlay.add_log("❌ Reject: Too repetitive → " + temp.name)
+			temp.queue_free()
+			continue
+
+		# =========================
+		# 6️⃣ Safety Room Check
+		# If difficulty is high, force a safe/breathing room
+		# =========================
+		#if current_difficulty >= 3 and not temp.is_safe_room:
+			#temp.queue_free()
+			#continue
+
+		# =========================
+		# ✅ VALID ROOM FOUND
+		# =========================
+
+		# Update progression systems (difficulty, echoes, runes)
+		update_progression(temp)
+
+		# Track last room type for repetition control
+		last_room_type = temp.room_type
 
 		temp.queue_free()
+		if debug_overlay:
+			debug_overlay.add_log("✅ Accepted: " + temp.name)
+		return room_scene
 
-	# If no valid room is found, return null (should be handled safely)
+	# If no valid room is found, return null (should be handled safely by caller)
 	return null
+	
+	
+func update_progression(room):
+
+	# Increase difficulty slowly
+	current_difficulty = clamp(current_difficulty + 1, 1, 3)
+	if debug_overlay:
+		debug_overlay.update_stats(current_difficulty, player_echo_capacity, rune_count)
+	# Track rune progression
+	#if room.provides_rune:
+		#rune_count += 1
+
+	# Increase echo capacity over time
+	# "At this point in the level, what should the player be capable of?"
+	player_echo_capacity = min(player_echo_capacity + 1, 3)

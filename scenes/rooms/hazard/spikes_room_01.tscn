@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_odwyc"]
 
 [node name="spikesRoom01" unique_id=117978645 instance=ExtResource("1_odwyc")]
+difficulty = 2
+requires_echoes = 2
 room_type = 2
 entry_direction = 0
 

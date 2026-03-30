@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cay47g5c5wd00"]
+
+[ext_resource type="Script" uid="uid://bpnq8askdp813" path="res://scripts/items/underground_entrance.gd" id="1_ejwro"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxhnv"]
+
+[node name="UndergroundEntrance" type="Area2D" unique_id=919239551]
+collision_mask = 2
+script = ExtResource("1_ejwro")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=460560369]
+shape = SubResource("RectangleShape2D_nxhnv")
+debug_color = Color(0.5097851, 0.29168236, 0, 0.41960785)

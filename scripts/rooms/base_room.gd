@@ -17,6 +17,17 @@ enum Direction {
 	RIGHT
 }
 
+@export var difficulty : int = 1   # 1 = easy, 2 = medium, 3 = hard
+@export var requires_echoes : int = 0
+#@export var provides_rune : bool = false
+@export var is_safe_room : bool = false
+
+#difficulty        → how hard the room is
+#requires_echoes   → minimum echoes needed to solve it
+#provides_rune     → gives progression
+#is_safe_room      → no hazards (breathing space)
+#requires_echoes = "minimum needed to solve the room"
+
 @export var room_type : RoomType
 @export var entry_direction : Direction
 @export var exit_direction : Direction

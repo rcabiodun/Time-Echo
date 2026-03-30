@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cwtveicm1756k"]
+
+[ext_resource type="Script" uid="uid://17vegxnehout" path="res://scripts/items/elevator_platfomer.gd" id="1_06pqj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnwtw"]
+size = Vector2(40, 12)
+
+[node name="ElevatorPlatformer" type="StaticBody2D" unique_id=2144573264 groups=["elevators"]]
+collision_layer = 512
+collision_mask = 2
+script = ExtResource("1_06pqj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1164249856]
+shape = SubResource("RectangleShape2D_rnwtw")
+debug_color = Color(0.7680779, 0.11611114, 0.6388388, 0.41960785)

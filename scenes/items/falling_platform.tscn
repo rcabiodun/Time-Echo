@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cewglp8ef37v"]
 
 [ext_resource type="Texture2D" uid="uid://dved4cb3yvdn7" path="res://assets/interactables/Goldenchest open version.png" id="1_5ka7y"]
-[ext_resource type="Script" uid="uid://bxkpsml2qrhej" path="res://scenes/items/falling_platform.gd" id="1_tx8lw"]
+[ext_resource type="Script" uid="uid://bxkpsml2qrhej" path="res://scripts/items/falling_platform.gd" id="1_tx8lw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx8lw"]
 size = Vector2(20, 20.41254)

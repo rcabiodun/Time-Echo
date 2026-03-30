@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c3xkdelgrohx2" path="res://scenes/items/box.tscn" id="6_6xh4u"]
 [ext_resource type="PackedScene" uid="uid://djfqj2hshogsi" path="res://scenes/items/rune.tscn" id="6_cyt5c"]
 [ext_resource type="Shader" uid="uid://c3im1bp17bss2" path="res://shaders/level_distortion.gdshader" id="7_cyt5c"]
-[ext_resource type="Script" uid="uid://dg613eeod160d" path="res://scripts/fps_label.gd" id="7_j0qof"]
+[ext_resource type="Script" uid="uid://dg613eeod160d" path="res://scripts/items/fps_label.gd" id="7_j0qof"]
 [ext_resource type="PackedScene" uid="uid://jasgysmgxumm" path="res://scenes/redirect_platform.tscn" id="8_7x1jh"]
 [ext_resource type="PackedScene" uid="uid://c8ekdfe6k401n" path="res://scenes/items/projectile.tscn" id="9_hfwtw"]
 [ext_resource type="PackedScene" uid="uid://tmbhhtpywnsg" path="res://scenes/items/projectile_reciever.tscn" id="10_2mu0v"]

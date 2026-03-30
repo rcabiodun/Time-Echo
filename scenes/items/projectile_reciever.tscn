@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tmbhhtpywnsg"]
+[gd_scene format=3 uid="uid://tmbhhtpywnsg"]
 
 [ext_resource type="Script" uid="uid://dldf1l5ce17tk" path="res://scripts/projectile_reciever.gd" id="1_hsdfx"]
 [ext_resource type="Texture2D" uid="uid://c3735fwwc8o8x" path="res://assets/interactables/bigtorchOFF.png" id="2_srh11"]
@@ -36,30 +36,30 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="ProjectileReciever" type="StaticBody2D" groups=["projectile_receiver"]]
+[node name="ProjectileReciever" type="StaticBody2D" unique_id=1667104377 groups=["projectile_receiver"]]
 collision_layer = 33
 collision_mask = 166
 script = ExtResource("1_hsdfx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=554049892]
 scale = Vector2(0.82594347, 1.1848615)
 shape = SubResource("RectangleShape2D_2ldye")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=691800423]
 collision_layer = 129
 collision_mask = 129
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1239358142]
 scale = Vector2(1.633556, 1.5538723)
 shape = SubResource("RectangleShape2D_8u3po")
 debug_color = Color(0.9353062, 0.19618037, 0.42042437, 0.41960785)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=963020512]
 scale = Vector2(0.20756899, 0.15912907)
 sprite_frames = SubResource("SpriteFrames_qg0lo")
 animation = &"off"
 
-[node name="ResetTimer" type="Timer" parent="."]
+[node name="ResetTimer" type="Timer" parent="." unique_id=1225702888]
 one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

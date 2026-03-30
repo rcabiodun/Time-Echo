@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://65ib2e64r4xx"]
+
+[ext_resource type="Script" uid="uid://bh4f48i7u2276" path="res://scripts/debug_overlay.gd" id="1_wl0fn"]
+
+[node name="DebugOverlay" type="CanvasLayer" unique_id=1890049828 groups=["debug_overlay"]]
+script = ExtResource("1_wl0fn")
+
+[node name="Panel" type="Panel" parent="." unique_id=884559276]
+modulate = Color(1, 1, 1, 0.49803922)
+custom_minimum_size = Vector2(300, 400)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1284028996]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=533980618]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer" unique_id=1972205056]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Panel/VBoxContainer" unique_id=1021909688]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="Panel/VBoxContainer" unique_id=616675827]
+layout_mode = 2

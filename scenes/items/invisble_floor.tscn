@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://chospnkiownsq"]
+
+[ext_resource type="Script" uid="uid://bcgab5f6cup7g" path="res://scripts/items/invisible_floor.gd" id="1_f2f8v"]
+[ext_resource type="Texture2D" uid="uid://ddy2jpw3fga1u" path="res://icon.svg" id="2_ljwyi"]
+[ext_resource type="Script" uid="uid://b08k142rgyc7g" path="res://scripts/rune_requirement.gd" id="3_xg65q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5f452"]
+size = Vector2(24, 71)
+
+[node name="InvisbleFloor" type="StaticBody2D" unique_id=1966322708 groups=["invisible_floor"]]
+rotation = 1.5998119
+collision_layer = 512
+collision_mask = 2
+script = ExtResource("1_f2f8v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1794291450]
+shape = SubResource("RectangleShape2D_5f452")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=769439581]
+position = Vector2(0, 1.9073486e-06)
+rotation = -0.009478389
+scale = Vector2(0.22264214, 0.5868447)
+texture = ExtResource("2_ljwyi")
+
+[node name="RuneRequirement" type="Node" parent="." unique_id=1184286953]
+script = ExtResource("3_xg65q")
