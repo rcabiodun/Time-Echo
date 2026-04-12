@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bf8mkbdbw74u1"]
+
+[ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_xix5b"]
+[ext_resource type="PackedScene" uid="uid://eeu1qu2frxeo" path="res://scenes/enemies/spike_group.tscn" id="2_fvaoc"]
+[ext_resource type="PackedScene" uid="uid://cjcuhri0os820" path="res://scenes/items/whitebox.tscn" id="3_24swo"]
+[ext_resource type="PackedScene" uid="uid://c3xkdelgrohx2" path="res://scenes/items/box.tscn" id="4_24swo"]
+[ext_resource type="PackedScene" uid="uid://djfqj2hshogsi" path="res://scenes/items/rune.tscn" id="5_dmcak"]
+[ext_resource type="PackedScene" uid="uid://hfvk0mwy7guf" path="res://scenes/items/button.tscn" id="6_iqv7q"]
+[ext_resource type="PackedScene" uid="uid://kkxnbercfl78" path="res://scenes/items/door.tscn" id="7_bowhl"]
+
+[node name="HazardRoom03" unique_id=117978645 instance=ExtResource("1_xix5b")]
+difficulty = 2
+room_type = 2
+
+[node name="SpikeGroup" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="2" unique_id=854573875 instance=ExtResource("2_fvaoc")]
+position = Vector2(101, 594)
+
+[node name="SpikeGroup2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="3" unique_id=274720938 instance=ExtResource("2_fvaoc")]
+position = Vector2(319, 594)
+
+[node name="SpikeGroup3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="4" unique_id=1450729201 instance=ExtResource("2_fvaoc")]
+position = Vector2(359, 594)
+
+[node name="whitebox3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="5" unique_id=1507116138 instance=ExtResource("3_24swo")]
+position = Vector2(223, 543)
+scale = Vector2(1.092114, -0.08279845)
+
+[node name="whitebox4" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="6" unique_id=318085615 instance=ExtResource("3_24swo")]
+position = Vector2(392.00003, 463.99997)
+scale = Vector2(1.092114, -0.08279845)
+
+[node name="whitebox5" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="7" unique_id=1631459804 instance=ExtResource("3_24swo")]
+position = Vector2(528, 464)
+scale = Vector2(1.092114, -0.08279845)
+
+[node name="Box" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="8" unique_id=1333848643 instance=ExtResource("4_24swo")]
+position = Vector2(56, 583)
+
+[node name="Box2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="9" unique_id=979981818 instance=ExtResource("4_24swo")]
+position = Vector2(237, 583)
+
+[node name="Box3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="10" unique_id=1426592375 instance=ExtResource("4_24swo")]
+position = Vector2(276, 528)
+
+[node name="Rune" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="11" unique_id=989459229 instance=ExtResource("5_dmcak")]
+position = Vector2(304, 456)
+
+[node name="Botton" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="12" unique_id=488787370 instance=ExtResource("6_iqv7q")]
+position = Vector2(377, 448)
+required_runes = Array[String](["R1"])
+
+[node name="Door" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="13" unique_id=828922808 instance=ExtResource("7_bowhl")]
+position = Vector2(512, 424)
+
+[node name="ExitPoint" parent="." index="3" unique_id=1390435397]
+position = Vector2(584, 440)

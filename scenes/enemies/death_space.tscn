@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cxynn180la7gd"]
+
+[ext_resource type="Script" uid="uid://pq2mda0ioxj6" path="res://scripts/enemies/death_space.gd" id="1_46vci"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svwjx"]
+
+[node name="DeathSpace" type="Area2D" unique_id=87674237]
+collision_mask = 6
+script = ExtResource("1_46vci")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1532226664]
+shape = SubResource("RectangleShape2D_svwjx")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

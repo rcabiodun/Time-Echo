@@ -1,23 +1,5 @@
 [gd_scene format=3 uid="uid://bq2cqacbprkh1"]
 
 [ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_v3r4h"]
-[ext_resource type="PackedScene" uid="uid://cjcuhri0os820" path="res://scenes/items/whitebox.tscn" id="2_1tu4l"]
-[ext_resource type="PackedScene" uid="uid://cay47g5c5wd00" path="res://scenes/items/underground_entrance.tscn" id="3_ip6c6"]
 
 [node name="StartRoom02" unique_id=117978645 instance=ExtResource("1_v3r4h")]
-
-[node name="whitebox" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="0" unique_id=1507116138]
-position = Vector2(208, 584.00006)
-scale = Vector2(-3.2372606, -1.0725795)
-
-[node name="whitebox3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="1" unique_id=2120353457 instance=ExtResource("2_1tu4l")]
-position = Vector2(616, 696.00006)
-scale = Vector2(-3.2372606, -1.0725795)
-
-[node name="whitebox4" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="2" unique_id=90252417 instance=ExtResource("2_1tu4l")]
-position = Vector2(664, 528)
-scale = Vector2(-3.2372606, -1.0725795)
-
-[node name="UndergroundEntrance" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="3" unique_id=919239551 instance=ExtResource("3_ip6c6")]
-position = Vector2(456.00003, 616)
-scale = Vector2(27.574146, -6.476273)

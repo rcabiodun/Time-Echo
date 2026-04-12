@@ -20,7 +20,7 @@ var facing_direction: float = 1.0
 # ===============================
 # 🎭 ANIMATION
 # ===============================
-@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D2
 
 var was_carrying_last_frame := false
 var was_on_floor: bool = false

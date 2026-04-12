@@ -3,11 +3,12 @@ extends Node2D
 class_name BaseRoom
 
 enum RoomType {
+	TUTORIAL,
 	START,
 	PUZZLE,
 	HAZARD,
 	FINAL,
-	TRANSITION
+	
 }
 
 enum Direction {
@@ -58,13 +59,17 @@ func _ready() -> void:
 	#print("This is the exit point:" )
 	#print(exit_point.global_position)
 
+func room_change(body:Node2D):
+	print("Player jusy hit the exit")
+	var level_manager = get_tree().get_first_node_in_group("level_manager")
+	#level_manager.request_room_change(exit_direction)
+	level_manager.call_deferred("request_room_change", exit_direction)
+	#print("You have finished the level  broski")
+	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("body Entered")
 	if body.is_in_group("player"):
-		print("Player jusy hit the exit")
-		var level_manager = get_tree().get_first_node_in_group("level_manager")
-		#level_manager.request_room_change(exit_direction)
-		level_manager.call_deferred("request_room_change", exit_direction)
+		room_change(body)
 	
 
 	

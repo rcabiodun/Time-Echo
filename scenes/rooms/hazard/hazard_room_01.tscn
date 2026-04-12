@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://cqen72tto4435"]
+
+[ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_apw1d"]
+[ext_resource type="PackedScene" uid="uid://cjcuhri0os820" path="res://scenes/items/whitebox.tscn" id="2_jnnu2"]
+[ext_resource type="PackedScene" uid="uid://cewglp8ef37v" path="res://scenes/items/falling_platform.tscn" id="3_q2pof"]
+[ext_resource type="PackedScene" uid="uid://dd81qu2tay7go" path="res://scenes/enemies/spike.tscn" id="4_uoklh"]
+[ext_resource type="PackedScene" uid="uid://cxynn180la7gd" path="res://scenes/enemies/death_space.tscn" id="5_4ybpj"]
+[ext_resource type="PackedScene" uid="uid://c5x3mdavhwb8p" path="res://scenes/collectibles/time_shards.tscn" id="6_4ybpj"]
+
+[node name="HazardRoom01" unique_id=117978645 instance=ExtResource("1_apw1d")]
+room_type = 2
+
+[node name="whitebox3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="2" unique_id=1507116138 instance=ExtResource("2_jnnu2")]
+position = Vector2(65, 578.7409)
+scale = Vector2(1.092114, 0.2772016)
+
+[node name="whitebox4" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="3" unique_id=2465281 instance=ExtResource("2_jnnu2")]
+position = Vector2(407.99997, 579)
+scale = Vector2(1.092114, 0.2772016)
+
+[node name="whitebox5" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="4" unique_id=1893773656 instance=ExtResource("2_jnnu2")]
+position = Vector2(751.99994, 579)
+scale = Vector2(1.092114, 0.2772016)
+
+[node name="whitebox6" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="5" unique_id=578270662 instance=ExtResource("2_jnnu2")]
+position = Vector2(1072, 579)
+scale = Vector2(0.49211878, 0.2772016)
+
+[node name="FallingPlatform" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="6" unique_id=1113148676 instance=ExtResource("3_q2pof")]
+position = Vector2(264, 536)
+
+[node name="FallingPlatform2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="7" unique_id=191720672 instance=ExtResource("3_q2pof")]
+position = Vector2(608, 536)
+
+[node name="FallingPlatform3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="8" unique_id=513576551 instance=ExtResource("3_q2pof")]
+position = Vector2(952, 535)
+
+[node name="spike" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="9" unique_id=2085507587 instance=ExtResource("4_uoklh")]
+position = Vector2(332.99997, 568.99994)
+rotation = -1.5795292
+
+[node name="spike2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="10" unique_id=234375458 instance=ExtResource("4_uoklh")]
+position = Vector2(333, 579)
+rotation = -1.5795292
+
+[node name="spike3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="11" unique_id=389771970 instance=ExtResource("4_uoklh")]
+position = Vector2(333, 589)
+rotation = -1.5795292
+
+[node name="spike4" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="12" unique_id=962026584 instance=ExtResource("4_uoklh")]
+position = Vector2(677, 570)
+rotation = -1.5795292
+
+[node name="spike5" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="13" unique_id=2125463373 instance=ExtResource("4_uoklh")]
+position = Vector2(677, 579)
+rotation = -1.5795292
+
+[node name="spike6" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="14" unique_id=524686957 instance=ExtResource("4_uoklh")]
+position = Vector2(676.99994, 587.99994)
+rotation = -1.5795292
+
+[node name="spike7" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="15" unique_id=55195181 instance=ExtResource("4_uoklh")]
+position = Vector2(1036, 570.99994)
+rotation = -1.5795292
+
+[node name="spike8" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="16" unique_id=1964762744 instance=ExtResource("4_uoklh")]
+position = Vector2(1036, 578.99994)
+rotation = -1.5795292
+
+[node name="spike9" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="17" unique_id=345949245 instance=ExtResource("4_uoklh")]
+position = Vector2(1035.9999, 587.99994)
+rotation = -1.5795292
+
+[node name="DeathSpace" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="18" unique_id=87674237 instance=ExtResource("5_4ybpj")]
+position = Vector2(600.00006, 601)
+scale = Vector2(91.39969, 1.1597047)
+
+[node name="TimeShards" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="19" unique_id=1659941073 instance=ExtResource("6_4ybpj")]
+position = Vector2(324, 503)
+
+[node name="TimeShards2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="20" unique_id=1848057257 instance=ExtResource("6_4ybpj")]
+position = Vector2(682, 495)
+
+[node name="TimeShards3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="21" unique_id=280175703 instance=ExtResource("6_4ybpj")]
+position = Vector2(1089, 534)
+
+[node name="EntryPoint" parent="." index="2" unique_id=520511750]
+position = Vector2(40, 528)
+
+[node name="ExitPoint" parent="." index="3" unique_id=1390435397]
+position = Vector2(1056, 536)

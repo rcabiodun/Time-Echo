@@ -62,10 +62,11 @@ func open():
 	
 
 func close():
+	
 	print("not showing floor")
 
 
 
 # Turn OFF door layer so player can't collide
 	set_collision_layer_value(4, false)
-	sprite.modulate.a = 0.3
+	sprite.modulate.a = 0.0

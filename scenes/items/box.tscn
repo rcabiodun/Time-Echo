@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3xkdelgrohx2"]
+[gd_scene format=3 uid="uid://c3xkdelgrohx2"]
 
 [ext_resource type="Script" uid="uid://d1q8xbipdoytb" path="res://scripts/box.gd" id="1_ks2v0"]
 [ext_resource type="Shader" uid="uid://m3tjr88i7oee" path="res://scenes/characters/EchoTimelineShader.gdshader" id="2_r3538"]
@@ -13,22 +13,22 @@ shader_parameter/time_passed = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_telwu"]
 size = Vector2(12, 12)
 
-[node name="Box" type="CharacterBody2D" groups=["carryable", "resettable"]]
+[node name="Box" type="CharacterBody2D" unique_id=1333848643 groups=["carryable", "resettable"]]
 script = ExtResource("1_ks2v0")
 
-[node name="Visual" type="Sprite2D" parent="."]
+[node name="Visual" type="Sprite2D" parent="." unique_id=683892462]
 material = SubResource("ShaderMaterial_25tn4")
 position = Vector2(-1.5258789e-05, 0)
 scale = Vector2(0.023085928, 0.023532439)
 texture = ExtResource("3_25tn4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=232612315]
 shape = SubResource("RectangleShape2D_telwu")
 metadata/_edit_lock_ = true
 
-[node name="ResetTimer" type="Timer" parent="."]
+[node name="ResetTimer" type="Timer" parent="." unique_id=1549785126]
 one_shot = true
 
-[node name="TimelineComponent" parent="." instance=ExtResource("4_25tn4")]
+[node name="TimelineComponent" parent="." unique_id=9463014 instance=ExtResource("4_25tn4")]
 
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

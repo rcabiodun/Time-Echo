@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://nixu0qt3a2v"]
+
+[ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_qiye4"]
+[ext_resource type="PackedScene" uid="uid://cjcuhri0os820" path="res://scenes/items/whitebox.tscn" id="2_rgbk4"]
+[ext_resource type="PackedScene" uid="uid://c3xkdelgrohx2" path="res://scenes/items/box.tscn" id="3_k466p"]
+[ext_resource type="PackedScene" uid="uid://cxynn180la7gd" path="res://scenes/enemies/death_space.tscn" id="4_hl1ne"]
+[ext_resource type="PackedScene" uid="uid://hfvk0mwy7guf" path="res://scenes/items/button.tscn" id="5_i141u"]
+[ext_resource type="PackedScene" uid="uid://djfqj2hshogsi" path="res://scenes/items/rune.tscn" id="6_m42n2"]
+[ext_resource type="PackedScene" uid="uid://chospnkiownsq" path="res://scenes/items/invisble_floor.tscn" id="6_o37bv"]
+
+[node name="PuzzleRoom05" unique_id=117978645 instance=ExtResource("1_qiye4")]
+difficulty = 2
+room_type = 1
+
+[node name="whitebox4" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="2" unique_id=1507116138 instance=ExtResource("2_rgbk4")]
+position = Vector2(259, 528)
+scale = Vector2(3.96875, 0.148)
+
+[node name="whitebox6" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="3" unique_id=1008087937 instance=ExtResource("2_rgbk4")]
+position = Vector2(992, 503.99997)
+scale = Vector2(3.96875, 0.148)
+
+[node name="whitebox7" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="4" unique_id=1649457568 instance=ExtResource("2_rgbk4")]
+position = Vector2(1083, 415.99997)
+scale = Vector2(3.96875, 0.148)
+
+[node name="whitebox5" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="5" unique_id=1250899671 instance=ExtResource("2_rgbk4")]
+position = Vector2(458.00003, 499.00003)
+scale = Vector2(0.9296873, 0.2830937)
+
+[node name="Box" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="6" unique_id=1282344118 instance=ExtResource("3_k466p")]
+position = Vector2(368, 512)
+
+[node name="Box2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="7" unique_id=779498206 instance=ExtResource("3_k466p")]
+position = Vector2(435, 472)
+
+[node name="DeathSpace" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="8" unique_id=87674237 instance=ExtResource("4_hl1ne")]
+position = Vector2(661, 560)
+scale = Vector2(-16.687613, 4.0538745)
+
+[node name="Rune" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="9" unique_id=989459229 instance=ExtResource("6_m42n2")]
+position = Vector2(743, 476)
+
+[node name="Rune2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="10" unique_id=2015915123 instance=ExtResource("6_m42n2")]
+position = Vector2(564, 425)
+rune_id = "R2"
+
+[node name="InvisbleFloor" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="11" unique_id=1966322708 instance=ExtResource("6_o37bv")]
+position = Vector2(551, 527)
+
+[node name="InvisbleFloor2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="12" unique_id=942596484 instance=ExtResource("6_o37bv")]
+position = Vector2(625, 529)
+
+[node name="InvisbleFloor3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="13" unique_id=1766862770 instance=ExtResource("6_o37bv")]
+position = Vector2(698.00006, 530)
+
+[node name="Botton" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="14" unique_id=488787370 instance=ExtResource("5_i141u")]
+position = Vector2(802, 485)
+required_runes = Array[String](["R1"])
+
+[node name="EntryPoint" parent="." index="2" unique_id=520511750]
+position = Vector2(102, 505)
+
+[node name="ExitPoint" parent="." index="3" unique_id=1390435397]
+position = Vector2(1007, 385)

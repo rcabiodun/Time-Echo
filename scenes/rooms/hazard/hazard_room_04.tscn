@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://byfa324v6trn1"]
+
+[ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_tn6kp"]
+[ext_resource type="PackedScene" uid="uid://eeu1qu2frxeo" path="res://scenes/enemies/spike_group.tscn" id="2_i7658"]
+[ext_resource type="PackedScene" uid="uid://hfvk0mwy7guf" path="res://scenes/items/button.tscn" id="3_od046"]
+[ext_resource type="PackedScene" uid="uid://djfqj2hshogsi" path="res://scenes/items/rune.tscn" id="4_5uv8e"]
+[ext_resource type="PackedScene" uid="uid://cjcuhri0os820" path="res://scenes/items/whitebox.tscn" id="5_mhqjo"]
+[ext_resource type="PackedScene" uid="uid://c5x3mdavhwb8p" path="res://scenes/collectibles/time_shards.tscn" id="7_ox2y2"]
+[ext_resource type="PackedScene" uid="uid://cewglp8ef37v" path="res://scenes/items/falling_platform.tscn" id="8_4ljnl"]
+[ext_resource type="PackedScene" uid="uid://kkxnbercfl78" path="res://scenes/items/door.tscn" id="9_3g35a"]
+[ext_resource type="PackedScene" uid="uid://b0mf5in2wqfyj" path="res://scenes/enemies/fire_trap.tscn" id="9_mhqjo"]
+
+[node name="HazardRoom04" unique_id=117978645 instance=ExtResource("1_tn6kp")]
+difficulty = 2
+room_type = 2
+
+[node name="SpikeGroup" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="2" unique_id=854573875 instance=ExtResource("2_i7658")]
+position = Vector2(80, 593)
+
+[node name="SpikeGroup2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="3" unique_id=2020903833 instance=ExtResource("2_i7658")]
+position = Vector2(120, 593)
+
+[node name="Botton" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="4" unique_id=488787370 instance=ExtResource("3_od046")]
+position = Vector2(194, 588)
+required_runes = Array[String](["R1", "R2"])
+
+[node name="Botton2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="5" unique_id=997673576 instance=ExtResource("3_od046")]
+position = Vector2(675, 463)
+required_runes = Array[String](["R1", "R2"])
+
+[node name="Rune" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="6" unique_id=989459229 instance=ExtResource("4_5uv8e")]
+position = Vector2(439, 518)
+
+[node name="Rune2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="7" unique_id=1177710026 instance=ExtResource("4_5uv8e")]
+position = Vector2(257, 546)
+rune_id = "R2"
+
+[node name="whitebox3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="8" unique_id=1507116138 instance=ExtResource("5_mhqjo")]
+position = Vector2(384, 542)
+scale = Vector2(1.092114, -0.08279845)
+
+[node name="whitebox4" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="9" unique_id=2075660446 instance=ExtResource("5_mhqjo")]
+position = Vector2(731.00006, 476.99997)
+scale = Vector2(1.092114, -0.08279845)
+
+[node name="whitebox5" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="10" unique_id=1636037462 instance=ExtResource("5_mhqjo")]
+position = Vector2(868.00006, 477)
+scale = Vector2(1.092114, -0.08279845)
+
+[node name="TimeShards" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="11" unique_id=1659941073 instance=ExtResource("7_ox2y2")]
+position = Vector2(387, 519)
+
+[node name="FallingPlatform" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="12" unique_id=1113148676 instance=ExtResource("8_4ljnl")]
+position = Vector2(484, 512)
+
+[node name="FallingPlatform2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="13" unique_id=974224127 instance=ExtResource("8_4ljnl")]
+position = Vector2(499, 512)
+
+[node name="FallingPlatform3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="14" unique_id=340737825 instance=ExtResource("8_4ljnl")]
+position = Vector2(514, 512)
+
+[node name="FallingPlatform4" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="15" unique_id=1603610570 instance=ExtResource("8_4ljnl")]
+position = Vector2(530, 512)
+
+[node name="FallingPlatform5" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="16" unique_id=733469703 instance=ExtResource("8_4ljnl")]
+position = Vector2(547, 512)
+
+[node name="FallingPlatform6" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="17" unique_id=1815339344 instance=ExtResource("8_4ljnl")]
+position = Vector2(563, 512)
+
+[node name="FallingPlatform7" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="18" unique_id=643641180 instance=ExtResource("8_4ljnl")]
+position = Vector2(579, 512)
+
+[node name="Door" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="19" unique_id=828922808 instance=ExtResource("9_3g35a")]
+position = Vector2(766, 434)
+required_buttons = 2
+
+[node name="fireTrap" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="20" unique_id=1719191877 instance=ExtResource("9_mhqjo")]
+position = Vector2(346, 537)
+rotation = -1.5707964
+
+[node name="fireTrap2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="21" unique_id=2114317835 instance=ExtResource("9_mhqjo")]
+position = Vector2(361, 537)
+rotation = -1.5707964
+
+[node name="fireTrap3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="22" unique_id=2087964083 instance=ExtResource("9_mhqjo")]
+position = Vector2(407, 537)
+rotation = -1.5707964
+
+[node name="fireTrap4" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="23" unique_id=553640236 instance=ExtResource("9_mhqjo")]
+position = Vector2(421, 537)
+rotation = -1.5707964
+
+[node name="Label" type="Label" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="24" unique_id=1440090335]
+offset_left = 279.0
+offset_top = 567.0
+offset_right = 533.0
+offset_bottom = 590.0
+text = "scale this platform to the ground"
+
+[node name="EntryPoint" parent="." index="2" unique_id=520511750]
+position = Vector2(796, 439)
+
+[node name="ExitPoint" parent="." index="3" unique_id=1390435397]
+position = Vector2(868, 456)

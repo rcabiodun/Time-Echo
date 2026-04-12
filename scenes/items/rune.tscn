@@ -205,7 +205,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"blink",
-"speed": 9.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -246,7 +246,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"offline",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -287,7 +287,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"online",
-"speed": 9.0
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfvqn"]
@@ -335,8 +335,7 @@ texture = SubResource("GradientTexture2D_ti5gc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=676091488]
 sprite_frames = SubResource("SpriteFrames_eo8gu")
-animation = &"blink"
-frame_progress = 0.8644789
+animation = &"offline"
 
 [node name="Glow" parent="." unique_id=647889949 instance=ExtResource("6_sfvqn")]
 visible = false

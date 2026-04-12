@@ -14,7 +14,7 @@ collision_layer = 1024
 collision_mask = 2
 freeze = true
 script = ExtResource("1_tx8lw")
-fall_delay = 0.155
+fall_delay = 0.139
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1900834714]
 position = Vector2(0, 3.4999998)

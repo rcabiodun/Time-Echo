@@ -1,0 +1,208 @@
+[gd_scene format=3 uid="uid://dukfeuj3bc65v"]
+
+[ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_yidp8"]
+[ext_resource type="PackedScene" uid="uid://cjcuhri0os820" path="res://scenes/items/whitebox.tscn" id="2_vpu42"]
+[ext_resource type="PackedScene" uid="uid://cewglp8ef37v" path="res://scenes/items/falling_platform.tscn" id="3_leih6"]
+[ext_resource type="PackedScene" uid="uid://dd81qu2tay7go" path="res://scenes/enemies/spike.tscn" id="4_b35nk"]
+[ext_resource type="PackedScene" uid="uid://c5x3mdavhwb8p" path="res://scenes/collectibles/time_shards.tscn" id="5_rj81u"]
+[ext_resource type="PackedScene" uid="uid://cxynn180la7gd" path="res://scenes/enemies/death_space.tscn" id="6_leih6"]
+
+[node name="HazardRoom02" unique_id=117978645 instance=ExtResource("1_yidp8")]
+difficulty = 2
+room_type = 2
+
+[node name="whitebox" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="0" unique_id=1507116138]
+visible = false
+
+[node name="whitebox3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="2" unique_id=1181556362 instance=ExtResource("2_vpu42")]
+position = Vector2(56.000004, 528.00006)
+scale = Vector2(1.092114, 0.2772016)
+
+[node name="whitebox5" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="3" unique_id=49549031 instance=ExtResource("2_vpu42")]
+position = Vector2(344, 504)
+scale = Vector2(0.22651748, 0.19755048)
+
+[node name="whitebox4" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="4" unique_id=452354525 instance=ExtResource("2_vpu42")]
+position = Vector2(1040, 528)
+scale = Vector2(1.092114, 0.2772016)
+
+[node name="platforms" type="Node2D" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="5" unique_id=1787869219]
+position = Vector2(-8, 32)
+
+[node name="FallingPlatform25" parent="GameplayObjects/platforms" index="0" unique_id=1113148676 instance=ExtResource("3_leih6")]
+position = Vector2(520, 486)
+
+[node name="FallingPlatform" parent="GameplayObjects/platforms" index="1" unique_id=1386919481 instance=ExtResource("3_leih6")]
+position = Vector2(140, 486)
+
+[node name="FallingPlatform2" parent="GameplayObjects/platforms" index="2" unique_id=1318279267 instance=ExtResource("3_leih6")]
+position = Vector2(155, 486)
+
+[node name="FallingPlatform3" parent="GameplayObjects/platforms" index="3" unique_id=1876211100 instance=ExtResource("3_leih6")]
+position = Vector2(168, 486)
+
+[node name="FallingPlatform4" parent="GameplayObjects/platforms" index="4" unique_id=1870874687 instance=ExtResource("3_leih6")]
+position = Vector2(184, 486)
+
+[node name="FallingPlatform5" parent="GameplayObjects/platforms" index="5" unique_id=1579527219 instance=ExtResource("3_leih6")]
+position = Vector2(200, 486)
+
+[node name="FallingPlatform6" parent="GameplayObjects/platforms" index="6" unique_id=1055633478 instance=ExtResource("3_leih6")]
+position = Vector2(216, 486)
+
+[node name="FallingPlatform7" parent="GameplayObjects/platforms" index="7" unique_id=372918589 instance=ExtResource("3_leih6")]
+position = Vector2(232, 486)
+
+[node name="FallingPlatform8" parent="GameplayObjects/platforms" index="8" unique_id=129490581 instance=ExtResource("3_leih6")]
+position = Vector2(248, 486)
+
+[node name="FallingPlatform9" parent="GameplayObjects/platforms" index="9" unique_id=64906842 instance=ExtResource("3_leih6")]
+position = Vector2(264, 486)
+
+[node name="FallingPlatform10" parent="GameplayObjects/platforms" index="10" unique_id=1353300982 instance=ExtResource("3_leih6")]
+position = Vector2(280, 486)
+
+[node name="FallingPlatform11" parent="GameplayObjects/platforms" index="11" unique_id=839860326 instance=ExtResource("3_leih6")]
+position = Vector2(296, 486)
+
+[node name="FallingPlatform12" parent="GameplayObjects/platforms" index="12" unique_id=1712647830 instance=ExtResource("3_leih6")]
+position = Vector2(312, 486)
+
+[node name="FallingPlatform13" parent="GameplayObjects/platforms" index="13" unique_id=511952820 instance=ExtResource("3_leih6")]
+position = Vector2(328, 486)
+
+[node name="FallingPlatform14" parent="GameplayObjects/platforms" index="14" unique_id=1905848484 instance=ExtResource("3_leih6")]
+position = Vector2(344, 486)
+
+[node name="FallingPlatform15" parent="GameplayObjects/platforms" index="15" unique_id=1938749239 instance=ExtResource("3_leih6")]
+position = Vector2(360, 486)
+
+[node name="FallingPlatform16" parent="GameplayObjects/platforms" index="16" unique_id=1685643101 instance=ExtResource("3_leih6")]
+position = Vector2(376, 486)
+
+[node name="FallingPlatform17" parent="GameplayObjects/platforms" index="17" unique_id=448645870 instance=ExtResource("3_leih6")]
+position = Vector2(392, 486)
+
+[node name="FallingPlatform18" parent="GameplayObjects/platforms" index="18" unique_id=182942985 instance=ExtResource("3_leih6")]
+position = Vector2(408, 486)
+
+[node name="FallingPlatform19" parent="GameplayObjects/platforms" index="19" unique_id=817870760 instance=ExtResource("3_leih6")]
+position = Vector2(424, 486)
+
+[node name="FallingPlatform20" parent="GameplayObjects/platforms" index="20" unique_id=43929387 instance=ExtResource("3_leih6")]
+position = Vector2(440, 486)
+
+[node name="FallingPlatform21" parent="GameplayObjects/platforms" index="21" unique_id=644420487 instance=ExtResource("3_leih6")]
+position = Vector2(456, 486)
+
+[node name="FallingPlatform23" parent="GameplayObjects/platforms" index="22" unique_id=1013091175 instance=ExtResource("3_leih6")]
+position = Vector2(488, 486)
+
+[node name="FallingPlatform26" parent="GameplayObjects/platforms" index="23" unique_id=2045866837 instance=ExtResource("3_leih6")]
+position = Vector2(536, 486)
+
+[node name="FallingPlatform24" parent="GameplayObjects/platforms" index="24" unique_id=1551762535 instance=ExtResource("3_leih6")]
+position = Vector2(504, 486)
+
+[node name="FallingPlatform22" parent="GameplayObjects/platforms" index="25" unique_id=208603135 instance=ExtResource("3_leih6")]
+position = Vector2(472, 486)
+
+[node name="FallingPlatform27" parent="GameplayObjects/platforms" index="26" unique_id=1084744793 instance=ExtResource("3_leih6")]
+position = Vector2(552, 486)
+
+[node name="FallingPlatform28" parent="GameplayObjects/platforms" index="27" unique_id=1744108702 instance=ExtResource("3_leih6")]
+position = Vector2(568, 486)
+
+[node name="FallingPlatform29" parent="GameplayObjects/platforms" index="28" unique_id=455589674 instance=ExtResource("3_leih6")]
+position = Vector2(584, 486)
+
+[node name="FallingPlatform30" parent="GameplayObjects/platforms" index="29" unique_id=1181050303 instance=ExtResource("3_leih6")]
+position = Vector2(600, 486)
+
+[node name="FallingPlatform31" parent="GameplayObjects/platforms" index="30" unique_id=227724990 instance=ExtResource("3_leih6")]
+position = Vector2(616, 486)
+
+[node name="FallingPlatform32" parent="GameplayObjects/platforms" index="31" unique_id=950839507 instance=ExtResource("3_leih6")]
+position = Vector2(632, 486)
+
+[node name="FallingPlatform33" parent="GameplayObjects/platforms" index="32" unique_id=2077333720 instance=ExtResource("3_leih6")]
+position = Vector2(648, 486)
+
+[node name="FallingPlatform34" parent="GameplayObjects/platforms" index="33" unique_id=983824498 instance=ExtResource("3_leih6")]
+position = Vector2(664, 486)
+
+[node name="FallingPlatform35" parent="GameplayObjects/platforms" index="34" unique_id=1834942278 instance=ExtResource("3_leih6")]
+position = Vector2(680, 486)
+
+[node name="FallingPlatform36" parent="GameplayObjects/platforms" index="35" unique_id=1417639837 instance=ExtResource("3_leih6")]
+position = Vector2(696, 486)
+
+[node name="FallingPlatform37" parent="GameplayObjects/platforms" index="36" unique_id=664671534 instance=ExtResource("3_leih6")]
+position = Vector2(712, 486)
+
+[node name="FallingPlatform38" parent="GameplayObjects/platforms" index="37" unique_id=1565619912 instance=ExtResource("3_leih6")]
+position = Vector2(728, 486)
+
+[node name="FallingPlatform39" parent="GameplayObjects/platforms" index="38" unique_id=12500259 instance=ExtResource("3_leih6")]
+position = Vector2(744, 486)
+
+[node name="FallingPlatform40" parent="GameplayObjects/platforms" index="39" unique_id=857571674 instance=ExtResource("3_leih6")]
+position = Vector2(760, 486)
+
+[node name="FallingPlatform41" parent="GameplayObjects/platforms" index="40" unique_id=956285504 instance=ExtResource("3_leih6")]
+position = Vector2(776, 486)
+
+[node name="FallingPlatform42" parent="GameplayObjects/platforms" index="41" unique_id=1702126122 instance=ExtResource("3_leih6")]
+position = Vector2(792, 486)
+
+[node name="FallingPlatform43" parent="GameplayObjects/platforms" index="42" unique_id=1296125955 instance=ExtResource("3_leih6")]
+position = Vector2(808, 486)
+
+[node name="FallingPlatform44" parent="GameplayObjects/platforms" index="43" unique_id=989651738 instance=ExtResource("3_leih6")]
+position = Vector2(824, 486)
+
+[node name="FallingPlatform45" parent="GameplayObjects/platforms" index="44" unique_id=330094659 instance=ExtResource("3_leih6")]
+position = Vector2(840, 486)
+
+[node name="FallingPlatform46" parent="GameplayObjects/platforms" index="45" unique_id=1790945894 instance=ExtResource("3_leih6")]
+position = Vector2(856, 486)
+
+[node name="FallingPlatform47" parent="GameplayObjects/platforms" index="46" unique_id=1577265779 instance=ExtResource("3_leih6")]
+position = Vector2(872, 486)
+
+[node name="FallingPlatform48" parent="GameplayObjects/platforms" index="47" unique_id=1379130163 instance=ExtResource("3_leih6")]
+position = Vector2(888, 486)
+
+[node name="FallingPlatform49" parent="GameplayObjects/platforms" index="48" unique_id=1336647246 instance=ExtResource("3_leih6")]
+position = Vector2(904, 486)
+
+[node name="FallingPlatform50" parent="GameplayObjects/platforms" index="49" unique_id=1109159722 instance=ExtResource("3_leih6")]
+position = Vector2(920, 486)
+
+[node name="FallingPlatform51" parent="GameplayObjects/platforms" index="50" unique_id=771504049 instance=ExtResource("3_leih6")]
+position = Vector2(936, 486)
+
+[node name="FallingPlatform52" parent="GameplayObjects/platforms" index="51" unique_id=2118793805 instance=ExtResource("3_leih6")]
+position = Vector2(952, 486)
+
+[node name="FallingPlatform53" parent="GameplayObjects/platforms" index="52" unique_id=258590684 instance=ExtResource("3_leih6")]
+position = Vector2(968, 486)
+
+[node name="spike" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="6" unique_id=2085507587 instance=ExtResource("4_b35nk")]
+position = Vector2(552, 512)
+
+[node name="TimeShards" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="7" unique_id=1659941073 instance=ExtResource("5_rj81u")]
+position = Vector2(552, 488)
+
+[node name="TimeShards2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="8" unique_id=1978630123 instance=ExtResource("5_rj81u")]
+position = Vector2(344, 472)
+
+[node name="DeathSpace" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="9" unique_id=87674237 instance=ExtResource("6_leih6")]
+position = Vector2(576, 600)
+scale = Vector2(53.54886, 4.224852)
+
+[node name="EntryPoint" parent="." index="2" unique_id=520511750]
+position = Vector2(40, 496)
+
+[node name="ExitPoint" parent="." index="3" unique_id=1390435397]
+position = Vector2(1056, 480)

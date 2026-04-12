@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D2
 
 func setup(animation_name: String, frame: int, position: Vector2, flip_h: bool, tint: Color = Color(0.5,0.7,1,0.5)):
 	global_position = position

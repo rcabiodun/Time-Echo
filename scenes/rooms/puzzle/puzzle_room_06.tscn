@@ -1,0 +1,243 @@
+[gd_scene format=3 uid="uid://b8sg8d54acxhk"]
+
+[ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_8onjh"]
+[ext_resource type="PackedScene" uid="uid://cjcuhri0os820" path="res://scenes/items/whitebox.tscn" id="2_nny5e"]
+[ext_resource type="PackedScene" uid="uid://cwtveicm1756k" path="res://scenes/items/elevator_platformer.tscn" id="2_uc1ke"]
+[ext_resource type="PackedScene" uid="uid://tmbhhtpywnsg" path="res://scenes/items/projectile_reciever.tscn" id="3_dlvhj"]
+[ext_resource type="PackedScene" uid="uid://dd81qu2tay7go" path="res://scenes/enemies/spike.tscn" id="3_h11rx"]
+[ext_resource type="PackedScene" uid="uid://cewglp8ef37v" path="res://scenes/items/falling_platform.tscn" id="4_44g15"]
+[ext_resource type="PackedScene" uid="uid://b0mf5in2wqfyj" path="res://scenes/enemies/fire_trap.tscn" id="5_a41wp"]
+[ext_resource type="PackedScene" uid="uid://c8ekdfe6k401n" path="res://scenes/items/projectile.tscn" id="6_ssp0m"]
+[ext_resource type="PackedScene" uid="uid://jasgysmgxumm" path="res://scenes/redirect_platform.tscn" id="7_cfa1q"]
+[ext_resource type="PackedScene" uid="uid://kkxnbercfl78" path="res://scenes/items/door.tscn" id="9_4b20l"]
+[ext_resource type="PackedScene" uid="uid://hfvk0mwy7guf" path="res://scenes/items/button.tscn" id="10_mynqx"]
+[ext_resource type="PackedScene" uid="uid://djfqj2hshogsi" path="res://scenes/items/rune.tscn" id="11_kkync"]
+
+[node name="PuzzleRoom06" unique_id=117978645 instance=ExtResource("1_8onjh")]
+difficulty = 3
+room_type = 1
+
+[node name="ElevatorPlatformer" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="0" unique_id=2144573264 instance=ExtResource("2_uc1ke")]
+position = Vector2(823, 222)
+
+[node name="ProjectileReciever" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="1" unique_id=1667104377 instance=ExtResource("3_dlvhj")]
+position = Vector2(512, 362)
+
+[node name="whitebox3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="4" unique_id=1507116138 instance=ExtResource("2_nny5e")]
+position = Vector2(65, 578.7409)
+scale = Vector2(1.092114, 0.2772016)
+
+[node name="whitebox5" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="5" unique_id=1362592689 instance=ExtResource("2_nny5e")]
+position = Vector2(260, 488)
+scale = Vector2(1.092114, 0.2772016)
+
+[node name="whitebox6" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="6" unique_id=1972032735 instance=ExtResource("2_nny5e")]
+position = Vector2(463.00003, 392)
+scale = Vector2(1.092114, 0.2772016)
+
+[node name="whitebox7" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="7" unique_id=2077498412 instance=ExtResource("2_nny5e")]
+position = Vector2(658, 315)
+scale = Vector2(1.092114, 0.2772016)
+
+[node name="whitebox8" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="8" unique_id=1939935992 instance=ExtResource("2_nny5e")]
+position = Vector2(864, 240)
+scale = Vector2(1.092114, 0.2772016)
+
+[node name="whitebox9" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="9" unique_id=1909922957 instance=ExtResource("2_nny5e")]
+position = Vector2(963.00006, 124.00001)
+scale = Vector2(1.092114, 0.2772016)
+
+[node name="whitebox4" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="10" unique_id=1102462177 instance=ExtResource("2_nny5e")]
+position = Vector2(1033.9999, 579.00006)
+scale = Vector2(1.092114, 0.2772016)
+
+[node name="spikes" type="Node2D" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="11" unique_id=1623385370]
+visible = false
+position = Vector2(480, 536)
+
+[node name="spike" parent="GameplayObjects/spikes" index="0" unique_id=2085507587 instance=ExtResource("3_h11rx")]
+position = Vector2(-97, 56)
+
+[node name="spike19" parent="GameplayObjects/spikes" index="1" unique_id=1653030791 instance=ExtResource("3_h11rx")]
+position = Vector2(-112, 56)
+
+[node name="spike18" parent="GameplayObjects/spikes" index="2" unique_id=828036339 instance=ExtResource("3_h11rx")]
+position = Vector2(-104, 56)
+
+[node name="spike2" parent="GameplayObjects/spikes" index="3" unique_id=1474177459 instance=ExtResource("3_h11rx")]
+position = Vector2(-88, 56)
+
+[node name="spike3" parent="GameplayObjects/spikes" index="4" unique_id=510343762 instance=ExtResource("3_h11rx")]
+position = Vector2(-79, 56)
+
+[node name="spike4" parent="GameplayObjects/spikes" index="5" unique_id=1374797406 instance=ExtResource("3_h11rx")]
+position = Vector2(-72, 56)
+
+[node name="spike5" parent="GameplayObjects/spikes" index="6" unique_id=1525784031 instance=ExtResource("3_h11rx")]
+position = Vector2(-64, 56)
+
+[node name="spike6" parent="GameplayObjects/spikes" index="7" unique_id=628477619 instance=ExtResource("3_h11rx")]
+position = Vector2(-56, 56)
+
+[node name="spike7" parent="GameplayObjects/spikes" index="8" unique_id=1916310838 instance=ExtResource("3_h11rx")]
+position = Vector2(-40, 56)
+
+[node name="spike8" parent="GameplayObjects/spikes" index="9" unique_id=317379405 instance=ExtResource("3_h11rx")]
+position = Vector2(-48, 56)
+
+[node name="spike9" parent="GameplayObjects/spikes" index="10" unique_id=1045340673 instance=ExtResource("3_h11rx")]
+position = Vector2(-32, 56)
+
+[node name="spike10" parent="GameplayObjects/spikes" index="11" unique_id=198916242 instance=ExtResource("3_h11rx")]
+position = Vector2(-24, 56)
+
+[node name="spike11" parent="GameplayObjects/spikes" index="12" unique_id=16538406 instance=ExtResource("3_h11rx")]
+position = Vector2(-16, 56)
+
+[node name="spike12" parent="GameplayObjects/spikes" index="13" unique_id=1303369947 instance=ExtResource("3_h11rx")]
+position = Vector2(-8, 56)
+
+[node name="spike13" parent="GameplayObjects/spikes" index="14" unique_id=1896866610 instance=ExtResource("3_h11rx")]
+position = Vector2(0, 56)
+
+[node name="spike14" parent="GameplayObjects/spikes" index="15" unique_id=356968362 instance=ExtResource("3_h11rx")]
+position = Vector2(8, 56)
+
+[node name="spike16" parent="GameplayObjects/spikes" index="16" unique_id=175761890 instance=ExtResource("3_h11rx")]
+position = Vector2(24, 56)
+
+[node name="spike17" parent="GameplayObjects/spikes" index="17" unique_id=687872139 instance=ExtResource("3_h11rx")]
+position = Vector2(32, 56)
+
+[node name="spike20" parent="GameplayObjects/spikes" index="18" unique_id=223418480 instance=ExtResource("3_h11rx")]
+position = Vector2(40, 56)
+
+[node name="spike21" parent="GameplayObjects/spikes" index="19" unique_id=876484386 instance=ExtResource("3_h11rx")]
+position = Vector2(48, 56)
+
+[node name="spike15" parent="GameplayObjects/spikes" index="20" unique_id=510592730 instance=ExtResource("3_h11rx")]
+position = Vector2(16, 56)
+
+[node name="spike22" parent="GameplayObjects/spikes" index="21" unique_id=161660403 instance=ExtResource("3_h11rx")]
+position = Vector2(56, 56)
+
+[node name="spike23" parent="GameplayObjects/spikes" index="22" unique_id=831028679 instance=ExtResource("3_h11rx")]
+position = Vector2(64, 56)
+
+[node name="spike24" parent="GameplayObjects/spikes" index="23" unique_id=443509465 instance=ExtResource("3_h11rx")]
+position = Vector2(72, 56)
+
+[node name="spike25" parent="GameplayObjects/spikes" index="24" unique_id=98702083 instance=ExtResource("3_h11rx")]
+position = Vector2(80, 56)
+
+[node name="spike26" parent="GameplayObjects/spikes" index="25" unique_id=567414312 instance=ExtResource("3_h11rx")]
+position = Vector2(88, 56)
+
+[node name="spike27" parent="GameplayObjects/spikes" index="26" unique_id=911197024 instance=ExtResource("3_h11rx")]
+position = Vector2(88, 56)
+
+[node name="spike28" parent="GameplayObjects/spikes" index="27" unique_id=925911953 instance=ExtResource("3_h11rx")]
+position = Vector2(88, 56)
+
+[node name="spike29" parent="GameplayObjects/spikes" index="28" unique_id=496759252 instance=ExtResource("3_h11rx")]
+position = Vector2(96, 56)
+
+[node name="spike30" parent="GameplayObjects/spikes" index="29" unique_id=787514569 instance=ExtResource("3_h11rx")]
+position = Vector2(120, 56)
+
+[node name="spike31" parent="GameplayObjects/spikes" index="30" unique_id=951817530 instance=ExtResource("3_h11rx")]
+position = Vector2(104, 56)
+
+[node name="spike32" parent="GameplayObjects/spikes" index="31" unique_id=354352252 instance=ExtResource("3_h11rx")]
+position = Vector2(112, 56)
+
+[node name="spike33" parent="GameplayObjects/spikes" index="32" unique_id=48905546 instance=ExtResource("3_h11rx")]
+position = Vector2(128, 56)
+
+[node name="spike34" parent="GameplayObjects/spikes" index="33" unique_id=717619784 instance=ExtResource("3_h11rx")]
+position = Vector2(136, 56)
+
+[node name="spike35" parent="GameplayObjects/spikes" index="34" unique_id=224100711 instance=ExtResource("3_h11rx")]
+position = Vector2(144, 56)
+
+[node name="spike36" parent="GameplayObjects/spikes" index="35" unique_id=469460272 instance=ExtResource("3_h11rx")]
+position = Vector2(152, 56)
+
+[node name="spike37" parent="GameplayObjects/spikes" index="36" unique_id=1885533531 instance=ExtResource("3_h11rx")]
+position = Vector2(160, 56)
+
+[node name="spike38" parent="GameplayObjects/spikes" index="37" unique_id=1954691140 instance=ExtResource("3_h11rx")]
+position = Vector2(168, 56)
+
+[node name="spike39" parent="GameplayObjects/spikes" index="38" unique_id=1453443373 instance=ExtResource("3_h11rx")]
+position = Vector2(176, 56)
+
+[node name="fireTrap" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="12" unique_id=1719191877 instance=ExtResource("5_a41wp")]
+position = Vector2(463.99997, 374)
+rotation = -1.5910195
+
+[node name="fireTrap2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="13" unique_id=652606082 instance=ExtResource("5_a41wp")]
+position = Vector2(655.99994, 296.99997)
+rotation = -1.5910195
+
+[node name="Projectile" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="14" unique_id=1438844990 instance=ExtResource("6_ssp0m")]
+position = Vector2(963, 549)
+
+[node name="RedirectPlatform" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="15" unique_id=2124323223 instance=ExtResource("7_cfa1q")]
+position = Vector2(1000, 547)
+
+[node name="RedirectPlatform2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="16" unique_id=337287701 instance=ExtResource("7_cfa1q")]
+position = Vector2(720, 285)
+
+[node name="RedirectPlatform3" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="17" unique_id=2013914756 instance=ExtResource("7_cfa1q")]
+position = Vector2(512, 285)
+
+[node name="RedirectPlatform4" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="18" unique_id=1335503046 instance=ExtResource("7_cfa1q")]
+visible = false
+position = Vector2(398, 362)
+
+[node name="Door" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="19" unique_id=828922808 instance=ExtResource("9_4b20l")]
+position = Vector2(432, 336)
+
+[node name="Botton" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="20" unique_id=488787370 instance=ExtResource("10_mynqx")]
+position = Vector2(396, 365)
+required_runes = Array[String](["R1", "R2"])
+
+[node name="Rune" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="21" unique_id=989459229 instance=ExtResource("11_kkync")]
+position = Vector2(144, 484)
+
+[node name="Rune2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="22" unique_id=1059721148 instance=ExtResource("11_kkync")]
+position = Vector2(350, 399)
+rune_id = "R2"
+
+[node name="Platforms" type="Node2D" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="23" unique_id=1566359423]
+
+[node name="FallingPlatform" parent="GameplayObjects/Platforms" index="0" unique_id=1113148676 instance=ExtResource("4_44g15")]
+position = Vector2(135, 512)
+
+[node name="FallingPlatform2" parent="GameplayObjects/Platforms" index="1" unique_id=805824792 instance=ExtResource("4_44g15")]
+position = Vector2(152, 512)
+
+[node name="FallingPlatform3" parent="GameplayObjects/Platforms" index="2" unique_id=212909240 instance=ExtResource("4_44g15")]
+position = Vector2(344, 424)
+
+[node name="FallingPlatform4" parent="GameplayObjects/Platforms" index="3" unique_id=409289165 instance=ExtResource("4_44g15")]
+position = Vector2(360, 424)
+
+[node name="FallingPlatform5" parent="GameplayObjects/Platforms" index="4" unique_id=633822824 instance=ExtResource("4_44g15")]
+position = Vector2(552, 336)
+
+[node name="FallingPlatform6" parent="GameplayObjects/Platforms" index="5" unique_id=323462099 instance=ExtResource("4_44g15")]
+position = Vector2(568, 336)
+
+[node name="FallingPlatform7" parent="GameplayObjects/Platforms" index="6" unique_id=1944949595 instance=ExtResource("4_44g15")]
+position = Vector2(744, 258)
+
+[node name="FallingPlatform8" parent="GameplayObjects/Platforms" index="7" unique_id=2002249390 instance=ExtResource("4_44g15")]
+position = Vector2(760, 258)
+
+[node name="EntryPoint" parent="." index="2" unique_id=520511750]
+position = Vector2(29, 550)
+
+[node name="ExitPoint" parent="." index="3" unique_id=1390435397]
+position = Vector2(991, 91)

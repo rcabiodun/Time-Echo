@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ceknxpt23rffs"]
+
+[ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_h7vu5"]
+[ext_resource type="PackedScene" uid="uid://jasgysmgxumm" path="res://scenes/redirect_platform.tscn" id="2_0r083"]
+[ext_resource type="PackedScene" uid="uid://djfqj2hshogsi" path="res://scenes/items/rune.tscn" id="2_j2wgg"]
+[ext_resource type="PackedScene" uid="uid://cjcuhri0os820" path="res://scenes/items/whitebox.tscn" id="2_xhro5"]
+[ext_resource type="PackedScene" uid="uid://tmbhhtpywnsg" path="res://scenes/items/projectile_reciever.tscn" id="4_aysfs"]
+[ext_resource type="PackedScene" uid="uid://c8ekdfe6k401n" path="res://scenes/items/projectile.tscn" id="5_j2wgg"]
+[ext_resource type="PackedScene" uid="uid://cwtveicm1756k" path="res://scenes/items/elevator_platformer.tscn" id="6_aysfs"]
+[ext_resource type="PackedScene" uid="uid://hfvk0mwy7guf" path="res://scenes/items/button.tscn" id="8_tfchs"]
+[ext_resource type="PackedScene" uid="uid://kkxnbercfl78" path="res://scenes/items/door.tscn" id="9_2jur8"]
+
+[node name="PuzzleRoom04" unique_id=117978645 instance=ExtResource("1_h7vu5")]
+difficulty = 3
+room_type = 1
+
+[node name="Rune" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="0" unique_id=989459229 instance=ExtResource("2_j2wgg")]
+position = Vector2(310, 351)
+
+[node name="RedirectPlatform" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="1" unique_id=720947439 instance=ExtResource("2_0r083")]
+position = Vector2(998, 573)
+
+[node name="whitebox4" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="4" unique_id=1507116138 instance=ExtResource("2_xhro5")]
+position = Vector2(491, 543)
+scale = Vector2(6, 0.148)
+
+[node name="whitebox6" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="5" unique_id=1272785113 instance=ExtResource("2_xhro5")]
+position = Vector2(758, 318)
+scale = Vector2(6, 0.148)
+
+[node name="whitebox5" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="6" unique_id=610249480 instance=ExtResource("2_xhro5")]
+position = Vector2(106.999985, 151)
+rotation = 1.5659974
+scale = Vector2(6, 0.148)
+
+[node name="ProjectileReciever" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="7" unique_id=1667104377 instance=ExtResource("4_aysfs")]
+position = Vector2(436, 524)
+
+[node name="Projectile" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="8" unique_id=389797872 instance=ExtResource("5_j2wgg")]
+position = Vector2(109, 587)
+
+[node name="RedirectPlatform2" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="9" unique_id=1096701709 instance=ExtResource("2_0r083")]
+position = Vector2(998, 524)
+
+[node name="ElevatorPlatformer" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="10" unique_id=2144573264 instance=ExtResource("6_aysfs")]
+position = Vector2(310, 534)
+
+[node name="Botton" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="11" unique_id=488787370 instance=ExtResource("8_tfchs")]
+position = Vector2(436, 298)
+
+[node name="Door" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="12" unique_id=828922808 instance=ExtResource("9_2jur8")]
+position = Vector2(653, 270)
+
+[node name="ExitPoint" parent="." index="3" unique_id=1390435397]
+position = Vector2(850, 281)

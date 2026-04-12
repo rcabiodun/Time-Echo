@@ -5,11 +5,23 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rnwtw"]
 size = Vector2(40, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06pqj"]
+size = Vector2(28, 15)
+
 [node name="ElevatorPlatformer" type="StaticBody2D" unique_id=2144573264 groups=["elevators"]]
-collision_layer = 512
-collision_mask = 2
+collision_layer = 1024
+collision_mask = 6
 script = ExtResource("1_06pqj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1164249856]
 shape = SubResource("RectangleShape2D_rnwtw")
 debug_color = Color(0.7680779, 0.11611114, 0.6388388, 0.41960785)
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=1926612653]
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=293073733]
+shape = SubResource("RectangleShape2D_06pqj")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]

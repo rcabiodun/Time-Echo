@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dp8nls6hk7ol0"]
+
+[ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_fblj1"]
+[ext_resource type="Script" uid="uid://7scouvnidl6l" path="res://scripts/rooms/tutorial_rooms.gd" id="2_gdrpi"]
+[ext_resource type="PackedScene" uid="uid://cjcuhri0os820" path="res://scenes/items/whitebox.tscn" id="3_a5cw1"]
+[ext_resource type="PackedScene" uid="uid://c3xkdelgrohx2" path="res://scenes/items/box.tscn" id="4_3bwra"]
+[ext_resource type="PackedScene" uid="uid://eeu1qu2frxeo" path="res://scenes/enemies/spike_group.tscn" id="5_ld35y"]
+
+[node name="TutorialRoom02" unique_id=117978645 instance=ExtResource("1_fblj1")]
+script = ExtResource("2_gdrpi")
+
+[node name="whitebox4" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="2" unique_id=1507116138 instance=ExtResource("3_a5cw1")]
+position = Vector2(512.05237, 560)
+scale = Vector2(2.9679317, -0.62500024)
+
+[node name="Box" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="3" unique_id=1333848643 instance=ExtResource("4_3bwra")]
+position = Vector2(288, 584)
+
+[node name="SpikeGroup" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="4" unique_id=854573875 instance=ExtResource("5_ld35y")]
+position = Vector2(427, 515)
+
+[node name="ExitPoint" parent="." index="3" unique_id=1390435397]
+position = Vector2(686, 495)

@@ -6,6 +6,7 @@ var music_bus_index: int
 #var player_around_interactable:bool=false
 var interactable_count: int = 0
 var player_around_interactable: bool = false
+#var current_level_generated_rooms : Array[PackedScene] = []
 signal recording_started
 signal recording_stopped
 

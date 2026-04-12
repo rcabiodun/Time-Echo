@@ -69,6 +69,7 @@ func _physics_process(delta):
 
 	# Normal gravity when not carried
 	if not being_carried:
+		#if this is  uuncommented the player will not be able stand on box while recording
 		if not Global.is_recording:
 			#print("here")
 			set_collision_layer_value(1, true)
@@ -99,7 +100,7 @@ func pick_up(carrier_node: Node2D):
 func drop():
 	print("Dropped box")
 	being_carried = false
-
+	
 	if not carrier:
 		return
 
@@ -107,7 +108,9 @@ func drop():
 	if carrier.is_in_group("echo"):
 		timeline_position = global_position
 	#else:
-		
+	#set_collision_layer_value(1, true)
+	
+	
 	# Tell the timeline component the interaction ended.
 	# Internally it decides whether to lock (player outside recording),
 	# stay free (player during recording), or confirm echo influence.

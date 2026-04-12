@@ -9,7 +9,7 @@ size = Vector2(24, 71)
 
 [node name="InvisbleFloor" type="StaticBody2D" unique_id=1966322708 groups=["invisible_floor"]]
 rotation = 1.5998119
-collision_layer = 512
+collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_f2f8v")
 

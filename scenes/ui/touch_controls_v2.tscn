@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://csxj8kielxn5y" path="res://assets/inputs/record.png" id="4_s8me4"]
 [ext_resource type="Texture2D" uid="uid://cajlk1axs24yn" path="res://assets/inputs/stop.png" id="5_u2p1m"]
 [ext_resource type="Texture2D" uid="uid://clh7ixjj30k31" path="res://assets/inputs/interact.png" id="6_qyg13"]
+[ext_resource type="Texture2D" uid="uid://ddx313f3eoi35" path="res://assets/inputs/camera.png" id="9_676gj"]
 
 [node name="Touch Control v2" type="HBoxContainer" unique_id=618610481]
 anchors_preset = 15
@@ -22,12 +23,6 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.27490094, 6.334007e-05, 0.9868743, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1318634376]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.5531579, 0, 0.13910279, 1)
 
 [node name="Control" type="Control" parent="." unique_id=1873460836]
 layout_mode = 2
@@ -67,6 +62,7 @@ size_flags_horizontal = 3
 
 [node name="control" type="Control" parent="Control3" unique_id=1250743013]
 layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
@@ -125,6 +121,63 @@ position = Vector2(0, -110)
 scale = Vector2(6.5, 6.5)
 texture_normal = ExtResource("6_qyg13")
 action = "interact"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control2" unique_id=395906668]
+custom_minimum_size = Vector2(350, 150)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -350.0
+offset_bottom = 150.0
+grow_horizontal = 0
+
+[node name="Control2" type="Control" parent="Control2/HBoxContainer2" unique_id=214980243]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="jump" type="TouchScreenButton" parent="Control2/HBoxContainer2/Control2" unique_id=179272685]
+visible = false
+scale = Vector2(6.5, 6.5)
+texture_normal = ExtResource("3_bwyrb")
+action = "jump"
+
+[node name="Control" type="Control" parent="Control2/HBoxContainer2" unique_id=1416418393]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="record" type="TouchScreenButton" parent="Control2/HBoxContainer2/Control" unique_id=1035957643]
+visible = false
+scale = Vector2(6.5, 6.5)
+texture_normal = ExtResource("4_s8me4")
+action = "start_recording"
+
+[node name="stop" type="TouchScreenButton" parent="Control2/HBoxContainer2/Control" unique_id=2122579105]
+visible = false
+scale = Vector2(6.5, 6.5)
+texture_normal = ExtResource("5_u2p1m")
+action = "stop_recording"
+
+[node name="interact" type="TouchScreenButton" parent="Control2/HBoxContainer2/Control" unique_id=1198426226]
+visible = false
+position = Vector2(0, -110)
+scale = Vector2(6.5, 6.5)
+texture_normal = ExtResource("6_qyg13")
+action = "interact"
+
+[node name="Control" type="Control" parent="Control2/HBoxContainer2/Control" unique_id=1910117694]
+layout_mode = 1
+anchor_left = 0.113
+anchor_top = 0.52
+anchor_right = 0.113
+anchor_bottom = 0.52
+grow_vertical = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Control2/HBoxContainer2/Control/Control" unique_id=1491167673]
+scale = Vector2(4.5, 4.5)
+texture_normal = ExtResource("9_676gj")
+action = "change_camera_zoom"
 
 [connection signal="pressed" from="Control/HBoxContainer/Control2/left" to="." method="_on_left_pressed"]
 [connection signal="released" from="Control/HBoxContainer/Control2/left" to="." method="_on_left_released"]

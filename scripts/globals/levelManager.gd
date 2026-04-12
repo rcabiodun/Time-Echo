@@ -22,7 +22,7 @@ var current_room_instance : Node = null
 var start_rooms : Array[PackedScene] = []
 var puzzle_rooms : Array[PackedScene] = []
 var hazard_rooms : Array[PackedScene] = []
-var transition_rooms : Array[PackedScene] = []
+#var transition_rooms : Array[PackedScene] = []
 var final_rooms : Array[PackedScene] = []
 
 var current_difficulty := 1
@@ -43,8 +43,15 @@ func _ready():
 		print("Debug overlay not found")
 	# Connect every button in the level to the level manager
 	
-	load_room_pools()
-	generate_level()
+	#commented out for testing levels one by one
+	generated_rooms=[
+		preload("res://scenes/rooms/tutorials/tutorial_room_01.tscn"),
+		
+		#preload("res://scenes/rooms/start/start_room_02.tscn"),
+		#preload("res://scenes/rooms/final/exit_room.tscn")
+	]
+	#load_room_pools()
+	#generate_level()
 
 	current_room_index = 0
 	load_room(generated_rooms[0])
@@ -244,9 +251,10 @@ func load_room_pools():
 		preload("res://scenes/rooms/hazard/spikes_room_01.tscn")
 	]
 
-	transition_rooms = [
-		preload("res://scenes/rooms/transition/corridor_room.tscn")
-	]
+	#transition_rooms = [
+		##preload("res://scenes/rooms/transition/corridor_room.tscn")
+		#preload("res://scenes/rooms/hazard/spikes_room_01.tscn")
+	#]
 
 	final_rooms = [
 		preload("res://scenes/rooms/final/exit_room.tscn")
@@ -337,7 +345,7 @@ func get_opposite(dir):
 func get_valid_room(required_entry_direction):
 
 	# Combine all candidate room pools
-	var all_rooms = puzzle_rooms + hazard_rooms + transition_rooms
+	var all_rooms = puzzle_rooms + hazard_rooms 
 
 	# Shuffle for randomness so we don’t always pick the same rooms
 	all_rooms.shuffle()
