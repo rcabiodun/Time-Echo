@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ddx313f3eoi35" path="res://assets/inputs/camera.png" id="9_676gj"]
 
 [node name="Touch Control v2" type="HBoxContainer" unique_id=618610481]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

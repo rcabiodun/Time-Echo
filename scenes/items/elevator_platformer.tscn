@@ -1,12 +1,35 @@
 [gd_scene format=3 uid="uid://cwtveicm1756k"]
 
 [ext_resource type="Script" uid="uid://17vegxnehout" path="res://scripts/items/elevator_platfomer.gd" id="1_06pqj"]
+[ext_resource type="Texture2D" uid="uid://bjqs332mhp5rp" path="res://assets/interactables/platform_moving.png" id="2_rnwtw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rnwtw"]
 size = Vector2(40, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06pqj"]
 size = Vector2(28, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veuns"]
+atlas = ExtResource("2_rnwtw")
+region = Rect2(192, 76, 48, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixwfd"]
+atlas = ExtResource("2_rnwtw")
+region = Rect2(96, 76, 48, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0bf4n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veuns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixwfd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="ElevatorPlatformer" type="StaticBody2D" unique_id=2144573264 groups=["elevators"]]
 collision_layer = 1024
@@ -22,6 +45,11 @@ collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=293073733]
 shape = SubResource("RectangleShape2D_06pqj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1058926960]
+position = Vector2(8, 4)
+scale = Vector2(1.2889247, 1.0511204)
+sprite_frames = SubResource("SpriteFrames_0bf4n")
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]

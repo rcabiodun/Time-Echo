@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var canvas_modulate: CanvasModulate = $"../CanvasModulate"
+@onready var canvas_modulate: CanvasModulate = $"../CanvasModulate"#this darken scene while recording
 var canvas_tween : Tween
 
 # ✅ Distortion Shader
@@ -45,10 +45,12 @@ func _ready():
 	
 	#commented out for testing levels one by one
 	generated_rooms=[
-		preload("res://scenes/rooms/tutorials/tutorial_room_01.tscn"),
 		
-		#preload("res://scenes/rooms/start/start_room_02.tscn"),
-		#preload("res://scenes/rooms/final/exit_room.tscn")
+		
+		preload("res://scenes/rooms/puzzle/puzzle_room_01.tscn"),
+		
+		
+		preload("res://scenes/rooms/puzzle/puzzle_room_02.tscn")
 	]
 	#load_room_pools()
 	#generate_level()
@@ -102,26 +104,26 @@ func darken_scene():
 	if canvas_tween:
 		canvas_tween.kill()
 	
-	canvas_tween = create_tween()
-	canvas_tween.tween_property(
-		canvas_modulate,
-		"color",
-		Color(0.4, 0.4, 0.5, 1),
-		0.8
-	)
+	#canvas_tween = create_tween()
+	#canvas_tween.tween_property(
+		#canvas_modulate,
+		#"color",
+		#Color(0.4, 0.4, 0.5, 1),
+		#0.8
+	#)
 
 
 func restore_scene():
 	if canvas_tween:
 		canvas_tween.kill()
 	
-	canvas_tween = create_tween()
-	canvas_tween.tween_property(
-		canvas_modulate,
-		"color",
-		Color(1, 1, 1, 1),
-		0.8
-	)
+	#canvas_tween = create_tween()
+	#canvas_tween.tween_property(
+		#canvas_modulate,
+		#"color",
+		#Color(1, 1, 1, 1),
+		#0.8
+	#)
 
 
 # =========================
@@ -202,37 +204,59 @@ func request_room_change(exit_direction):
 	DeathManager.trigger_room_transition(func():
 		await load_room(next_room)
 	)
+#
+#func load_room(room_scene: PackedScene):
+	##DeathManager.trigger_room_transition_fade()
+	## Remove the current room if it exists
+	#if current_room_instance:
+		#current_room_instance.queue_free()
+#
+	## Create and add the new room to the scene
+	#current_room_instance = room_scene.instantiate()
+	#$"../Rooms".add_child(current_room_instance)
+#
+	## Wait one frame so the room fully initializes (_ready runs, onready vars are valid)
+	#await get_tree().process_frame 
+#
+	## Get the entry position from the new room and place the player there
+	#var entry_pos = current_room_instance.get_entry_position()
+	#$"../Player".global_position = entry_pos
+#
+	## (Optional) Camera limits can be set here per room
+	#for button in get_tree().get_nodes_in_group("buttons"):
+		#button.connect("button_state_changed", _on_button_state_changed)
+		##button.connect("button_state_changed", _on_button_state_changed)
+		##button.connect("button")
+	#
+	#for project_receiver in get_tree().get_nodes_in_group("projectile_receiver"):
+		#print("found 123")
+		#project_receiver.connect("projectile_receiver_activated", _on_projectile_receiver_activation)
+	#
+	#
+	#
 
 func load_room(room_scene: PackedScene):
-	#DeathManager.trigger_room_transition_fade()
-	# Remove the current room if it exists
 	if current_room_instance:
 		current_room_instance.queue_free()
 
-	# Create and add the new room to the scene
 	current_room_instance = room_scene.instantiate()
 	$"../Rooms".add_child(current_room_instance)
+	
+	await get_tree().process_frame
 
-	# Wait one frame so the room fully initializes (_ready runs, onready vars are valid)
-	await get_tree().process_frame 
-
-	# Get the entry position from the new room and place the player there
 	var entry_pos = current_room_instance.get_entry_position()
 	$"../Player".global_position = entry_pos
 
-	# (Optional) Camera limits can be set here per room
+	# ✅ Wait one more frame AFTER placing the player so any
+	# overlapping portal signals fire and are ignored before we revive
+	await get_tree().process_frame
+	$"../Player".revive()
+
 	for button in get_tree().get_nodes_in_group("buttons"):
 		button.connect("button_state_changed", _on_button_state_changed)
-		#button.connect("button_state_changed", _on_button_state_changed)
-		#button.connect("button")
-	
 	for project_receiver in get_tree().get_nodes_in_group("projectile_receiver"):
 		print("found 123")
-		project_receiver.connect("projectile_receiver_activated", _on_projectile_receiver_activation)
-	
-	
-	
-	
+		project_receiver.connect("projectile_receiver_activated", _on_projectile_receiver_activation)	
 
 func load_room_pools():
 

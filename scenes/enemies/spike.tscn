@@ -2,14 +2,103 @@
 
 [ext_resource type="Texture2D" uid="uid://cgqshqq0jdy3a" path="res://assets/interactables/spike.png" id="1_akaju"]
 [ext_resource type="Script" uid="uid://ffhnst3anock" path="res://scripts/enemies/spike.gd" id="1_vqj0v"]
+[ext_resource type="Texture2D" uid="uid://duuihcfgr7vmh" path="res://assets/Traps/laser_spikes_idle.png" id="3_6i825"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_akaju"]
-points = PackedVector2Array(5.2915487, 4.1089034, 0, -2.0544517, -5.2915487, 4.1089034, 0, 3.0816774)
+points = PackedVector2Array(8.099515, 0, -9.256589, 0, -13.074117, 3.8561459, 0, 3.8561459, 14.941848, 3.8561459)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek2mk"]
+atlas = ExtResource("3_6i825")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2lt3"]
+atlas = ExtResource("3_6i825")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbaat"]
+atlas = ExtResource("3_6i825")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ldrw"]
+atlas = ExtResource("3_6i825")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8po6"]
+atlas = ExtResource("3_6i825")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6utc"]
+atlas = ExtResource("3_6i825")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2u7o"]
+atlas = ExtResource("3_6i825")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7jb3"]
+atlas = ExtResource("3_6i825")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ud07"]
+atlas = ExtResource("3_6i825")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b3jt"]
+atlas = ExtResource("3_6i825")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dcwo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek2mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2lt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbaat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ldrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8po6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6utc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2u7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7jb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ud07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b3jt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 15.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_jhxq4"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6i825"]
+gradient = SubResource("Gradient_jhxq4")
+fill = 1
+fill_from = Vector2(0.508547, 0.51282054)
+fill_to = Vector2(0.7222222, 0.32905984)
 
 [node name="spike" type="StaticBody2D" unique_id=2085507587]
 script = ExtResource("1_vqj0v")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1717026946]
+visible = false
 scale = Vector2(0.43377894, 0.42403927)
 texture = ExtResource("1_akaju")
 hframes = 4
@@ -28,8 +117,21 @@ collision_layer = 256
 collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1680033018]
+position = Vector2(0, -1)
 scale = Vector2(0.8642492, 1.191546)
 shape = SubResource("ConvexPolygonShape2D_akaju")
 debug_color = Color(0.9851293, 0, 0.34140548, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=744727592]
+position = Vector2(0, -2)
+scale = Vector2(0.63211644, 0.4947387)
+sprite_frames = SubResource("SpriteFrames_0dcwo")
+animation = &"idle"
+frame = 9
+frame_progress = 0.28621286
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=426690001]
+color = Color(0.6382, 0, 0.03412427, 1)
+texture = SubResource("GradientTexture2D_6i825")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

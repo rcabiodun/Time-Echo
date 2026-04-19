@@ -15,11 +15,12 @@ func _ready() -> void:
 	animated_sprite_2d.play("offline")
 	#hit_particles.restart()
 func _on_body_entered(body: Node2D) -> void:
-
+	
 	if body.is_in_group("echo"):
 		#hit_particles.restart()
 		var id = body.echo_id
 		if id not in activated_by_echo_ids:
+			Input.vibrate_handheld(200) 
 			activated_by_echo_ids.append(id)
 			print("Rune ", rune_id, " activated by echo ", id)
 			sfx_rune_hit.pitch_scale=randf_range(0.2, 1.0)
@@ -30,6 +31,7 @@ func _on_body_entered(body: Node2D) -> void:
 			#for door in get_tree().get_nodes_in_group("doors"):
 				#door._check_runes_now(id)
 	elif body.is_in_group("player") and Global.is_recording:
+		Input.vibrate_handheld(200) 
 		hit_particles.restart()
 		if rune_hit_light.enabled:
 			rune_hit_light.enabled=false

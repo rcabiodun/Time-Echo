@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cergo2cw5e24d" path="res://scenes/characters/player.tscn" id="5_p5320"]
 [ext_resource type="PackedScene" uid="uid://65ib2e64r4xx" path="res://scenes/debug_overlay.tscn" id="6_p5320"]
 
+[sub_resource type="Environment" id="Environment_tjjf8"]
+glow_enabled = true
+glow_intensity = 5.0
+glow_blend_mode = 2
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p5320"]
 shader = ExtResource("2_n0gwv")
 shader_parameter/strength = 0.0
@@ -13,6 +18,9 @@ shader_parameter/speed = 1.5
 shader_parameter/frequency = 10.0
 
 [node name="Level_Proc" type="Node2D" unique_id=939019227]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=134307938]
+environment = SubResource("Environment_tjjf8")
 
 [node name="DebugOverlay" parent="." unique_id=1890049828 instance=ExtResource("6_p5320")]
 visible = false
@@ -25,6 +33,7 @@ visible = false
 position = Vector2(3, 0)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=559595165]
+color = Color(0.26842234, 0.26862806, 0.3793395, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=880252906]
 

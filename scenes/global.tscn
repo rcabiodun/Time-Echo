@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://bosvhe11tbikm" path="res://scripts/globals/global.gd" id="1_nmxvb"]
 [ext_resource type="AudioStream" uid="uid://deq56qcnf4t0m" path="res://assets/audio/game bg music.mp3" id="2_nmxvb"]
 
-[node name="Global" type="Node2D"]
+[node name="Global" type="Node2D" unique_id=1313188184]
 script = ExtResource("1_nmxvb")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2140231354]
 stream = ExtResource("2_nmxvb")
 volume_db = -18.0
 autoplay = true

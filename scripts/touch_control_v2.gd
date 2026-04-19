@@ -95,4 +95,6 @@ func _on_interact_released() -> void:
 
 func _on_touch_screen_button_pressed() -> void:
 	#pass # Replace with function body.
+	if Global.is_recording:
+		Input.action_press("stop_recording") 
 	DeathManager.trigger_death_freeze_and_fade()

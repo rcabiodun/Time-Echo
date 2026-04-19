@@ -20,7 +20,7 @@ var facing_direction: float = 1.0
 # ===============================
 # 🎭 ANIMATION
 # ===============================
-@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D2
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D3
 
 var was_carrying_last_frame := false
 var was_on_floor: bool = false
@@ -253,7 +253,7 @@ func update_animation() -> void:
 # ===============================
 func apply_flip() -> void:
 	anim_sprite.flip_h = facing_direction < 0
-	anim_sprite.offset = Vector2(-20, 0) if anim_sprite.flip_h else Vector2(0, 0)
+	#anim_sprite.offset = Vector2(-20, 0) if anim_sprite.flip_h else Vector2(0, 0)
 
 # ===============================
 # 👻 UPDATE GHOST TRAIL

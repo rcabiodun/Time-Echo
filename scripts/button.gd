@@ -14,10 +14,18 @@ var is_pressed := false
 @onready var rune_requirement = $RuneRequirement
 @export var reject_material: ShaderMaterial
 @export var glow_material: ShaderMaterial
-@onready var sprite = $Sprite2D # or whatever renders your button
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var reject_sound: AudioStreamPlayer2D = $RejectSound
+@onready var idle_sound: AudioStreamPlayer2D = $IdleSound
+@onready var success_sound: AudioStreamPlayer2D = $SuccessSound
+
+
+#@onready var sprite = $Sprite2D # or whatever renders your button
 var reject_tween: Tween
 var glow_tween: Tween
 var _required_runes: Array[String] = []
+
+
 @export var required_runes: Array[String]:
 	set(value):
 		_required_runes = value
@@ -25,18 +33,34 @@ var _required_runes: Array[String] = []
 		if is_instance_valid(rune_requirement):
 			rune_requirement.required_runes = value
 	get:
-		# If RuneRequirement exists and has a value, return that; else return backing
+		# If RuneRequirement exists and has a valrejectedue, return that; else return backing
 		if is_instance_valid(rune_requirement) and rune_requirement.required_runes.size() > 0:
 			return rune_requirement.required_runes
 		return _required_runes
 
+#func _ready():
+	## Propagate inspector values manually at runtime to ensure RuneRequirement has them
+	#rune_requirement.required_runes = _required_runes
+	#sprite.play("idle")
+	#idle_sound.play()
+	#print("Button backing _required_runes:", _required_runes)
+	#print("Button property required_runes:", required_runes)
+	#print("Button required_runes:", rune_requirement.required_runes)
+	#
 func _ready():
-	# Propagate inspector values manually at runtime to ensure RuneRequirement has them
+	# Force loop on the stream resource
+	
+
+	sprite.play("idle")
+	#idle_sound.play()
+	#_play_sound(idle_)
 	rune_requirement.required_runes = _required_runes
+	#sprite.play("idle")
+	#idle_sound.play()
 	print("Button backing _required_runes:", _required_runes)
 	print("Button property required_runes:", required_runes)
 	print("Button required_runes:", rune_requirement.required_runes)
-
+	
 func _on_body_entered(body: Node2D) -> void:
 	var correct_activator = false
 	if allowed_activator == ALLOWEDACTIVATORS.ECHO:
@@ -46,6 +70,8 @@ func _on_body_entered(body: Node2D) -> void:
 			is_pressed = true
 			print("Emmitting byutton signal with echo id" + str(body.echo_id))
 			button_state_changed.emit({"door_id":door_id,"invisible_floor_id":invisible_floor_id}, is_pressed, body.echo_id)
+		elif body.is_in_group("echo") and not rune_requirement.are_required_runes_active_for_echo(body.echo_id):
+			print("ACtivator has disappeared")
 	elif allowed_activator == ALLOWEDACTIVATORS.PLAYER:
 		if body.is_in_group("player"):
 			correct_activator = true
@@ -56,9 +82,15 @@ func _on_body_entered(body: Node2D) -> void:
 			button_state_changed.emit({"door_id":door_id,"invisible_floor_id":invisible_floor_id}, is_pressed)
 	
 	if not correct_activator and not is_pressed:
+		#reject_sound.play()i
+		sprite.play("rejected")
 		# Wrong activator → spark / reject!
-		play_reject_effect()
+		_play_sound(reject_sound)
 	else:
+		_play_sound(idle_sound)
+		
+		sprite.play("accepted")
+		
 		play_success_glow()
 
 func play_success_glow():
@@ -98,14 +130,22 @@ func play_reject_effect(duration := 0.6):
 	)
 
 func _on_body_exited(body: Node2D) -> void:
+	sprite.play("idle")
+	#if not idle_sound.is_playing():
+		#idle_sound.play()
 	if allowed_activator == ALLOWEDACTIVATORS.ECHO:
 		if body.is_in_group("echo") and is_pressed:
 			is_pressed = false
 			button_state_changed.emit({"door_id":door_id,"invisible_floor_id":invisible_floor_id}, is_pressed)
+			sprite.play("idle")
 			_fade_out_glow()
+			_play_sound(success_sound)
+			print("Activator has disappearead")
 	elif allowed_activator == ALLOWEDACTIVATORS.PLAYER:
 		if body.is_in_group("player") and is_pressed:
 			is_pressed = false
+			sprite.play("idle")
+			
 			button_state_changed.emit({"door_id":door_id,"invisible_floor_id":invisible_floor_id}, is_pressed)
 			_fade_out_glow()
 
@@ -131,3 +171,12 @@ func _fade_out_glow():
 		# Alternative if you have a specific original material:
 		# sprite.material = preload("res://your_original_material.tres")
 	)
+
+
+func _play_sound(sound: AudioStreamPlayer2D):
+	# Stop all non-idle sounds before playing a new one
+	for s in [reject_sound, idle_sound, success_sound]:
+		if s != sound and s.is_playing():
+			s.stop()
+	if not sound.is_playing():
+		sound.play()

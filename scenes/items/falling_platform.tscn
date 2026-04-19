@@ -2,9 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dved4cb3yvdn7" path="res://assets/interactables/Goldenchest open version.png" id="1_5ka7y"]
 [ext_resource type="Script" uid="uid://bxkpsml2qrhej" path="res://scripts/items/falling_platform.gd" id="1_tx8lw"]
+[ext_resource type="Texture2D" uid="uid://jl2uidvaj12u" path="res://assets/Traps/Individual_PNGs/wall_blades/tile001.png" id="3_unyhp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx8lw"]
-size = Vector2(20, 20.41254)
+size = Vector2(20, 11.134113)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unyhp"]
 size = Vector2(12.879155, 3.0445917)
@@ -17,13 +18,20 @@ script = ExtResource("1_tx8lw")
 fall_delay = 0.139
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1900834714]
-position = Vector2(0, 3.4999998)
+position = Vector2(0, 1.0000002)
 scale = Vector2(0.55630124, 0.53888434)
 shape = SubResource("RectangleShape2D_tx8lw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=91024709]
+visible = false
 scale = Vector2(0.8375258, 0.5847859)
 texture = ExtResource("1_5ka7y")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1795396113]
+position = Vector2(1.1641532e-10, 1)
+rotation = 1.5691789
+scale = Vector2(0.77005064, 0.4367323)
+texture = ExtResource("3_unyhp")
 
 [node name="TopDetector" type="Area2D" parent="." unique_id=1606830143]
 collision_layer = 1024

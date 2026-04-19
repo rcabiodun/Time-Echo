@@ -6,14 +6,11 @@
 
 [node name="spike" parent="." unique_id=2085507587 instance=ExtResource("1_fdi40")]
 
-[node name="spike2" parent="." unique_id=841827701 instance=ExtResource("1_fdi40")]
-position = Vector2(8, 0)
+[node name="spike2" parent="." unique_id=445500961 instance=ExtResource("1_fdi40")]
+position = Vector2(21, 0)
 
-[node name="spike3" parent="." unique_id=202218413 instance=ExtResource("1_fdi40")]
-position = Vector2(16, 0)
+[node name="spike3" parent="." unique_id=2106157477 instance=ExtResource("1_fdi40")]
+position = Vector2(42, 0)
 
-[node name="spike4" parent="." unique_id=1190302637 instance=ExtResource("1_fdi40")]
-position = Vector2(24, 0)
-
-[node name="spike5" parent="." unique_id=1098684145 instance=ExtResource("1_fdi40")]
-position = Vector2(32, 0)
+[node name="spike4" parent="." unique_id=258708744 instance=ExtResource("1_fdi40")]
+position = Vector2(63, 0)

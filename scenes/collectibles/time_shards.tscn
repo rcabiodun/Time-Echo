@@ -60,6 +60,15 @@ radius = 5.3851647
 [sub_resource type="CircleShape2D" id="CircleShape2D_y7mtp"]
 radius = 8.0
 
+[sub_resource type="Gradient" id="Gradient_jrpty"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8b2lf"]
+gradient = SubResource("Gradient_jrpty")
+fill = 1
+fill_from = Vector2(0.508547, 0.51282054)
+fill_to = Vector2(0.77350426, 0.22649573)
+
 [node name="TimeShards" type="StaticBody2D" unique_id=1659941073]
 collision_layer = 0
 collision_mask = 0
@@ -87,5 +96,10 @@ stream = ExtResource("3_8b2lf")
 volume_db = -11.0
 pitch_scale = 0.69
 bus = &"SFX"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1144031646]
+color = Color(0.19215687, 0.38039216, 0.28235295, 1)
+energy = 1.2
+texture = SubResource("GradientTexture2D_8b2lf")
 
 [connection signal="body_entered" from="CollectionArea" to="." method="_on_collection_area_body_entered"]

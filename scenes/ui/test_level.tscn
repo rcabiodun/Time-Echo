@@ -530,6 +530,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
 [node name="ParallaxBG" parent="." unique_id=544752583 instance=ExtResource("1_paw1w")]
+position = Vector2(1, 0)
 
 [node name="Echoes" type="Node2D" parent="." unique_id=418654022]
 
@@ -621,7 +622,7 @@ position = Vector2(510.00006, 428)
 rotation = -1.576521
 
 [node name="TimeShards3" parent="." unique_id=972184350 instance=ExtResource("5_os83q")]
-position = Vector2(1731, 524)
+position = Vector2(1732, 524)
 rotation = -1.576521
 
 [connection signal="create_echo" from="Player" to="." method="_on_player_create_echo"]

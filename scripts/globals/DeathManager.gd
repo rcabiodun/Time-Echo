@@ -20,12 +20,14 @@ func trigger_death_freeze_and_fade() -> void:
 	var fade_rect = get_tree().get_first_node_in_group("fade_rect")
 	
 	if fade_rect:
+		print(fade_rect.name)
 		var tween = create_tween()
 		tween.tween_property(fade_rect, "color:a", 1.0, fade_duration)\
 			.set_ease(Tween.EASE_IN)\
 			.set_trans(Tween.TRANS_LINEAR)
 		await tween.finished
-	
+	else:
+		print("No fade rect detected")
 	# 3. Restart
 	get_tree().reload_current_scene()
 	

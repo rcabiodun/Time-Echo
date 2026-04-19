@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://olirgtst8inx" path="res://scenes/rooms/base/base_room.tscn" id="1_dvb0r"]
 [ext_resource type="PackedScene" uid="uid://cjcuhri0os820" path="res://scenes/items/whitebox.tscn" id="2_phtrd"]
+[ext_resource type="PackedScene" uid="uid://eeu1qu2frxeo" path="res://scenes/enemies/spike_group.tscn" id="3_ermhv"]
 [ext_resource type="PackedScene" uid="uid://cewglp8ef37v" path="res://scenes/items/falling_platform.tscn" id="3_kqrvd"]
-[ext_resource type="PackedScene" uid="uid://dd81qu2tay7go" path="res://scenes/enemies/spike.tscn" id="4_phtrd"]
 [ext_resource type="PackedScene" uid="uid://djfqj2hshogsi" path="res://scenes/items/rune.tscn" id="5_ermhv"]
 [ext_resource type="PackedScene" uid="uid://hfvk0mwy7guf" path="res://scenes/items/button.tscn" id="6_jfehg"]
 [ext_resource type="PackedScene" uid="uid://kkxnbercfl78" path="res://scenes/items/door.tscn" id="7_oqkt2"]
@@ -28,122 +28,14 @@ scale = Vector2(1.092114, 0.14815296)
 [node name="spikes" type="Node2D" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="5" unique_id=1496918767]
 position = Vector2(480, 536)
 
-[node name="spike" parent="GameplayObjects/spikes" index="0" unique_id=2085507587 instance=ExtResource("4_phtrd")]
-position = Vector2(-97, 56)
-
-[node name="spike19" parent="GameplayObjects/spikes" index="1" unique_id=112214525 instance=ExtResource("4_phtrd")]
-position = Vector2(-112, 56)
-
-[node name="spike18" parent="GameplayObjects/spikes" index="2" unique_id=1292531161 instance=ExtResource("4_phtrd")]
+[node name="SpikeGroup" parent="GameplayObjects/spikes" index="0" unique_id=854573875 instance=ExtResource("3_ermhv")]
 position = Vector2(-104, 56)
 
-[node name="spike2" parent="GameplayObjects/spikes" index="3" unique_id=1880461882 instance=ExtResource("4_phtrd")]
-position = Vector2(-88, 56)
-
-[node name="spike3" parent="GameplayObjects/spikes" index="4" unique_id=222258510 instance=ExtResource("4_phtrd")]
-position = Vector2(-79, 56)
-
-[node name="spike4" parent="GameplayObjects/spikes" index="5" unique_id=1089649258 instance=ExtResource("4_phtrd")]
-position = Vector2(-72, 56)
-
-[node name="spike5" parent="GameplayObjects/spikes" index="6" unique_id=759372477 instance=ExtResource("4_phtrd")]
-position = Vector2(-64, 56)
-
-[node name="spike6" parent="GameplayObjects/spikes" index="7" unique_id=253041954 instance=ExtResource("4_phtrd")]
-position = Vector2(-56, 56)
-
-[node name="spike7" parent="GameplayObjects/spikes" index="8" unique_id=1848919896 instance=ExtResource("4_phtrd")]
-position = Vector2(-40, 56)
-
-[node name="spike8" parent="GameplayObjects/spikes" index="9" unique_id=1744410023 instance=ExtResource("4_phtrd")]
-position = Vector2(-48, 56)
-
-[node name="spike9" parent="GameplayObjects/spikes" index="10" unique_id=36663243 instance=ExtResource("4_phtrd")]
-position = Vector2(-32, 56)
-
-[node name="spike10" parent="GameplayObjects/spikes" index="11" unique_id=1608119523 instance=ExtResource("4_phtrd")]
-position = Vector2(-24, 56)
-
-[node name="spike11" parent="GameplayObjects/spikes" index="12" unique_id=366117222 instance=ExtResource("4_phtrd")]
+[node name="SpikeGroup2" parent="GameplayObjects/spikes" index="1" unique_id=195399743 instance=ExtResource("3_ermhv")]
 position = Vector2(-16, 56)
 
-[node name="spike12" parent="GameplayObjects/spikes" index="13" unique_id=1808449165 instance=ExtResource("4_phtrd")]
-position = Vector2(-8, 56)
-
-[node name="spike13" parent="GameplayObjects/spikes" index="14" unique_id=1211679279 instance=ExtResource("4_phtrd")]
-position = Vector2(0, 56)
-
-[node name="spike14" parent="GameplayObjects/spikes" index="15" unique_id=237186828 instance=ExtResource("4_phtrd")]
-position = Vector2(8, 56)
-
-[node name="spike16" parent="GameplayObjects/spikes" index="16" unique_id=1006794584 instance=ExtResource("4_phtrd")]
-position = Vector2(24, 56)
-
-[node name="spike17" parent="GameplayObjects/spikes" index="17" unique_id=1340472042 instance=ExtResource("4_phtrd")]
-position = Vector2(32, 56)
-
-[node name="spike20" parent="GameplayObjects/spikes" index="18" unique_id=258748759 instance=ExtResource("4_phtrd")]
-position = Vector2(40, 56)
-
-[node name="spike21" parent="GameplayObjects/spikes" index="19" unique_id=1749561374 instance=ExtResource("4_phtrd")]
-position = Vector2(48, 56)
-
-[node name="spike15" parent="GameplayObjects/spikes" index="20" unique_id=728818011 instance=ExtResource("4_phtrd")]
-position = Vector2(16, 56)
-
-[node name="spike22" parent="GameplayObjects/spikes" index="21" unique_id=616642535 instance=ExtResource("4_phtrd")]
-position = Vector2(56, 56)
-
-[node name="spike23" parent="GameplayObjects/spikes" index="22" unique_id=1486791692 instance=ExtResource("4_phtrd")]
-position = Vector2(64, 56)
-
-[node name="spike24" parent="GameplayObjects/spikes" index="23" unique_id=1492086046 instance=ExtResource("4_phtrd")]
+[node name="SpikeGroup3" parent="GameplayObjects/spikes" index="2" unique_id=2020408117 instance=ExtResource("3_ermhv")]
 position = Vector2(72, 56)
-
-[node name="spike25" parent="GameplayObjects/spikes" index="24" unique_id=1926180322 instance=ExtResource("4_phtrd")]
-position = Vector2(80, 56)
-
-[node name="spike26" parent="GameplayObjects/spikes" index="25" unique_id=679162533 instance=ExtResource("4_phtrd")]
-position = Vector2(88, 56)
-
-[node name="spike27" parent="GameplayObjects/spikes" index="26" unique_id=296824813 instance=ExtResource("4_phtrd")]
-position = Vector2(88, 56)
-
-[node name="spike28" parent="GameplayObjects/spikes" index="27" unique_id=1560159788 instance=ExtResource("4_phtrd")]
-position = Vector2(88, 56)
-
-[node name="spike29" parent="GameplayObjects/spikes" index="28" unique_id=730450615 instance=ExtResource("4_phtrd")]
-position = Vector2(96, 56)
-
-[node name="spike30" parent="GameplayObjects/spikes" index="29" unique_id=497381004 instance=ExtResource("4_phtrd")]
-position = Vector2(120, 56)
-
-[node name="spike31" parent="GameplayObjects/spikes" index="30" unique_id=1641970779 instance=ExtResource("4_phtrd")]
-position = Vector2(104, 56)
-
-[node name="spike32" parent="GameplayObjects/spikes" index="31" unique_id=50435776 instance=ExtResource("4_phtrd")]
-position = Vector2(112, 56)
-
-[node name="spike33" parent="GameplayObjects/spikes" index="32" unique_id=1379680694 instance=ExtResource("4_phtrd")]
-position = Vector2(128, 56)
-
-[node name="spike34" parent="GameplayObjects/spikes" index="33" unique_id=1736567025 instance=ExtResource("4_phtrd")]
-position = Vector2(136, 56)
-
-[node name="spike35" parent="GameplayObjects/spikes" index="34" unique_id=738750130 instance=ExtResource("4_phtrd")]
-position = Vector2(144, 56)
-
-[node name="spike36" parent="GameplayObjects/spikes" index="35" unique_id=2032897255 instance=ExtResource("4_phtrd")]
-position = Vector2(152, 56)
-
-[node name="spike37" parent="GameplayObjects/spikes" index="36" unique_id=302684058 instance=ExtResource("4_phtrd")]
-position = Vector2(160, 56)
-
-[node name="spike38" parent="GameplayObjects/spikes" index="37" unique_id=1528926838 instance=ExtResource("4_phtrd")]
-position = Vector2(168, 56)
-
-[node name="spike39" parent="GameplayObjects/spikes" index="38" unique_id=1364673442 instance=ExtResource("4_phtrd")]
-position = Vector2(176, 56)
 
 [node name="falling" type="Node2D" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="6" unique_id=1365211830]
 
@@ -209,5 +101,5 @@ position = Vector2(980, 480)
 [node name="TimeShards" parent="GameplayObjects" parent_id_path=PackedInt32Array(1101390512) index="11" unique_id=1659941073 instance=ExtResource("8_sbr13")]
 position = Vector2(491, 520)
 
-[node name="ExitPoint" parent="." index="3" unique_id=1390435397]
+[node name="ExitPoint" parent="StaticBody2D" parent_id_path=PackedInt32Array(1072382737) index="0" unique_id=1390435397]
 position = Vector2(1061, 498)
