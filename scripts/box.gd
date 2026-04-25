@@ -11,6 +11,13 @@ var timeline_position: Vector2
 # When recording stops we revert here so the echo replays from the correct state.
 var pre_recording_position: Vector2
 
+# NEW: Has an echo ever dropped this box at a location?
+# Once true, the box's position becomes permanent world state.
+var echo_confirmed_position := false
+
+# NEW: Did the player actually move this box during the last recording?
+var was_moved_during_recording := false
+
 # ===============================
 # 📦 CARRY SYSTEM
 # ===============================
@@ -36,8 +43,8 @@ func _ready():
 	pre_recording_position = global_position
 
 	timeline.set_visual($Visual)
-	timeline.use_carry_shader_mode = true  # ← this is missing!
-	timeline.shader_strength=1
+	timeline.use_carry_shader_mode = true
+	timeline.shader_strength = 1
 	timeline.on_reset.connect(_on_timeline_reset)
 	Global.recording_started.connect(_on_recording_started)
 	Global.recording_stopped.connect(_on_recording_stopped)
@@ -48,31 +55,36 @@ func _ready():
 # 🎙 RECORDING CALLBACKS
 # ===============================
 func _on_recording_started():
-	# Snapshot the position the moment recording begins so we know
-	# what state to revert to when recording ends
+	# Snapshot the position the moment recording begins
 	pre_recording_position = global_position
+	was_moved_during_recording = false
 
 func _on_recording_stopped():
-	# Revert to pre-recording position so the echo replays
-	# from the correct state rather than wherever the player
-	# left the box during recording
-	global_position = pre_recording_position
+	# Only revert to pre-recording position if the box was actually moved by the player during recording
+	# (e.g., picked up, carried, dropped). If it sat untouched, leave it where it is.
+	if was_moved_during_recording:
+		global_position = pre_recording_position
 
 # ===============================
 # 🔄 PHYSICS LOOP
 # ===============================
 func _physics_process(delta):
 	# Hand off shader updates to the timeline component every frame.
-	# We pass being_carried and carrier so it can decide which shader
-	# to apply (player glitch, echo shimmer, or none)
 	timeline.update_carry_state(being_carried, carrier)
+
+	# Detect if the player moves this box during recording (for was_moved_during_recording flag)
+	if Global.is_recording and being_carried:
+		was_moved_during_recording = true
 
 	# Normal gravity when not carried
 	if not being_carried:
-		#if this is  uuncommented the player will not be able stand on box while recording
+		# Always re-enable world collision when not being carried
+		
 		if not Global.is_recording:
 			#print("here")
 			set_collision_layer_value(1, true)
+
+		#set_collision_layer_value(1, true)
 		if not is_on_floor():
 			velocity.y += GRAVITY * delta
 		else:
@@ -91,6 +103,9 @@ func pick_up(carrier_node: Node2D):
 	velocity = Vector2.ZERO
 	set_collision_layer_value(1, false)  # Disable world collision while floating
 
+	# NEW: A player (or echo) is taking control – override any previously confirmed echo position
+	echo_confirmed_position = false
+
 	# Tell timeline component who picked it up — clears lock state internally
 	timeline.begin_interaction(carrier_node)
 
@@ -107,13 +122,12 @@ func drop():
 	# Dropped by ECHO → this position is now confirmed timeline truth
 	if carrier.is_in_group("echo"):
 		timeline_position = global_position
-	#else:
-	#set_collision_layer_value(1, true)
+		echo_confirmed_position = true   # Mark as permanently confirmed
+	# Dropped by player → do NOT mark as confirmed (player can still reset)
 	
+	# Re-enable world collision so the box stays solid after drop
 	
-	# Tell the timeline component the interaction ended.
-	# Internally it decides whether to lock (player outside recording),
-	# stay free (player during recording), or confirm echo influence.
+	# Tell the timeline component the interaction ended
 	timeline.end_interaction()
 
 	carrier = null
@@ -129,8 +143,8 @@ func follow_target(target_pos: Vector2):
 # ⏲ TIMELINE RESET CALLBACK
 # ===============================
 func _on_timeline_reset():
-	# Fired by TimelineComponent when the reset timer expires
-	# after a player lock — snap back to last valid timeline position
+	# Fired by TimelineComponent when the reset timer expires after a player lock
+	# Snap back to last valid timeline position
 	global_position = timeline_position
 
 # ===============================
@@ -140,10 +154,19 @@ func reset_if_needed(existing_echo_ids: Array):
 	if being_carried:
 		return
 
-	# Delegate echo ID cleanup and lock clearing to the timeline component
+	# NEW: If an echo already confirmed this box at a location, do NOT reset it.
+	# This prevents later recordings from erasing the work of previous echoes.
+	if echo_confirmed_position:
+		# Still need to clear any pending locks in the timeline component,
+		# but keep the position and the confirmed flag.
+		if timeline.has_method("clear_locks_only"):
+			timeline.clear_locks_only()
+		return
+
+	# Otherwise, delegate echo ID cleanup and lock clearing to the timeline component
 	timeline.reset_if_needed(existing_echo_ids)
 
-	# Always snap to last known valid position
+	# Always snap to last known valid position (only if not echo-confirmed)
 	global_position = timeline_position
 	velocity = Vector2.ZERO
 	set_physics_process(true)

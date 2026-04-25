@@ -46,11 +46,18 @@ func _ready():
 	#commented out for testing levels one by one
 	generated_rooms=[
 		
+		#preload("res://scenes/rooms/tutorials/tutorial_room_01.tscn"),
+		#preload("res://scenes/rooms/tutorials/tutorial_room_02.tscn"),
 		
-		preload("res://scenes/rooms/puzzle/puzzle_room_01.tscn"),
+		#preload("res://scenes/rooms/puzzle/puzzle_room_01.tscn"),
+		#preload("res://scenes/rooms/puzzle/puzzle_room_02.tscn"),
+		#preload("res://scenes/rooms/puzzle/puzzle_room_03.tscn"),
+		preload("res://scenes/rooms/hazard/hazard_room_04.tscn"),
+		preload("res://scenes/rooms/puzzle/puzzle_room_05.tscn"),
+		#preload("res://scenes/rooms/tutorials/tutorial_room_01.tscn"),
 		
 		
-		preload("res://scenes/rooms/puzzle/puzzle_room_02.tscn")
+		#preload("res://scenes/rooms/puzzle/puzzle_room_02.tscn")
 	]
 	#load_room_pools()
 	#generate_level()
@@ -130,15 +137,17 @@ func restore_scene():
 # 🌊 Distortion Animation
 # =========================
 func activate_distortion():
+	#Previous distortion shader was called level_distortion
+	#this activates while recording
 	if distortion_tween:
 		distortion_tween.kill()
 	
 	distortion_tween = create_tween()
 	distortion_tween.tween_property(
 		distortion_rect.material,
-		"shader_parameter/strength",
-		0.6,
-		0.5
+		"shader_parameter/opacity",
+		0.1,
+		1
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 
@@ -149,7 +158,7 @@ func deactivate_distortion():
 	distortion_tween = create_tween()
 	distortion_tween.tween_property(
 		distortion_rect.material,
-		"shader_parameter/strength",
+		"shader_parameter/opacity",
 		0.0,
 		0.5
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

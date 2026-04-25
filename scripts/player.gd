@@ -21,6 +21,7 @@ var was_running := false
 var is_stopping := false
 
 const DEFAULT_JUMP_VELOCITY := -352.0
+const DEFAULT_JUMP_VELOCITY_WITH_BOX := -308.0
 ## Active jump velocity – reduced while carrying a box 
 var JUMP_VELOCITY := DEFAULT_JUMP_VELOCITY
 
@@ -310,7 +311,7 @@ func handle_interact() -> void:
 	# Scan the pickup area for something to interact with
 	for body in pickup_area.get_overlapping_bodies():
 		if body.is_in_group("carryable"):
-			JUMP_VELOCITY = -300
+			JUMP_VELOCITY = DEFAULT_JUMP_VELOCITY_WITH_BOX
 			carried_box   = body
 			body.pick_up(self)
 			break

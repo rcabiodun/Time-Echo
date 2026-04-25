@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c8ekdfe6k401n"]
+[gd_scene format=3 uid="uid://c8ekdfe6k401n"]
 
 [ext_resource type="Texture2D" uid="uid://cwmkhci7ytwyd" path="res://assets/interactables/energyBallImpact.png" id="1_m3ct3"]
 [ext_resource type="Script" uid="uid://d2y4ncqrnot7g" path="res://scripts/projectile.gd" id="1_oo15e"]
@@ -120,29 +120,29 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Projectile" type="CharacterBody2D" groups=["projectile"]]
+[node name="Projectile" type="CharacterBody2D" unique_id=823937032 groups=["projectile"]]
 collision_layer = 128
-collision_mask = 241
+collision_mask = 4337
 script = ExtResource("1_oo15e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1845859109]
 position = Vector2(0, 2.3841858e-07)
 scale = Vector2(-0.915472, 0.8618692)
 shape = SubResource("RectangleShape2D_6cy4k")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=102253781]
 position = Vector2(0, 0.3750012)
 scale = Vector2(0.14165145, 0.17462976)
 sprite_frames = SubResource("SpriteFrames_mjbrj")
 animation = &"moving"
 frame_progress = 0.75420445
 
-[node name="SfxRedirect" type="AudioStreamPlayer2D" parent="."]
+[node name="SfxRedirect" type="AudioStreamPlayer2D" parent="." unique_id=2106702913]
 stream = ExtResource("4_6cy4k")
 volume_db = -17.231
 bus = &"SFX"
 
-[node name="Sfxmoving" type="AudioStreamPlayer2D" parent="."]
+[node name="Sfxmoving" type="AudioStreamPlayer2D" parent="." unique_id=2055904009]
 stream = ExtResource("5_g8dtr")
 max_distance = 104.0
 bus = &"SFX"

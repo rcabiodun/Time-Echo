@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://jasgysmgxumm"]
+[gd_scene format=3 uid="uid://jasgysmgxumm"]
 
 [ext_resource type="Texture2D" uid="uid://tk2cvl54wx13" path="res://assets/interactables/4.png" id="1_smr21"]
 [ext_resource type="Script" uid="uid://cvm3kt7k4o00t" path="res://scripts/redirect_platform.gd" id="1_tfwdq"]
@@ -53,35 +53,51 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="RedirectPlatform" type="StaticBody2D" groups=["redirect_platform", "resettable"]]
+[sub_resource type="Gradient" id="Gradient_jhxq4"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xntp7"]
+gradient = SubResource("Gradient_jhxq4")
+fill = 2
+fill_from = Vector2(0.6, 0.5)
+fill_to = Vector2(0.4, 0.5)
+metadata/_snap_enabled = true
+
+[node name="RedirectPlatform" type="StaticBody2D" unique_id=880985064 groups=["redirect_platform", "resettable"]]
 collision_layer = 64
 collision_mask = 230
 script = ExtResource("1_tfwdq")
 metadata/_edit_horizontal_guides_ = [-16.0]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=294518516]
 visible = false
 scale = Vector2(0.022591392, 0.037292644)
 texture = ExtResource("1_smr21")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=959673140]
 scale = Vector2(0.66790456, 0.27190372)
 shape = SubResource("RectangleShape2D_tfwdq")
 
-[node name="InteractionArea" type="Area2D" parent="."]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1572900478]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=524835348]
 visible = false
 scale = Vector2(6.913793, -8)
 shape = SubResource("RectangleShape2D_jk47r")
 debug_color = Color(0.99706763, 0, 0.18337938, 0.41960785)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1740389388]
 rotation = 3.1415927
 scale = Vector2(0.3839749, 0.21870412)
 sprite_frames = SubResource("SpriteFrames_tfwdq")
 
-[node name="TimelineComponent" parent="." instance=ExtResource("4_xntp7")]
+[node name="TimelineComponent" parent="." unique_id=287855672 instance=ExtResource("4_xntp7")]
 
-[node name="SpawnPoint" type="Marker2D" parent="."]
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1927348923]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=268556604]
+position = Vector2(13, 0)
+rotation = -3.1415927
+color = Color(0.5660785, 5.4869056e-06, 0.37052995, 1)
+texture = SubResource("GradientTexture2D_xntp7")

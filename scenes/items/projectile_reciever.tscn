@@ -37,7 +37,7 @@ animations = [{
 }]
 
 [node name="ProjectileReciever" type="StaticBody2D" unique_id=1667104377 groups=["projectile_receiver"]]
-collision_layer = 33
+collision_layer = 4096
 collision_mask = 166
 script = ExtResource("1_hsdfx")
 

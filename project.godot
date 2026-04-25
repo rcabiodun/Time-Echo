@@ -122,6 +122,8 @@ pointing/emulate_mouse_from_touch=false
 2d_physics/layer_9="instakill"
 2d_physics/layer_10="collectibles"
 2d_physics/layer_11="fallingPlatform"
+2d_physics/layer_12="spike"
+2d_physics/layer_13="projectile_receiver"
 2d_physics/hdr_2d=true
 
 [rendering]

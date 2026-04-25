@@ -26,6 +26,8 @@ var characters_on_elevator: Array = []
 @onready var wait_timer: Timer = Timer.new()
 
 func _ready() -> void:
+	#is_activated=true
+	#start_movement()
 	start_position = global_position
 	
 	# Calculate target position based on direction
