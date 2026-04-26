@@ -47,7 +47,8 @@ enum Direction {
 @onready var entry_animated_sprite_2d: AnimatedSprite2D = $Entry/AnimatedSprite2D
 @onready var entry_point_light_2d: PointLight2D = $Entry/PointLight2D
 @onready var exit_point_light_2d: PointLight2D = $Exit/PointLight2D
-
+@onready var gameplay_objects: Node2D = $GameplayObjects
+@onready var time_shard_count = 0
 var _entry_flicker_tween: Tween
 var _exit_flicker_tween: Tween
 var is_transitioning = false
@@ -60,6 +61,12 @@ func get_exit_position() -> Vector2:
 	return exit_point.global_position
 
 func _ready() -> void:
+	#var count = 0
+
+	for child in gameplay_objects.get_children():
+		if child.is_in_group("time_shards"): # replace with your script/class name
+			time_shard_count += 1
+
 	Input.vibrate_handheld(800)  # vibrate for 200 milliseconds
 	print("This is the room you are in : " + self.name)
 	_turn_off_light(exit_point_light_2d, false)
@@ -71,6 +78,7 @@ func _ready() -> void:
 	await entry_animated_sprite_2d.animation_finished
 	entry_animated_sprite_2d.z_index = 0
 	_turn_off_light(entry_point_light_2d, true)  # flicker OFF after animation
+	
 
 func room_change(body:Node2D):
 	print("Player jusy hit the exit")

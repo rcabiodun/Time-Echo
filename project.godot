@@ -50,6 +50,7 @@ level_manager=""
 debug_overlay=""
 elevators=""
 invisible_floor=""
+time_shards=""
 
 [input]
 

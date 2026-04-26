@@ -52,9 +52,9 @@ func _ready():
 		#preload("res://scenes/rooms/puzzle/puzzle_room_01.tscn"),
 		#preload("res://scenes/rooms/puzzle/puzzle_room_02.tscn"),
 		#preload("res://scenes/rooms/puzzle/puzzle_room_03.tscn"),
-		preload("res://scenes/rooms/hazard/hazard_room_04.tscn"),
-		preload("res://scenes/rooms/puzzle/puzzle_room_05.tscn"),
-		#preload("res://scenes/rooms/tutorials/tutorial_room_01.tscn"),
+		#preload("res://scenes/rooms/hazard/hazard_room_04.tscn"),
+		#preload("res://scenes/rooms/puzzle/puzzle_room_05.tscn"),
+		preload("res://scenes/rooms/tutorials/tutorial_room_01.tscn"),
 		
 		
 		#preload("res://scenes/rooms/puzzle/puzzle_room_02.tscn")
@@ -78,6 +78,10 @@ func _on_button_state_changed(attached_items_ids: Dictionary, pressed: bool, ech
 	for invisible_floor in get_tree().get_nodes_in_group("invisible_floor"):
 		invisible_floor.register_button_event(attached_items_ids["invisible_floor_id"], pressed, echo_id) 
 
+func _on_time_shard_collected():
+	print("Time shard collected")
+	
+	
 # When ANY button changes, notify all doors
 func _on_projectile_receiver_activation(elevator_id: String):
 	print("receibed elevator project signal by level manager")
@@ -213,42 +217,14 @@ func request_room_change(exit_direction):
 	DeathManager.trigger_room_transition(func():
 		await load_room(next_room)
 	)
-#
-#func load_room(room_scene: PackedScene):
-	##DeathManager.trigger_room_transition_fade()
-	## Remove the current room if it exists
-	#if current_room_instance:
-		#current_room_instance.queue_free()
-#
-	## Create and add the new room to the scene
-	#current_room_instance = room_scene.instantiate()
-	#$"../Rooms".add_child(current_room_instance)
-#
-	## Wait one frame so the room fully initializes (_ready runs, onready vars are valid)
-	#await get_tree().process_frame 
-#
-	## Get the entry position from the new room and place the player there
-	#var entry_pos = current_room_instance.get_entry_position()
-	#$"../Player".global_position = entry_pos
-#
-	## (Optional) Camera limits can be set here per room
-	#for button in get_tree().get_nodes_in_group("buttons"):
-		#button.connect("button_state_changed", _on_button_state_changed)
-		##button.connect("button_state_changed", _on_button_state_changed)
-		##button.connect("button")
-	#
-	#for project_receiver in get_tree().get_nodes_in_group("projectile_receiver"):
-		#print("found 123")
-		#project_receiver.connect("projectile_receiver_activated", _on_projectile_receiver_activation)
-	#
-	#
-	#
+
 
 func load_room(room_scene: PackedScene):
 	if current_room_instance:
 		current_room_instance.queue_free()
 
 	current_room_instance = room_scene.instantiate()
+	
 	$"../Rooms".add_child(current_room_instance)
 	
 	await get_tree().process_frame
@@ -259,10 +235,14 @@ func load_room(room_scene: PackedScene):
 	# ✅ Wait one more frame AFTER placing the player so any
 	# overlapping portal signals fire and are ignored before we revive
 	await get_tree().process_frame
+	print("THis is the current room  timeshards couyunt")
+	print(current_room_instance.time_shard_count)
 	$"../Player".revive()
 
 	for button in get_tree().get_nodes_in_group("buttons"):
 		button.connect("button_state_changed", _on_button_state_changed)
+	for timeshard in get_tree().get_nodes_in_group("time_shards"):
+		timeshard.connect("time_shard_collected", _on_time_shard_collected)
 	for project_receiver in get_tree().get_nodes_in_group("projectile_receiver"):
 		print("found 123")
 		project_receiver.connect("projectile_receiver_activated", _on_projectile_receiver_activation)	
@@ -352,28 +332,6 @@ func get_opposite(dir):
 		BaseRoom.Direction.DOWN: return BaseRoom.Direction.UP
 
 
-#func get_valid_room(required_entry_direction):
-#
-	## Combine all possible non-start/non-final rooms
-	#var all_rooms = puzzle_rooms + hazard_rooms + transition_rooms
-#
-	## Shuffle to ensure randomness
-	#all_rooms.shuffle()
-#
-	## Find a room whose entry matches the required direction
-	#for room_scene in all_rooms:
-#
-		#var temp = room_scene.instantiate()
-#
-		## Check if this room can connect properly
-		#if temp.entry_direction == get_opposite(required_entry_direction):
-			#temp.queue_free()
-			#return room_scene
-#
-		#temp.queue_free()
-#
-	## If no valid room is found, return null (should be handled safely)
-	#return null
 
 func get_valid_room(required_entry_direction):
 
@@ -489,3 +447,4 @@ func update_progression(room):
 	# Increase echo capacity over time
 	# "At this point in the level, what should the player be capable of?"
 	player_echo_capacity = min(player_echo_capacity + 1, 3)
+ 
