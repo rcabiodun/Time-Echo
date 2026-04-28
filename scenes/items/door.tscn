@@ -287,7 +287,7 @@ volume_db = -3.0
 max_distance = 50.0
 bus = &"SFX"
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2049605925]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2049605925 groups=["lights"]]
 color = Color(0.6382, 0, 0.03412427, 1)
 energy = 2.2
 texture = SubResource("GradientTexture2D_pdvsu")

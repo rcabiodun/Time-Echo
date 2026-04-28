@@ -145,12 +145,15 @@ var is_ledge_hanging: bool = false
 @onready var ledge_hand_ray: RayCast2D = $LedgeHandRay   # Detects the ledge wall at hand height
 @onready var ledge_head_ray: RayCast2D = $LedgeHeadRay   # Detects wall at head height (blocks grab when true)
 @onready var ledge_snap_ray: RayCast2D = $LedgeSnapRay   # Downward ray used to find the ledge surface Y
-
+@onready var control_ui: CanvasLayer = $ControlUI
+#$ControlUI
 
 # ============================================================
 # 🔧 INITIALISATION
 # ============================================================
 func _ready() -> void:
+	print("THis is from the ready player func")
+	print(control_ui)
 	sfx_bus_index = AudioServer.get_bus_index("SFX")
 	update_collision_for_recording()
 	current_zoom   = camera_zoom_default
@@ -170,6 +173,7 @@ func _input(event: InputEvent) -> void:
 # 🔄 MAIN PHYSICS LOOP
 # ============================================================
 func _physics_process(delta: float) -> void:
+	toggle_controls_ui()
 	play_recording_effects()   # Handle recording start/stop VFX/SFX transitions
 	apply_gravity(delta)
 	update_timers(delta)
@@ -870,3 +874,16 @@ func play_footstep():
 	random_step.pitch_scale = randf_range(0.7, 2.5)
 	
 	random_step.play()
+
+
+func toggle_controls_ui():
+	#print(Global._showing_menu)
+	#if control_ui == null:
+		#return
+
+	if Global._showing_menu and control_ui.visible:
+		control_ui.visible = false
+	elif !Global._showing_menu and !control_ui.visible:
+		control_ui.visible = true
+	#control_ui.visible=true
+	

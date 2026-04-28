@@ -805,7 +805,7 @@ shape = SubResource("RectangleShape2D_tyoe3")
 position = Vector2(-2, 13)
 shape = SubResource("ConvexPolygonShape2D_kdeqj")
 
-[node name="PointLight2D" type="PointLight2D" parent="Entry" unique_id=348447135]
+[node name="PointLight2D" type="PointLight2D" parent="Entry" unique_id=348447135 groups=["lights"]]
 color = Color(0.6382, 0, 0.03412427, 1)
 energy = 1.5
 texture = SubResource("GradientTexture2D_2xuc4")
@@ -836,7 +836,7 @@ shape = SubResource("RectangleShape2D_tyoe3")
 position = Vector2(1057, 578)
 shape = SubResource("ConvexPolygonShape2D_kdeqj")
 
-[node name="PointLight2D" type="PointLight2D" parent="Exit" unique_id=1714190207]
+[node name="PointLight2D" type="PointLight2D" parent="Exit" unique_id=1714190207 groups=["lights"]]
 position = Vector2(1058, 569)
 color = Color(0.6382, 0, 0.03412427, 1)
 energy = 2.7

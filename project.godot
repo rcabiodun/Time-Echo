@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="time echo"
-run/main_scene="uid://ckb8t0jrcp1q8"
+run/main_scene="uid://cunu08b7hefdr"
 config/features=PackedStringArray("4.6", "Mobile")
 boot_splash/stretch_mode=4
 boot_splash/image="uid://bm21j6w068p5q"
@@ -26,6 +26,7 @@ config/icon="res://icon.svg"
 Global="*res://scenes/global.tscn"
 DeathManager="*uid://cnnp7w7kryyg8"
 CameraShake="*uid://c73hrlhl6ulow"
+GameProgression="*uid://dejqcjxi6c050"
 
 [display]
 
@@ -51,6 +52,11 @@ debug_overlay=""
 elevators=""
 invisible_floor=""
 time_shards=""
+lights=""
+
+[gui]
+
+theme/custom_font="uid://dt22hu5be6lug"
 
 [input]
 
@@ -108,7 +114,6 @@ change_camera_zoom={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
-pointing/emulate_mouse_from_touch=false
 
 [layer_names]
 

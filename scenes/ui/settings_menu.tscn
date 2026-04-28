@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://bgbfiv586esfb"]
+
+[ext_resource type="Script" uid="uid://bf5jtjwgfli7u" path="res://scripts/ui/settings_menu.gd" id="1_mhswj"]
+[ext_resource type="Texture2D" uid="uid://4vxcwdmrn1hk" path="res://assets/menu_bg.png" id="3_x3vyp"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0b1cv"]
+load_path = "res://.godot/imported/ButtonText_Large_Orange_Round.png-7819681e3fc1471569fe260304f8c891.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yu862"]
+texture = SubResource("CompressedTexture2D_0b1cv")
+expand_margin_left = 20.0
+expand_margin_top = 5.0
+expand_margin_right = 15.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mhswj"]
+load_path = "res://.godot/imported/ButtonText_Small_Square.png-600c127328a05d44c2839693d66f02dc.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x3vyp"]
+texture = SubResource("CompressedTexture2D_mhswj")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yu862"]
+load_path = "res://.godot/imported/ButtonText_Small_Square.png-600c127328a05d44c2839693d66f02dc.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ywggk"]
+texture = SubResource("CompressedTexture2D_yu862")
+
+[node name="SettingsMenu" type="CanvasLayer" unique_id=534186876]
+process_mode = 3
+layer = 13
+script = ExtResource("1_mhswj")
+
+[node name="Background2" type="TextureRect" parent="." unique_id=1286192103]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture = ExtResource("3_x3vyp")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2021427346]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 0.5647059)
+
+[node name="Background" type="ColorRect" parent="." unique_id=838687852]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.015686275, 0.08235294, 0.15686275, 1)
+
+[node name="Card" type="NinePatchRect" parent="." unique_id=1653603256]
+custom_minimum_size = Vector2(350, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Layout" type="VBoxContainer" parent="Card" unique_id=728709117]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="Card/Layout" unique_id=1806240323]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Settings
+"
+horizontal_alignment = 1
+
+[node name="MusicRow" type="HBoxContainer" parent="Card/Layout" unique_id=917291291]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="Card/Layout/MusicRow" unique_id=2129523763]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Card/Layout/MusicRow" unique_id=2113571085]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -40.0
+max_value = 0.0
+step = 0.5
+
+[node name="SFXRow" type="HBoxContainer" parent="Card/Layout" unique_id=168267136]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SFX" type="Label" parent="Card/Layout/SFXRow" unique_id=1715010573]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="Card/Layout/SFXRow" unique_id=101809892]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -40.0
+max_value = 0.0
+step = 0.5
+
+[node name="LightingRow" type="HBoxContainer" parent="Card/Layout" unique_id=532085808]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Lighting" type="Label" parent="Card/Layout/LightingRow" unique_id=1080797152]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Environmental Lighting"
+horizontal_alignment = 1
+
+[node name="LightingCheckBox" type="CheckButton" parent="Card/Layout/LightingRow" unique_id=1077611425]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackButton" type="Button" parent="Card/Layout" unique_id=1154454381]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_yu862")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x3vyp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ywggk")
+text = "Back"

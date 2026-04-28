@@ -97,7 +97,7 @@ volume_db = -11.0
 pitch_scale = 0.69
 bus = &"SFX"
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1144031646]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1144031646 groups=["lights"]]
 color = Color(0.19215687, 0.38039216, 0.28235295, 1)
 energy = 1.2
 texture = SubResource("GradientTexture2D_8b2lf")

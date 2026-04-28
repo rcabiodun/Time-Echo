@@ -19,7 +19,7 @@ enum Direction {
 }
 #@export var teleport_sound: AudioStreamPlayer2D
 @onready var teleport_sound: AudioStreamPlayer2D = $Sounds/TeleportSound
-
+var exit_delay_active := true
 @export var difficulty : int = 1   # 1 = easy, 2 = medium, 3 = hard
 @export var requires_echoes : int = 0
 #@export var provides_rune : bool = false
@@ -62,7 +62,7 @@ func get_exit_position() -> Vector2:
 
 func _ready() -> void:
 	#var count = 0
-
+	
 	for child in gameplay_objects.get_children():
 		if child.is_in_group("time_shards"): # replace with your script/class name
 			time_shard_count += 1
@@ -78,7 +78,8 @@ func _ready() -> void:
 	await entry_animated_sprite_2d.animation_finished
 	entry_animated_sprite_2d.z_index = 0
 	_turn_off_light(entry_point_light_2d, true)  # flicker OFF after animation
-	
+	await get_tree().create_timer(0.3).timeout
+	exit_delay_active = false
 
 func room_change(body:Node2D):
 	print("Player jusy hit the exit")
@@ -87,7 +88,7 @@ func room_change(body:Node2D):
 	level_manager.call_deferred("request_room_change", exit_direction)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if is_transitioning:
+	if exit_delay_active or is_transitioning:
 		return
 	if body.is_in_group("player"):
 		Input.vibrate_handheld(800)  # vibrate for 200 milliseconds
@@ -120,6 +121,7 @@ func _start_flicker(point_light: PointLight2D, is_entry: bool) -> void:
 	else:
 		_stop_flicker(_exit_flicker_tween)
 	_flicker_loop(point_light, is_entry)
+	
 func _flicker_loop(point_light: PointLight2D, is_entry: bool) -> void:
 	var tween = create_tween()
 	tween.tween_method(

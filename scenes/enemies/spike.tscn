@@ -132,7 +132,7 @@ animation = &"idle"
 frame = 9
 frame_progress = 0.28621286
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=426690001]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=426690001 groups=["lights"]]
 color = Color(0.6382, 0, 0.03412427, 1)
 texture = SubResource("GradientTexture2D_6i825")
 

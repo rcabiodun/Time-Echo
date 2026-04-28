@@ -1,0 +1,12 @@
+[gd_resource type="Theme" format=3 uid="uid://digybdtiyu5wj"]
+
+[ext_resource type="Texture2D" uid="uid://c0nm806mdqpf6" path="res://assets/UI/ButtonsIcons/IconButton_Large_Red_Square.png" id="1_flg2g"]
+[ext_resource type="FontFile" uid="uid://dt22hu5be6lug" path="res://assets/fonts/BoldPixels.ttf" id="2_18mun"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4xmjr"]
+texture = ExtResource("1_flg2g")
+
+[resource]
+default_font = ExtResource("2_18mun")
+default_font_size = 16
+Button/styles/normal = SubResource("StyleBoxTexture_4xmjr")

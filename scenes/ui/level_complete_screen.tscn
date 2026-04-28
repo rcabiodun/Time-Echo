@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://bk2cwd6kmrms6"]
+
+[ext_resource type="Script" uid="uid://dwdqbed8ofid8" path="res://scripts/ui/level_complete_screen.gd" id="1_s4tw8"]
+[ext_resource type="Texture2D" uid="uid://6da8gwt46bj0" path="res://assets/UI/ButtonsText/ButtonText_Large_Orange_Round.png" id="2_pmim0"]
+[ext_resource type="Texture2D" uid="uid://4vxcwdmrn1hk" path="res://assets/menu_bg.png" id="2_uonsk"]
+[ext_resource type="Texture2D" uid="uid://c6jkgmwt6dfmc" path="res://assets/UI/ButtonsText/ButtonText_Large_GreyOutline_Round.png" id="3_pmim0"]
+[ext_resource type="FontFile" uid="uid://dt22hu5be6lug" path="res://assets/fonts/BoldPixels.ttf" id="3_vjvvb"]
+[ext_resource type="Texture2D" uid="uid://cc0rcr8e8mvih" path="res://assets/UI/ButtonsText/ButtonText_Large_Green_Round.png" id="4_yj8dx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yj8dx"]
+texture = ExtResource("2_pmim0")
+expand_margin_left = 20.0
+expand_margin_top = 5.0
+expand_margin_right = 15.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s4tw8"]
+texture = ExtResource("3_pmim0")
+expand_margin_left = 7.0
+expand_margin_top = 1.0
+expand_margin_right = 7.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vjvvb"]
+texture = ExtResource("4_yj8dx")
+expand_margin_left = 20.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uonsk"]
+load_path = "res://.godot/imported/ButtonText_Large_Green_Round.png-4f3e4cdd2bfa4ada0fb6f9906d275061.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i8iln"]
+texture = SubResource("CompressedTexture2D_uonsk")
+expand_margin_left = 7.0
+expand_margin_top = 1.0
+expand_margin_right = 7.0
+expand_margin_bottom = 1.0
+
+[node name="LevelCompleteScreen" type="CanvasLayer" unique_id=1051607698]
+layer = 5
+script = ExtResource("1_s4tw8")
+
+[node name="Background2" type="TextureRect" parent="." unique_id=421761588]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture = ExtResource("2_uonsk")
+expand_mode = 1
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=35413438]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 0.5647059)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2026593064]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.01428114, 0.08407269, 0.15778828, 1)
+
+[node name="Panel" type="NinePatchRect" parent="." unique_id=910137766]
+custom_minimum_size = Vector2(400, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -125.0
+offset_right = 175.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1651781470]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 21
+alignment = 1
+
+[node name="CompletionLabel" type="Label" parent="Panel/VBoxContainer" unique_id=592951218]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vjvvb")
+theme_override_font_sizes/font_size = 37
+text = "abiodun"
+horizontal_alignment = 1
+
+[node name="ShardsLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1005022386]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vjvvb")
+theme_override_font_sizes/font_size = 28
+text = "Eri"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=644964335]
+layout_mode = 2
+theme_override_constants/separation = 43
+alignment = 1
+
+[node name="RetryButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1473865213]
+layout_mode = 2
+size_flags_stretch_ratio = 8.35
+theme_override_fonts/font = ExtResource("3_vjvvb")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_yj8dx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_s4tw8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yj8dx")
+text = "↻ Retry"
+
+[node name="NextButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1340038519]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vjvvb")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_vjvvb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_s4tw8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_i8iln")
+text = "Next →"
+
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]

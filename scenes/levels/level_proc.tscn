@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dg613eeod160d" path="res://scripts/items/fps_label.gd" id="3_tjjf8"]
 [ext_resource type="PackedScene" uid="uid://cergo2cw5e24d" path="res://scenes/characters/player.tscn" id="5_p5320"]
 [ext_resource type="PackedScene" uid="uid://65ib2e64r4xx" path="res://scenes/debug_overlay.tscn" id="6_p5320"]
+[ext_resource type="PackedScene" uid="uid://cfu60boabltbf" path="res://scenes/ui/pause_menu.tscn" id="6_xaonv"]
 
 [sub_resource type="Environment" id="Environment_tjjf8"]
 glow_enabled = true
@@ -26,16 +27,13 @@ environment = SubResource("Environment_tjjf8")
 [node name="DebugOverlay" parent="." unique_id=1890049828 instance=ExtResource("6_p5320")]
 visible = false
 
-[node name="LevelManager" parent="." unique_id=1488266637 instance=ExtResource("1_tjofq")]
-
 [node name="Rooms" type="Node2D" parent="." unique_id=1242792844]
 
 [node name="Echoes" type="Node2D" parent="." unique_id=1158096217]
 position = Vector2(3, 0)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=559595165]
-visible = false
-color = Color(0.26842234, 0.26862806, 0.3793395, 1)
+color = Color(0.3154557, 0.32002214, 0.4434334, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=880252906]
 
@@ -55,5 +53,9 @@ script = ExtResource("3_tjjf8")
 
 [node name="Player" parent="." unique_id=1774888591 instance=ExtResource("5_p5320")]
 position = Vector2(188, 512)
+
+[node name="LevelManager" parent="." unique_id=1488266637 instance=ExtResource("1_tjofq")]
+
+[node name="PauseMenu" parent="." unique_id=557462484 instance=ExtResource("6_xaonv")]
 
 [connection signal="create_echo" from="Player" to="LevelManager" method="_on_player_create_echo"]

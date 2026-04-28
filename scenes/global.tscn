@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bosvhe11tbikm" path="res://scripts/globals/global.gd" id="1_nmxvb"]
 [ext_resource type="AudioStream" uid="uid://deq56qcnf4t0m" path="res://assets/audio/game bg music.mp3" id="2_nmxvb"]
+[ext_resource type="AudioStream" uid="uid://8p0gwejjsltr" path="res://assets/audio/UI-popup-open.wav" id="3_m3l3d"]
+[ext_resource type="AudioStream" uid="uid://1kybnqww3m0" path="res://assets/audio/UI-select2.wav" id="4_nelfd"]
 
 [node name="Global" type="Node2D" unique_id=1313188184]
 script = ExtResource("1_nmxvb")
@@ -12,3 +14,13 @@ volume_db = -18.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="MenuOpenAudio" type="AudioStreamPlayer" parent="." unique_id=317580732]
+stream = ExtResource("3_m3l3d")
+volume_db = 1.5
+bus = &"SFX"
+
+[node name="ButtonSelectAudio" type="AudioStreamPlayer" parent="." unique_id=1907871989]
+stream = ExtResource("4_nelfd")
+volume_db = 1.5
+bus = &"SFX"

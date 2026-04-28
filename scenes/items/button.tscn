@@ -419,7 +419,7 @@ bus = &"SFX"
 
 [node name="SuccessSound" type="AudioStreamPlayer2D" parent="." unique_id=2037706765]
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1855344362]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1855344362 groups=["lights"]]
 color = Color(0.092739515, 0.35416722, 0.52159226, 1)
 texture = SubResource("GradientTexture2D_lipku")
 

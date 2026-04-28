@@ -1,19 +1,90 @@
 [gd_scene format=3 uid="uid://cfu60boabltbf"]
 
-[ext_resource type="Script" uid="uid://cg31shkmgoed4" path="res://scripts/pause_menu.gd" id="1_6tw0m"]
+[ext_resource type="Script" uid="uid://v3lh14dia5ww" path="res://scripts/ui/pause_menu.gd" id="1_8uki6"]
+[ext_resource type="Texture2D" uid="uid://6da8gwt46bj0" path="res://assets/UI/ButtonsText/ButtonText_Large_Orange_Round.png" id="2_0lmf7"]
+[ext_resource type="Texture2D" uid="uid://4vxcwdmrn1hk" path="res://assets/menu_bg.png" id="2_8uki6"]
+[ext_resource type="Texture2D" uid="uid://wh3pywyd4eoy" path="res://assets/UI/ButtonsIcons/IconButton_Large_Red_Rounded.png" id="3_f6eus"]
 
-[node name="pauseMenu" type="Control" unique_id=1684038080]
-layout_mode = 3
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f6eus"]
+texture = ExtResource("2_0lmf7")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8uki6"]
+load_path = "res://.godot/imported/ButtonText_Small_Square.png-600c127328a05d44c2839693d66f02dc.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4inpj"]
+texture = SubResource("CompressedTexture2D_8uki6")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8fwbo"]
+load_path = "res://.godot/imported/ButtonText_Small_Square.png-600c127328a05d44c2839693d66f02dc.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2rlsb"]
+texture = SubResource("CompressedTexture2D_8fwbo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8uki6"]
+texture = ExtResource("2_0lmf7")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_coo1x"]
+load_path = "res://.godot/imported/ButtonText_Small_Square.png-600c127328a05d44c2839693d66f02dc.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2jkta"]
+texture = SubResource("CompressedTexture2D_coo1x")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ht4ye"]
+load_path = "res://.godot/imported/ButtonText_Small_Square.png-600c127328a05d44c2839693d66f02dc.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7yca1"]
+texture = SubResource("CompressedTexture2D_ht4ye")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0bnpd"]
+texture = ExtResource("3_f6eus")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lrbnh"]
+load_path = "res://.godot/imported/ButtonText_Small_Square.png-600c127328a05d44c2839693d66f02dc.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6qnem"]
+texture = SubResource("CompressedTexture2D_lrbnh")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ynwdf"]
+load_path = "res://.godot/imported/ButtonText_Small_Square.png-600c127328a05d44c2839693d66f02dc.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p4b6u"]
+texture = SubResource("CompressedTexture2D_ynwdf")
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=557462484]
+process_mode = 3
+layer = 5
+script = ExtResource("1_8uki6")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2134544537]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6tw0m")
+size_flags_vertical = 4
+texture = ExtResource("2_8uki6")
+expand_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2041122622]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 1
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1456335055]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 0.5647059)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1424836948]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.015686275, 0.08235294, 0.15686275, 1)
+
+[node name="Card" type="NinePatchRect" parent="." unique_id=1086559305]
+custom_minimum_size = Vector2(350, 400)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -26,20 +97,55 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1546214809]
+[node name="Layout" type="VBoxContainer" parent="Card" unique_id=1916787380]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Paused" type="Label" parent="Card/Layout" unique_id=636807376]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="Card/Layout" unique_id=236427603]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_f6eus")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4inpj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2rlsb")
+text = "Resume"
+
+[node name="Button2" type="Button" parent="Card/Layout" unique_id=418049506]
+visible = false
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 
-[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer" unique_id=383371682]
+[node name="SettingsButton" type="Button" parent="Card/Layout" unique_id=2013802184]
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
-action_mode = 0
-text = "Resume
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_8uki6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2jkta")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7yca1")
+text = "Settings"
+
+[node name="MainMenuButton" type="Button" parent="Card/Layout" unique_id=1676975053]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_0bnpd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6qnem")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p4b6u")
+text = "Main Menu
 "
 
-[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1800917705]
-layout_mode = 2
-action_mode = 0
-text = "Exit
-"
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Card/Layout/ResumeButton" to="." method="_on_resume_button_pressed"]

@@ -2274,10 +2274,9 @@ pitch_scale = 0.8
 bus = &"SFX"
 parameters/looping = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1005359554]
+[node name="ControlUI" type="CanvasLayer" parent="." unique_id=1005359554]
 
-[node name="Touch Control v2" parent="CanvasLayer" unique_id=1361726586 instance=ExtResource("7_6eyoc")]
-visible = true
+[node name="Touch Control v2" parent="ControlUI" unique_id=1361726586 instance=ExtResource("7_6eyoc")]
 offset_left = -2.0
 offset_right = 2.0
 
